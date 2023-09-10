@@ -1,0 +1,17 @@
+/* login */
+
+.title {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 70px;
+}
+.sign-in-button {
+  display: flex;
+  justify-content: center;
+}
