@@ -11,7 +11,7 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <HeaderForHomePage />
+        <HeaderForHomePage isSearchVisible={true} />
         <main ref="main">
           <Link to="/login-page">Go to Login</Link>
         </main>

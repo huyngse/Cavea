@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
-import "../../css/Ceave.css";
 import HeaderForHomePage from "../../Components/Header/Header-for-home-page";
 import {
   FormWrapper,
-  Input,
   CustomLoginForm,
   CustomError,
+  CustomTitle,
+  CustomContainer,
+  SignInButton,
+  CustomSignInButton,
+  SignUp,
+  Text,
 } from "./Style-component";
-import Buttons from "../../Components/Button/Button";
 
 function LoginForm() {
   const [errorMessages, setErrorMessages] = useState({});
@@ -59,34 +62,41 @@ function LoginForm() {
     name === errorMessages.name && (
       <CustomError>{errorMessages.message}</CustomError>
     );
-
   // JSX code for login form
   const renderForm = (
-    <div className="form">
+    <div>
       <form onSubmit={handleSubmit}>
-        <div className="input-container">
-          <label>Username </label>
-          <Input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
-        </div>
-        <div className="input-container">
-          <label>Password </label>
-          <Input type="password" name="pass" required />
+        <CustomContainer
+          label="Username"
+          type="text"
+          name="uname"
+          autoComplete="current-password"
+        >
           {renderErrorMessage("pass")}
-        </div>
-        <div className="sign-in-button">
-          <Buttons>Sign in</Buttons>
-        </div>
+        </CustomContainer>
+        <CustomContainer
+          label="Password"
+          type="password"
+          name="pass"
+          autoComplete="current-password"
+        >
+          {renderErrorMessage("pass")}
+        </CustomContainer>
+        <SignInButton>
+          <CustomSignInButton>Log In</CustomSignInButton>
+        </SignInButton>
+        <Text>You don't have an account yet?</Text>
+        <SignUp href="/sign-up">Create an account</SignUp>
       </form>
     </div>
   );
 
   return (
     <>
-      <HeaderForHomePage />
+      <HeaderForHomePage isSearchVisible={false} />
       <FormWrapper>
         <CustomLoginForm>
-          <div className="title">Sign In</div>
+          <CustomTitle>Log In</CustomTitle>
           {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
         </CustomLoginForm>
       </FormWrapper>

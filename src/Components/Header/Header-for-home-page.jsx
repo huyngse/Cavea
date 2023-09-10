@@ -18,7 +18,7 @@ import Buttons from "../Button/Button";
 
 const pages = ["Products", "Blog"];
 
-function HeaderForHomePage() {
+function HeaderForHomePage({ isSearchVisible }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -38,6 +38,7 @@ function HeaderForHomePage() {
   const handleClearSearch = () => {
     setSearchValue("");
   };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
@@ -92,11 +93,14 @@ function HeaderForHomePage() {
               </Button>
             ))}
           </Box>
-          <SearchInput
-            handleChange={handleSearchChange}
-            handleClear={handleClearSearch}
-            defaultValue={searchValue}
-          />
+
+          {isSearchVisible && (
+            <SearchInput
+              handleChange={handleSearchChange}
+              handleClear={handleClearSearch}
+              defaultValue={searchValue}
+            />
+          )}
 
           <Buttons>Login</Buttons>
           <Buttons>Sign Up</Buttons>
@@ -105,4 +109,5 @@ function HeaderForHomePage() {
     </AppBar>
   );
 }
+
 export default HeaderForHomePage;
