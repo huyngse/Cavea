@@ -17,7 +17,7 @@ export const CustomLoginForm = styled.div`
   max-width: 26rem;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 80px;
+  margin-top: 145px;
   padding: 2.25rem 1.25rem 1.25rem 1.25rem;
   border-radius: 0.5rem;
   background-color: #f3f7fd;
@@ -32,11 +32,13 @@ export const CustomTitle = styled.div`
   letter-spacing: -0.2px;
 `;
 
-export const CustomContainer = styled(TextField)`
+export const CustomInput = styled(TextField)`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 70px;
+  margin: 40px;
+  background: #ffffff;
+  border-color: #398378;
 `;
 
 export const SignInButton = styled.div`
@@ -73,4 +75,10 @@ export const SignUp = styled.a`
 `;
 export const Text = styled.div`
   color: #374151;
+  padding-top: 10px;
+`;
+
+export const BirdDecor = styled.img`
+  position: absolute;
+  top: 80px;
 `;

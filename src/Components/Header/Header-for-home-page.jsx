@@ -11,8 +11,8 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
-import small_logo from "../../images/small_logo.png";
-import { LogoHeader } from "./style-component";
+import small_logo from "../../images/small-logo.png";
+import { LogoHeader, CustomLink } from "./style-component";
 import SearchInput from "../Search-input/index.jsx";
 import Buttons from "../Button/Button";
 
@@ -43,7 +43,7 @@ function HeaderForHomePage({ isSearchVisible }) {
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
         <Toolbar disableGutters>
-          <LogoHeader src={small_logo} alt="logo" />
+          <LogoHeader src={small_logo} />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -102,7 +102,9 @@ function HeaderForHomePage({ isSearchVisible }) {
             />
           )}
 
-          <Buttons>Login</Buttons>
+          <Buttons>
+            <CustomLink href="/login-page">Login</CustomLink>
+          </Buttons>
           <Buttons>Sign Up</Buttons>
         </Toolbar>
       </Container>

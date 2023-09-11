@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-import small_logo from "../../images/small_logo.png";
+import small_logo from "../../images/small-logo.png";
 import { LogoHeader } from "./style-component";
 import SearchInput from "../Search-input/index.jsx";
 
@@ -52,7 +52,7 @@ function Header() {
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
         <Toolbar disableGutters>
-          <LogoHeader src={small_logo} alt="logo" />
+          <LogoHeader src={small_logo} />
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton

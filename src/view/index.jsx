@@ -12,9 +12,7 @@ class Index extends React.Component {
     return (
       <>
         <HeaderForHomePage isSearchVisible={true} />
-        <main ref="main">
-          <Link to="/login-page">Go to Login</Link>
-        </main>
+        <main ref="main"></main>
       </>
     );
   }

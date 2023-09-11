@@ -6,12 +6,14 @@ import {
   CustomLoginForm,
   CustomError,
   CustomTitle,
-  CustomContainer,
+  CustomInput,
   SignInButton,
   CustomSignInButton,
   SignUp,
   Text,
+  BirdDecor,
 } from "./Style-component";
+import bird_decor from "../../images/bird-decor.png";
 
 function LoginForm() {
   const [errorMessages, setErrorMessages] = useState({});
@@ -62,34 +64,6 @@ function LoginForm() {
     name === errorMessages.name && (
       <CustomError>{errorMessages.message}</CustomError>
     );
-  // JSX code for login form
-  const renderForm = (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <CustomContainer
-          label="Username"
-          type="text"
-          name="uname"
-          autoComplete="current-password"
-        >
-          {renderErrorMessage("pass")}
-        </CustomContainer>
-        <CustomContainer
-          label="Password"
-          type="password"
-          name="pass"
-          autoComplete="current-password"
-        >
-          {renderErrorMessage("pass")}
-        </CustomContainer>
-        <SignInButton>
-          <CustomSignInButton>Log In</CustomSignInButton>
-        </SignInButton>
-        <Text>You don't have an account yet?</Text>
-        <SignUp href="/sign-up">Create an account</SignUp>
-      </form>
-    </div>
-  );
 
   return (
     <>
@@ -97,7 +71,36 @@ function LoginForm() {
       <FormWrapper>
         <CustomLoginForm>
           <CustomTitle>Log In</CustomTitle>
-          {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+          {isSubmitted ? (
+            <div>User is successfully logged in</div>
+          ) : (
+            <div>
+              <form onSubmit={handleSubmit}>
+                <BirdDecor src={bird_decor} />
+                <CustomInput
+                  label="Username"
+                  type="text"
+                  name="uname"
+                  autoComplete="current-password"
+                >
+                  {renderErrorMessage("pass")}
+                </CustomInput>
+                <CustomInput
+                  label="Password"
+                  type="password"
+                  name="pass"
+                  autoComplete="current-password"
+                >
+                  {renderErrorMessage("pass")}
+                </CustomInput>
+                <SignInButton>
+                  <CustomSignInButton>Log In</CustomSignInButton>
+                </SignInButton>
+                <Text>You don't have an account yet?</Text>
+                <SignUp href="/sign-up">Create an account</SignUp>
+              </form>
+            </div>
+          )}
         </CustomLoginForm>
       </FormWrapper>
     </>
