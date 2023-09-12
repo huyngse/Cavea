@@ -1,6 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import HeaderForHomePage from "../Components/Header/Header-for-home-page";
+
+import HeaderForHomePage from "../Components/Navbar/navbar_for_home_page";
+import Header from "../Components/Header/index.jsx";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -11,8 +12,9 @@ class Index extends React.Component {
   render() {
     return (
       <>
-        <HeaderForHomePage isSearchVisible={true} />
         <main ref="main"></main>
+        <HeaderForHomePage isSearchVisible={true} />
+        <Header />
       </>
     );
   }

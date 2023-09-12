@@ -9,8 +9,5 @@ export const CustomLink = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: #374151;
-  &:hover {
-    background-color: #374151;
-    color: white;
   }
 `;

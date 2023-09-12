@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import LoginForm from "./LoginForm";
+import LoginForm from "./signup_from";
+import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -17,7 +18,10 @@ const LoginPage = () => {
           {/* Add logout button and logic here if needed */}
         </div>
       ) : (
-        <LoginForm onLogin={handleLogin} />
+        <>
+          <NavbarForHomePage isSearchVisible={false} />
+          <LoginForm onLogin={handleLogin} />
+        </>
       )}
     </div>
   );

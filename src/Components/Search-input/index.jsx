@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { InputAdornment } from "@mui/material";
 import { Search, Clear } from "@mui/icons-material";
 
-import { CustomTextField } from "./style-component";
+import { CustomTextField } from "./style_component";
 
 function SearchInput({ handleChange, handleClear, defaultValue }) {
   const [value, setValue] = useState(defaultValue || "");

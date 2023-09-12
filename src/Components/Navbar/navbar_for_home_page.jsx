@@ -12,13 +12,13 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
 import small_logo from "../../images/small-logo.png";
-import { LogoHeader, CustomLink } from "./style-component";
+import { LogoHeader, CustomLink } from "./style_component";
 import SearchInput from "../Search-input/index.jsx";
-import Buttons from "../Button/Button";
+import Buttons from "../Button/button";
 
 const pages = ["Products", "Blog"];
 
-function HeaderForHomePage({ isSearchVisible }) {
+function NavbarForHomePage({ isSearchVisible }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -43,7 +43,9 @@ function HeaderForHomePage({ isSearchVisible }) {
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
         <Toolbar disableGutters>
-          <LogoHeader src={small_logo} />
+          <CustomLink href="/Index">
+            <LogoHeader src={small_logo} />
+          </CustomLink>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -101,15 +103,21 @@ function HeaderForHomePage({ isSearchVisible }) {
               defaultValue={searchValue}
             />
           )}
+          {isSearchVisible && (
+            <>
+              <CustomLink href="/login-page">
+                <Buttons>Login</Buttons>
+              </CustomLink>
 
-          <Buttons>
-            <CustomLink href="/login-page">Login</CustomLink>
-          </Buttons>
-          <Buttons>Sign Up</Buttons>
+              <CustomLink href="/sign-up">
+                <Buttons>Sign up</Buttons>
+              </CustomLink>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>
   );
 }
 
-export default HeaderForHomePage;
+export default NavbarForHomePage;

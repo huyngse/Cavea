@@ -1,18 +1,15 @@
 import React, { useState } from "react";
 
-import HeaderForHomePage from "../../Components/Header/Header-for-home-page";
+import { CustomLoginForm, SignUp, BirdDecor } from "./style_component";
 import {
-  FormWrapper,
-  CustomLoginForm,
   CustomError,
   CustomTitle,
   CustomInput,
-  SignInButton,
-  CustomSignInButton,
-  SignUp,
+  CustomLoginAndSignUpButton,
+  LoginAndSignUpButton,
   Text,
-  BirdDecor,
-} from "./Style-component";
+} from "../../Components/Login-and-signup-form";
+import { FormWrapper } from "../../Components/Header/style_component";
 import bird_decor from "../../images/bird-decor.png";
 
 function LoginForm() {
@@ -67,7 +64,6 @@ function LoginForm() {
 
   return (
     <>
-      <HeaderForHomePage isSearchVisible={false} />
       <FormWrapper>
         <CustomLoginForm>
           <CustomTitle>Log In</CustomTitle>
@@ -93,9 +89,9 @@ function LoginForm() {
                 >
                   {renderErrorMessage("pass")}
                 </CustomInput>
-                <SignInButton>
-                  <CustomSignInButton>Log In</CustomSignInButton>
-                </SignInButton>
+                <CustomLoginAndSignUpButton>
+                  <LoginAndSignUpButton>Log In</LoginAndSignUpButton>
+                </CustomLoginAndSignUpButton>
                 <Text>You don't have an account yet?</Text>
                 <SignUp href="/sign-up">Create an account</SignUp>
               </form>
