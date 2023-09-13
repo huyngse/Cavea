@@ -2,6 +2,8 @@ import React from "react";
 
 import HeaderForHomePage from "../Components/Navbar/navbar_for_home_page";
 import Header from "../Components/Header/index.jsx";
+import MediaCard from "../Components/Cart";
+import MenuAndSeller from "../Components/Menu-and-seller";
 
 class Index extends React.Component {
   componentDidMount() {
@@ -13,8 +15,15 @@ class Index extends React.Component {
     return (
       <>
         <main ref="main"></main>
-        <HeaderForHomePage isSearchVisible={true} />
+        <HeaderForHomePage isSearchVisible={true} login={true} signUp={false} />
         <Header />
+        {/* <MediaCard
+          productName="Product 1"
+          productDescription="This is the description about the first product"
+          productImage="../images/product/product1.png"
+        /> */}
+
+        <MenuAndSeller></MenuAndSeller>
       </>
     );
   }

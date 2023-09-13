@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginForm from "./login_form";
 import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page";
+import Loader from "../../Components/Loader";
 
 const LoginPage = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -19,7 +20,8 @@ const LoginPage = () => {
         </div>
       ) : (
         <>
-          <NavbarForHomePage isSearchVisible={false} />
+          {/* <Loader></Loader> */}
+          <NavbarForHomePage isSearchVisible={false} signUp={true} />
           <LoginForm onLogin={handleLogin} />
         </>
       )}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
 
 import { CustomLoginForm, SignUp, BirdDecor } from "./style_component";
 import {
@@ -62,6 +63,23 @@ function LoginForm() {
       <CustomError>{errorMessages.message}</CustomError>
     );
 
+  const CssTextField = styled(CustomInput)({
+    "& label.Mui-focused": {
+      color: "#398378",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#398378",
+      },
+      "&:hover fieldset": {
+        borderColor: "#398378",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#398378",
+      },
+    },
+  });
+
   return (
     <>
       <FormWrapper>
@@ -73,22 +91,22 @@ function LoginForm() {
             <div>
               <form onSubmit={handleSubmit}>
                 <BirdDecor src={bird_decor} />
-                <CustomInput
+                <CssTextField
                   label="Username"
                   type="text"
                   name="uname"
                   autoComplete="current-password"
                 >
                   {renderErrorMessage("pass")}
-                </CustomInput>
-                <CustomInput
+                </CssTextField>
+                <CssTextField
                   label="Password"
                   type="password"
                   name="pass"
                   autoComplete="current-password"
                 >
                   {renderErrorMessage("pass")}
-                </CustomInput>
+                </CssTextField>
                 <CustomLoginAndSignUpButton>
                   <LoginAndSignUpButton>Log In</LoginAndSignUpButton>
                 </CustomLoginAndSignUpButton>
