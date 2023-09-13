@@ -15,6 +15,7 @@ export const FormWrapper = styled.div`
 
 export const CustomBackGround = styled(FormWrapper)`
   height: 84vh;
+  padding-top: 0px;
 `;
 export const CustomLeadText = styled(FormWrapper)`
   font-size: 3.5rem;
