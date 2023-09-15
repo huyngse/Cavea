@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Loader from "./Components/Loading/index.jsx";
 import Index from "./view/index";
 import Login from "./view/Login/login_page.jsx";
+import SignUp from "./view/SignUp/signup_page";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
