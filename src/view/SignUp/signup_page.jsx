@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LoginForm from "./signup_form.jsx";
+import SignUpForm from "./signup_form.jsx";
 import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page";
 
 const SignUp = () => {
@@ -19,8 +19,8 @@ const SignUp = () => {
         </div>
       ) : (
         <>
-          <NavbarForHomePage isSearchVisible={false} />
-          <LoginForm onLogin={handleLogin} />
+          <NavbarForHomePage isSearchVisible={false} login={true} />
+          <SignUpForm onLogin={handleLogin} />
         </>
       )}
     </div>
