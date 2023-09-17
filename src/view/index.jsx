@@ -1,9 +1,12 @@
 import React from "react";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 import NavbarForHomePage from "../Components/Navbar/navbar_for_home_page";
 import Header from "../Components/Header/index.jsx";
-// import MediaCard from "../Components/Cart";
+import ListCart from "../Components/List-cart/index.jsx";
 import MenuAndSeller from "../Components/Menu-and-seller";
+import TitleBar from "../Components/Title-bar/index.jsx";
+import Footer from "../Components/footer/index.jsx";
 
 class Index extends React.Component {
   render() {
@@ -12,13 +15,32 @@ class Index extends React.Component {
         <main ref="main"></main>
         <NavbarForHomePage isSearchVisible={true} login={true} signUp={false} />
         <Header />
-        {/* <MediaCard
-          productName="Product 1"
-          productDescription="This is the description about the first product"
-          productImage="../images/product/product1.png"
-        /> */}
-
         <MenuAndSeller></MenuAndSeller>
+        <div id="phu-kien">
+          <TitleBar label="Phụ kiện lồng chim" />
+        </div>
+        <ListCart></ListCart>
+        <div id="cu-gay">
+          <TitleBar label="Lồng chim cu gáy"></TitleBar>
+        </div>
+        <ListCart></ListCart>
+        <div id="hoa-mi">
+          <TitleBar label="Lồng chim họa mi"></TitleBar>
+        </div>
+        <ListCart></ListCart>
+        <div id="chao-mao">
+          <TitleBar label="Lồng chim chào mào"></TitleBar>
+        </div>
+        <ListCart></ListCart>
+        <div id="khuyen">
+          <TitleBar label="Lồng chim khuyên"></TitleBar>
+        </div>
+        <ListCart></ListCart>
+        <div id="choe-than">
+          <TitleBar label="Lồng chim chòe than"></TitleBar>
+        </div>
+        <ListCart></ListCart>
+        <Footer></Footer>
       </>
     );
   }

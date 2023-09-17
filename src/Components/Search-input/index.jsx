@@ -6,17 +6,17 @@ import { styled } from "@mui/material/styles";
 import { CustomTextField } from "./style_component.jsx";
 
 function SearchInput({ handleChange, handleClear, defaultValue }) {
-  const [value, setValue] = useState(defaultValue || "");
+  // const [value, setValue] = useState(defaultValue || "");
 
-  const handleChangeInput = (event) => {
-    handleChange(event);
-    setValue(event.target.value);
-  };
+  // const handleChangeInput = (event) => {
+  //   handleChange(event);
+  //   setValue(event.target.value);
+  // };
 
-  const handleClick = (event) => {
-    handleClear(event);
-    setValue("");
-  };
+  // const handleClick = (event) => {
+  //   handleClear(event);
+  //   setValue("");
+  // };
 
   const CssTextField = styled(CustomTextField)({
     "& label.Mui-focused": {
@@ -40,8 +40,8 @@ function SearchInput({ handleChange, handleClear, defaultValue }) {
       aria-label="search-field"
       size="small"
       variant="outlined"
-      onChange={handleChangeInput}
-      value={value}
+      // onChange={handleChangeInput}
+      // value={value}
       InputProps={{
         startAdornment: (
           <InputAdornment position="start">
@@ -52,8 +52,8 @@ function SearchInput({ handleChange, handleClear, defaultValue }) {
           <InputAdornment
             aria-label="clear-btn"
             position="end"
-            style={{ display: value ? "flex" : "none", cursor: "pointer" }}
-            onClick={handleClick}
+            // style={{ display: value ? "flex" : "none", cursor: "pointer" }}
+            // onClick={handleClick}
           >
             <Clear />
           </InputAdornment>

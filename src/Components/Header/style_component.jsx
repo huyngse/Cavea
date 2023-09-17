@@ -6,7 +6,7 @@ export const FormWrapper = styled.div`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 98vh;
   padding-top: 5px;
   background-image: url(${background});
   background-size: cover;

@@ -20,5 +20,5 @@ export const SignUp = styled.a`
 
 export const BirdDecor = styled.img`
   position: absolute;
-  top: 80px;
+  top: 4.5rem;
 `;
