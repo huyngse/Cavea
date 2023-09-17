@@ -1,5 +1,4 @@
 import React from "react";
-import { Link, animateScroll as scroll } from "react-scroll";
 
 import NavbarForHomePage from "../Components/Navbar/navbar_for_home_page";
 import Header from "../Components/Header/index.jsx";
@@ -40,7 +39,7 @@ class Index extends React.Component {
           <TitleBar label="Lồng chim chòe than"></TitleBar>
         </div>
         <ListCart></ListCart>
-        <Footer></Footer>
+        <Footer />
       </>
     );
   }

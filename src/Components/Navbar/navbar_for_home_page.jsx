@@ -7,15 +7,13 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import Buttons from "../Button/button.jsx";
 
 import small_logo from "../../images/small-logo.png";
 import { LogoHeader, CustomContainer } from "./style_component";
 import SearchInput from "../Search-input/index.jsx";
-import Buttons from "../Button/button.jsx";
-
-const pages = ["Products", "Service", "Blog"];
+import { Link } from "react-router-dom";
 
 function NavbarForHomePage({ isSearchVisible, login, signUp }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -75,24 +73,26 @@ function NavbarForHomePage({ isSearchVisible, login, signUp }) {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <a
+                href="/blog"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem key="Blog">
+                  <Typography textAlign="center">Blog</Typography>
                 </MenuItem>
-              ))}
+              </a>
             </Menu>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Link
+              to="/blog"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem key="Blog">
+                <Typography textAlign="center">Blog</Typography>
+              </MenuItem>
+            </Link>
           </Box>
 
           {isSearchVisible && (
@@ -103,7 +103,7 @@ function NavbarForHomePage({ isSearchVisible, login, signUp }) {
             />
           )}
           {login && (
-            <a href="/login-page">
+            <a href="/login">
               <Buttons>Login</Buttons>
             </a>
           )}

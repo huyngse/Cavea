@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-import Header from "../../Components/Header/";
-
 function SignUpForm() {
-  return <></>;
+  return <div>this page for sign up</div>;
 }
 export default SignUpForm;

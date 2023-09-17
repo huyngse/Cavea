@@ -9,18 +9,17 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
 import small_logo from "../../images/small-logo.png";
 import { LogoHeader } from "./style_component.jsx";
 import SearchInput from "../Search-input/index.jsx";
-
-const pages = ["Products", "Blog"];
-const settings = ["Profile", "Logout"];
+import { Link } from "react-router-dom";
 
 function Navbar() {
+  const settings = ["Profile", "Logout"];
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -52,7 +51,9 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
         <Toolbar disableGutters>
-          <LogoHeader src={small_logo} />
+          <a href="/Index">
+            <LogoHeader src={small_logo} />
+          </a>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -83,24 +84,26 @@ function Navbar() {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+              <a
+                href="/blog"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem key="Blog">
+                  <Typography textAlign="center">Blog</Typography>
                 </MenuItem>
-              ))}
+              </a>
             </Menu>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Link
+              to="/blog"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <MenuItem key="Blog">
+                <Typography textAlign="center">Blog</Typography>
+              </MenuItem>
+            </Link>
           </Box>
           <SearchInput
             handleChange={handleSearchChange}
