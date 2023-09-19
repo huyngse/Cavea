@@ -1,5 +1,6 @@
 import React from "react";
 
+import Navbar from "../../Components/Navbar/index.jsx";
 import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page.jsx";
 import BlogForm from "./blog_form.jsx";
 import Footer from "../../Components/footer/index.jsx";
@@ -12,9 +13,11 @@ const BlogPage = () => {
   return (
     <div>
       {loggedInUser ? (
-        <div>
-          <p>Blog after Login {loggedInUser}!</p>
-        </div>
+        <>
+          <Navbar />
+          <BlogForm />
+          <Footer />
+        </>
       ) : (
         <>
           <NavbarForHomePage

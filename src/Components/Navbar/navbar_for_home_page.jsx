@@ -37,84 +37,79 @@ function NavbarForHomePage({ isSearchVisible, login, signUp }) {
   };
 
   return (
-    <AppBar position="static">
-      <CustomContainer maxWidth="xl" style={{ backgroundColor: "#398378" }}>
-        <Toolbar disableGutters>
-          <a href="/Index">
-            <LogoHeader src={small_logo} />
-          </a>
+    <CustomContainer maxWidth="xl" style={{ backgroundColor: "#398378" }}>
+      <Toolbar disableGutters>
+        <Link to="/Index">
+          <LogoHeader src={small_logo} />
+        </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              <a
-                href="/blog"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                <MenuItem key="Blog">
-                  <Typography textAlign="center">Blog</Typography>
-                </MenuItem>
-              </a>
-            </Menu>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <Link
-              to="/blog"
+        <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleOpenNavMenu}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          >
+            <a
+              href="/blog"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <MenuItem key="Blog">
                 <Typography textAlign="center">Blog</Typography>
               </MenuItem>
-            </Link>
-          </Box>
+            </a>
+          </Menu>
+        </Box>
 
-          {isSearchVisible && (
-            <SearchInput
-              handleChange={handleSearchChange}
-              handleClear={handleClearSearch}
-              defaultValue={searchValue}
-            />
-          )}
-          {login && (
-            <a href="/login">
-              <Buttons>Login</Buttons>
-            </a>
-          )}
-          {signUp && (
-            <a href="/sign-up">
-              <Buttons>Sign up</Buttons>
-            </a>
-          )}
-        </Toolbar>
-      </CustomContainer>
-    </AppBar>
+        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <a href="/blog" style={{ textDecoration: "none", color: "inherit" }}>
+            <MenuItem key="Blog">
+              <Typography textAlign="center">Blog</Typography>
+            </MenuItem>
+          </a>
+        </Box>
+
+        {isSearchVisible && (
+          <SearchInput
+            handleChange={handleSearchChange}
+            handleClear={handleClearSearch}
+            defaultValue={searchValue}
+          />
+        )}
+        {login && (
+          <a href="/login">
+            <Buttons>Login</Buttons>
+          </a>
+        )}
+        {signUp && (
+          <a href="/sign-up">
+            <Buttons>Sign up</Buttons>
+          </a>
+        )}
+      </Toolbar>
+    </CustomContainer>
   );
 }
 

@@ -7,5 +7,4 @@ export const FormFooter = styled.div`
   padding: 10px;
   left: 0;
   bottom: 0;
-  width: 100%;
 `;

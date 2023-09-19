@@ -17,8 +17,10 @@ import { LogoHeader } from "./style_component.jsx";
 import SearchInput from "../Search-input/index.jsx";
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../AuthContext";
+
 function Navbar() {
-  const settings = ["Profile", "Logout"];
+  const { logout } = useAuth();
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -51,9 +53,9 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl" style={{ backgroundColor: "#398378" }}>
         <Toolbar disableGutters>
-          <a href="/Index">
+          <Link to="/Index">
             <LogoHeader src={small_logo} />
-          </a>
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -113,7 +115,7 @@ function Navbar() {
           <Box sx={{ flexGrow: 0, padding: "20px" }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -132,11 +134,9 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem key={"Logout"} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>
