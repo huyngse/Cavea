@@ -20,7 +20,7 @@ const SignUp = () => {
       ) : (
         <>
           <NavbarForHomePage isSearchVisible={false} login={true} />
-          <SignUpForm onLogin={handleLogin} />
+          <SignUpForm />
         </>
       )}
     </div>

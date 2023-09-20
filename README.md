@@ -8,15 +8,15 @@ In the project directory, you can run:
 
 ### `install dependencies`
 
-npm install @mui/material
-npm install @emotion/styled
-npm install next
-npm install react-intl
-npm install react-router-dom
-npm install reactstrap react react-dom
-npm install @mui/icons-material
-npm install framer-motion
-npm install react-scroll
+npm install @mui/material.\
+npm install @emotion/styled.\
+npm install next.\
+npm install react-intl.\
+npm install react-router-dom.\
+npm install reactstrap react react-dom.\
+npm install @mui/icons-material.\
+npm install framer-motion.\
+npm install react-scroll.\
 
 ### `npm start`
 

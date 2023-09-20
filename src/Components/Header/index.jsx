@@ -7,7 +7,7 @@ import {
 } from "./style_component";
 import { CustomButtonForHomePage } from "../Button/style_component";
 
-function Header() {
+function Header({ signUp, Order }) {
   return (
     <CustomBackGround>
       <CustomLeadText>
@@ -16,9 +16,12 @@ function Header() {
         <CustomSlogan>
           Every bird deserves a beautiful home to return to
         </CustomSlogan>
-        <a href="/sign-up">
-          <CustomButtonForHomePage>Sign up</CustomButtonForHomePage>
-        </a>
+        {signUp && (
+          <a href="/sign-up">
+            <CustomButtonForHomePage>Sign up</CustomButtonForHomePage>
+          </a>
+        )}
+        {Order && <CustomButtonForHomePage>Order now</CustomButtonForHomePage>}
       </CustomLeadText>
     </CustomBackGround>
   );
