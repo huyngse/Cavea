@@ -9,4 +9,5 @@ export const FormListCart = styled.div`
   background-color: #0000000a;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 `;

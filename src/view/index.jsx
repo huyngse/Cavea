@@ -1,12 +1,11 @@
 import React, { useRef } from "react";
 
 import Navbar from "../Components/Navbar/index.jsx";
-import NavbarForHomePage from "../Components/Navbar/navbar_for_home_page";
 import Header from "../Components/Header/index.jsx";
 import ListCart from "../Components/List-cart/index.jsx";
-import MenuAndSeller from "../Components/Menu-and-seller";
 import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
+import BackToTopButton from "../Components/BackToHome/index.jsx";
 
 import { useAuth } from "../AuthContext.jsx";
 
@@ -18,21 +17,16 @@ const Index = () => {
       <main ref={mainRef}></main>
       {loggedInUser ? (
         <>
-          <Navbar />
-          <Header signUp={false} Order={true} />
+          <Navbar avatar={true} />
+          <Header Order={true} />
         </>
       ) : (
         <>
-          <NavbarForHomePage
-            isSearchVisible={true}
-            login={true}
-            signUp={false}
-          />
-          <Header signUp={true} Order={false} />
+          <Navbar isSearchVisible={true} login={true} />
+          <Header signUp={true} />
         </>
       )}
 
-      <MenuAndSeller></MenuAndSeller>
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>
@@ -57,6 +51,7 @@ const Index = () => {
         <TitleBar label="Lồng chim chòe than"></TitleBar>
       </div>
       <ListCart></ListCart>
+      <BackToTopButton />
       <Footer />
     </>
   );

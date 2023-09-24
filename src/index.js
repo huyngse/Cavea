@@ -8,6 +8,7 @@ import Index from "./view/index";
 import Login from "./view/Login/login_page.jsx";
 import SignUp from "./view/SignUp/signup_page.jsx";
 import BlogPage from "./view/Blog/blog_page.jsx";
+import ServicePage from "./view/Service-page/service_page.jsx";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +32,10 @@ const App = () => {
           <Route
             path="/sign-up"
             element={isLoading ? <Loader /> : <SignUp />}
+          />
+          <Route
+            path="/service"
+            element={isLoading ? <Loader /> : <ServicePage />}
           />
           <Route path="/blog" element={isLoading ? <Loader /> : <BlogPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />

@@ -2,16 +2,16 @@ import * as React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from "react-scroll";
 
 import { CustomTitleMenu, CustomMenuList } from "./style_component";
 
 export default function Menu() {
   return (
     <CustomMenuList>
-      <CustomTitleMenu>
+      {/* <CustomTitleMenu>
         <ListItemText primary="Danh sách sản phẩm" />
-      </CustomTitleMenu>
+      </CustomTitleMenu> */}
       <Divider />
       <Link to="phu-kien" spy={true} smooth={true} offset={-60} duration={500}>
         <ListItem button divider>

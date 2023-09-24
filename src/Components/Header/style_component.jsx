@@ -4,8 +4,7 @@ import background from "../../images/background.png";
 
 export const FormWrapper = styled.div`
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
+
   height: 98vh;
   padding-top: 5px;
   background-image: url(${background});

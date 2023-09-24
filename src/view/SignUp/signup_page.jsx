@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SignUpForm from "./signup_form.jsx";
-import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page";
+import NavbarForHomePage from "../../Components/Navbar/index.jsx";
 
 const SignUp = () => {
   const [loggedInUser, setLoggedInUser] = useState(null);

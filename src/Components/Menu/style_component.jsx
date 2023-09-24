@@ -15,6 +15,7 @@ export const CustomTitleMenu = styled.div`
   border-radius: 0.5rem 0.5rem 0 0;
 `;
 export const CustomMenuList = styled(List)`
+  margin-top: 6rem;
   width: 100%;
   max-width: 26rem;
   background-color: white;

@@ -1,8 +1,7 @@
 import React from "react";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import LoginForm from "./login_form";
-import NavbarForHomePage from "../../Components/Navbar/navbar_for_home_page.jsx";
 import Navbar from "../../Components/Navbar/index";
 import Index from "../../view/index";
 
@@ -19,7 +18,7 @@ const LoginPage = () => {
         </Routes>
       ) : (
         <>
-          <NavbarForHomePage isSearchVisible={false} signUp={true} />
+          <Navbar signUp={true} />
           <LoginForm />
         </>
       )}

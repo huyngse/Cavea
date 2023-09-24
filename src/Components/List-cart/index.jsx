@@ -12,10 +12,10 @@ function ListCart() {
     { length: 4 },
     (_, index) => `This is description about product ${index + 1}`
   );
-
-  const images = [myImage, myImage, myImage, myImage];
-
-  const ratings = [4, 3, 5, 2];
+  const images = [myImage, myImage, myImage, myImage, myImage, myImage];
+  const ratings = [4, 3, 5, 2, 1, 2];
+  const prices = [10, 20, 15, 25, 30, 12];
+  const discount = [5, 10, 15, 20, 25, 30];
 
   return (
     <FormListCart>
@@ -26,6 +26,8 @@ function ListCart() {
           productDescription={descriptions[index]}
           productImage={images[index]}
           rating={ratings[index]}
+          productPrice={prices[index]}
+          productDiscount={discount[index]}
         />
       ))}
     </FormListCart>
