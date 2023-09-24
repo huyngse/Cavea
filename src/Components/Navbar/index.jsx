@@ -67,7 +67,7 @@ function Navbar({ isSearchVisible, login, signUp, avatar }) {
   };
 
   return (
-    <CustomContainer maxWidth="xl" style={{ backgroundColor: "#398378" }}>
+    <CustomContainer maxwidth="xl" style={{ backgroundColor: "#398378" }}>
       <Toolbar disableGutters>
         <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
           <IconButton

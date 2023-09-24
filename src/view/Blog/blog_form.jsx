@@ -29,7 +29,7 @@ const blogPosts = [
 
 function BlogPage() {
   return (
-    <CustomContainer maxWidth="md">
+    <CustomContainer maxwidth="md">
       <Typography variant="h3" align="center" gutterBottom>
         Shop Bird Cage: Caeva Blog
       </Typography>
