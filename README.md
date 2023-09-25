@@ -17,6 +17,8 @@ npm install reactstrap react react-dom.\
 npm install @mui/icons-material.\
 npm install framer-motion.\
 npm install react-scroll.\
+npm install @mui/x-date-pickers.\
+
 
 ### `npm start`
 
