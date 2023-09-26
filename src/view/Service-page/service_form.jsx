@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
 import { purple } from "@mui/material/colors";
 
 import BirdCageDesign from "../../Components/SelectBox/index.jsx";
@@ -15,9 +14,7 @@ import {
   selectHook,
   selectLeg,
 } from "./selectList.jsx";
-import { FormWrapper } from "../../Components/Header/style_component.jsx";
-import { CustomButtonForHomePage } from "../../Components/Button/style_component.jsx";
-import { SelectGroup } from "./style_component.jsx";
+import { FormSelect, SelectGroup } from "./style_component.jsx";
 
 function ServiceForm() {
   const [selectedModel, setSelectedModel] = useState(selectModel[0].value);
@@ -63,15 +60,7 @@ function ServiceForm() {
   }));
 
   return (
-    <div
-      style={{
-        padding: "1rem",
-        width: "32rem",
-        marginLeft: "auto",
-        marginRight: "auto",
-        marginTop: "12rem",
-      }}
-    >
+    <FormSelect>
       <SelectGroup>
         <Box
           sx={{
@@ -166,7 +155,7 @@ function ServiceForm() {
           )}
         </Box>
       </SelectGroup>
-    </div>
+    </FormSelect>
   );
 }
 
