@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { purple } from "@mui/material/colors";
 
 import BirdCageDesign from "../../Components/SelectBox/index.jsx";
 import {
@@ -50,8 +54,24 @@ function ServiceForm() {
     selectedLeg,
   ]);
 
+  const ColorButton = styled(Button)(({ theme }) => ({
+    color: theme.palette.getContrastText(purple[500]),
+    backgroundColor: purple[500],
+    "&:hover": {
+      backgroundColor: purple[700],
+    },
+  }));
+
   return (
-    <FormWrapper>
+    <div
+      style={{
+        padding: "1rem",
+        width: "32rem",
+        marginLeft: "auto",
+        marginRight: "auto",
+        marginTop: "12rem",
+      }}
+    >
       <SelectGroup>
         <Box
           sx={{
@@ -64,7 +84,7 @@ function ServiceForm() {
             sx={{ width: "10rem", marginBottom: "1rem!important" }}
             labelId="model-select-label"
             id="model-select"
-            label="Model"
+            label="Mẫu"
             options={selectModel}
             onChange={(event) => setSelectedModel(event.target.value)}
           ></BirdCageDesign>
@@ -73,7 +93,7 @@ function ServiceForm() {
             sx={{ width: "10rem", marginBottom: "1rem!important" }}
             labelId="shape-select-label"
             id="shape-select"
-            label="Shape"
+            label="Kiểu dáng"
             options={selectShape}
             onChange={(event) => setSelectedShape(event.target.value)}
           ></BirdCageDesign>
@@ -82,7 +102,7 @@ function ServiceForm() {
             sx={{ width: "10rem", marginBottom: "1rem!important" }}
             labelId="material-select-label"
             id="material-select"
-            label="Material"
+            label="Nguyên liệu"
             options={selectMaterial}
             onChange={(event) => setSelectedMaterial(event.target.value)}
           ></BirdCageDesign>
@@ -99,7 +119,7 @@ function ServiceForm() {
             sx={{ width: "15rem", marginBottom: "1rem!important" }}
             labelId="spoke-select-label"
             id="spoke-select"
-            label="Spoke"
+            label="Số nan"
             options={selectSpoke}
             onChange={(event) => setSelectedSpoke(event.target.value)}
           ></BirdCageDesign>
@@ -108,7 +128,7 @@ function ServiceForm() {
             sx={{ width: "15rem", marginBottom: "1rem!important" }}
             labelId="color-select-label"
             id="color-select"
-            label="Color"
+            label="Màu sắc"
             options={selectColor}
             onChange={(event) => setSelectedColor(event.target.value)}
           ></BirdCageDesign>
@@ -119,7 +139,7 @@ function ServiceForm() {
             sx={{ width: "32rem", marginBottom: "1rem!important" }}
             labelId="hook-select-label"
             id="hook-select"
-            label="Hook"
+            label="Móc"
             options={selectHook}
             onChange={(event) => setSelectedHook(event.target.value)}
           ></BirdCageDesign>
@@ -130,7 +150,7 @@ function ServiceForm() {
             sx={{ width: "32rem" }}
             labelId="leg-select-label"
             id="leg-select"
-            label="Leg"
+            label="Chân"
             options={selectLeg}
             onChange={(event) => setSelectedLeg(event.target.value)}
           ></BirdCageDesign>
@@ -140,13 +160,13 @@ function ServiceForm() {
             <p>Please select all fields</p>
           ) : (
             <>
-              <p>Total: {total.toLocaleString("vi-VN")} VND</p>
-              <CustomButtonForHomePage>Pay now</CustomButtonForHomePage>
+              <p>Tổng cộng: {total.toLocaleString("vi-VN")} VND</p>
+              <ColorButton variant="contained">Đặt ngay</ColorButton>
             </>
           )}
         </Box>
       </SelectGroup>
-    </FormWrapper>
+    </div>
   );
 }
 
