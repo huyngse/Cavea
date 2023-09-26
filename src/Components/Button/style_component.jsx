@@ -23,8 +23,9 @@ export const CustomButton = styled(Button)`
 export const CustomButtonForHomePage = styled(CustomButton)`
   background-color: white;
   color: #374151;
-  padding: 2rem 4rem 2rem 3rem;
+  padding: 2rem 4rem;
   font-size: 1.5rem;
+  font: 700 1.2rem/0 "Open Sans", sans-serif;
 
   &:hover {
     background-color: inherit;
