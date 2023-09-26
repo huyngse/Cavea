@@ -15,12 +15,17 @@ import Buttons from "../Button/button.jsx";
 import { CustomContainer, BoxStyle } from "./style_component.jsx";
 import pro_avatar from "../../images/pro_avatar.png";
 import { primaryColor } from "../../color";
-
+import Profile from "../Profile/index.jsx";
+import { useAuth } from "../../AuthContext.jsx";
 import { useCart } from "../../CardContext.jsx";
 
-const settings = ["Profile", "Logout"];
-
 function Navbar({ isSearchVisible, login, signUp, avatar }) {
+  const { logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElService, setAnchorElService] = React.useState(null);
@@ -314,11 +319,10 @@ function Navbar({ isSearchVisible, login, signUp, avatar }) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <Profile></Profile>
+              <MenuItem onClick={handleLogout}>
+                <Typography textAlign="center">Logout</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         )}
