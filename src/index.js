@@ -38,7 +38,9 @@ const App = () => {
             element={isLoading ? <Loader /> : <ServicePage />}
           />
           <Route path="/blog" element={isLoading ? <Loader /> : <BlogPage />} />
+          
           <Route path="*" element={<Navigate to="/" replace />} />
+          
         </Routes>
       </BrowserRouter>
     </AuthProvider>
