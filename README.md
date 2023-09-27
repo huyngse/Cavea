@@ -18,7 +18,8 @@ npm install @mui/icons-material.\
 npm install framer-motion.\
 npm install react-scroll.\
 npm install @mui/x-date-pickers.\
-
+npm install @mui/material @emotion/react @emotion/styled./
+npm install @mui/styled-engine-sc styled-components
 
 ### `npm start`
 
