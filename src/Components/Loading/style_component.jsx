@@ -1,11 +1,12 @@
 export const loadingContainer = {
   width: "10rem",
-  height: "6rem",
+  height: "100vh",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  paddingTop: "20rem",
-  paddingLeft: "42rem",
+  marginLeft: "auto",
+  marginRight: "auto",
+  gap: "0.5rem"
 };
 export const loadingCircle = {
   display: "block",
