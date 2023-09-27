@@ -28,7 +28,7 @@ export const CustomInput = styled(TextField)`
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 15px;
+  margin: 1px;
   background: #ffffff;
   border-color: #398378;
 `;

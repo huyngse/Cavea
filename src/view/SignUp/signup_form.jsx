@@ -2,10 +2,7 @@ import * as React from 'react';
 import '../SignUp/signup_form.css'
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from "@mui/material/styles";
 
@@ -21,11 +18,9 @@ import {
 import { FormWrapper } from "../../Components/Header/style_component";
 import bird_decor from "../../images/bird-decor.png";
 
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { DatePicker } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
-
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 function Copyright(props) {
   return (
@@ -57,7 +52,9 @@ const CssTextField = styled(CustomInput)({
   },
 });
 
-
+const mb4 = {
+  marginBottom: '40px',
+};
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -77,98 +74,120 @@ export default function SignUpForm() {
     <>
       <FormWrapper>
         <CustomLoginForm>
-          <CustomTitle>Sign UP</CustomTitle>
+          <CustomTitle style={mb4}>Đăng Ký</CustomTitle>
 
           <div>
 
             <form onSubmit={handleSubmit}>
               <BirdDecor src={bird_decor} />
               <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+
+
                 <Grid item xs={6}>
                   <CssTextField
-                    label="Username"
+                    required
+                    label="Họ"
+                    type="text"
+                    name="uname"
+                  >
+
+                  </CssTextField>
+                </Grid>
+                <Grid item xs={6}>
+                  <CssTextField
+                    required
+                    label="Tên"
+                    type="text"
+                    name="uname"
+                  >
+
+                  </CssTextField>
+                </Grid>
+
+                <Grid item xs={12}>
+                  <CssTextField
+                    required
+                    label="Tên tài khoản"
                     type="text"
                     name="uname"
                     autoComplete="current-password"
                   >
-
-                  </CssTextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <CssTextField
-                    label="First Name"
-                    type="text"
-                    name="uname"
-                    autoComplete="current-password"
-                  >
-
-                  </CssTextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <CssTextField
-                    label="Password"
-                    type="password"
-                    name="pass"
-                    autoComplete="current-password"
-                  >
-
-                  </CssTextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <CssTextField
-                    label="Last Name"
-                    type="text"
-                    name="uname"
-                    autoComplete="current-password"
-                  >
-
-                  </CssTextField>
-                </Grid>
-
-
-                <Grid item xs={6}>
-                  <CssTextField
-                    label="Re-enter password"
-                    type="password"
-                    name="pass"
-                    autoComplete="current-password"
-                  >
-
-                  </CssTextField>
-                </Grid>
-                <Grid item xs={6}>
-                  <CssTextField
-                    label="Sex"
-                    type="text"
-                    name="uname"
-                    autoComplete="current-password"
-                  >
-
                   </CssTextField>
                 </Grid>
                 <Grid item xs={12}>
+                  <CssTextField
+                    label="Email"
+                    type="text"
+                    name="uname"
+                    autoComplete="current-password"
+                  >
+                  </CssTextField>
+                </Grid>
+                <Grid item xs={12}>
+                  <CssTextField
+                    required
+                    label="Mật khẩu"
+                    type="password"
+                    name="pass"
+                    autoComplete="current-password"
+                  >
+
+                  </CssTextField>
+                </Grid>
+
+
+                <Grid item xs={12}>
+                  <CssTextField
+                    required
+                    label="Xác nhận mật khẩu"
+                    type="password"
+                    name="pass"
+                    autoComplete="current-password"
+                    style={mb4}
+                  >
+
+                  </CssTextField>
+                </Grid>
+
+
+                {/* <Grid item xs={6}>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel value="male" control={<Radio />} label="Nam" />
+                    <FormControlLabel value="female" control={<Radio />} label="Nữ" />
+                   
+                  </RadioGroup>
+                </Grid>
+
+
+
+                <Grid item xs={6}>
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
 
-                    
-                      <DatePicker label="Birthday" />
-                    
+
+                    <DatePicker label="Ngày sinh" />
+
                   </LocalizationProvider>
-                </Grid>
+                </Grid> */}
 
-                <Grid item xs={12}>
-                  <CustomLoginAndSignUpButton>
 
-                    <LoginAndSignUpButton>Sign Up</LoginAndSignUpButton>
-                  </CustomLoginAndSignUpButton>
-                  <Text>You already have an account yet?</Text>
-                  <SignUp href="/login-page">Login here</SignUp>
-                </Grid>
 
 
 
               </Grid>
             </form>
+            <Grid item xs={12}>
+              <CustomLoginAndSignUpButton>
 
+                <LoginAndSignUpButton>Sign Up</LoginAndSignUpButton>
+              </CustomLoginAndSignUpButton>
+
+              <Text>You already have an account yet?</Text>
+              <SignUp href="/login-page">Login here</SignUp>
+            </Grid>
           </div>
 
         </CustomLoginForm>
