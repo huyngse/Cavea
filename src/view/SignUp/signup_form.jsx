@@ -15,12 +15,11 @@ import {
   LoginAndSignUpButton,
   Text,
 } from "../../Components/Login-and-signup-form/index.jsx";
-import { FormWrapper } from "../../Components/Header/style_component";
+import { FormWrapper } from "../../view/SignUp/style_component.jsx";
 import bird_decor from "../../images/bird-decor.png";
 
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
+
 
 function Copyright(props) {
   return (
@@ -51,10 +50,14 @@ const CssTextField = styled(CustomInput)({
     },
   },
 });
-
+// STYLE COMPONENTS
 const mb4 = {
   marginBottom: '40px',
 };
+const form_card_style = {
+  boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
+};
+
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
@@ -73,7 +76,7 @@ export default function SignUpForm() {
   return (
     <>
       <FormWrapper>
-        <CustomLoginForm>
+        <CustomLoginForm style={form_card_style}>
           <CustomTitle style={mb4}>Đăng Ký</CustomTitle>
 
           <div>
@@ -182,11 +185,11 @@ export default function SignUpForm() {
             <Grid item xs={12}>
               <CustomLoginAndSignUpButton>
 
-                <LoginAndSignUpButton>Sign Up</LoginAndSignUpButton>
+                <LoginAndSignUpButton>Đăng ký</LoginAndSignUpButton>
               </CustomLoginAndSignUpButton>
 
-              <Text>You already have an account yet?</Text>
-              <SignUp href="/login-page">Login here</SignUp>
+              <Text>Bạn đã có tài khoản?</Text>
+              <SignUp href="/login-page">Đăng nhập</SignUp>
             </Grid>
           </div>
 
