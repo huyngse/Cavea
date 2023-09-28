@@ -13,10 +13,12 @@ export const CustomCard = styled(Card)`
   border-radius: 0;
 `;
 
-export const CustomPrice = styled.div``;
-
 export const CartButton = styled(Button)`
+<<<<<<< HEAD
   background-color:  #24688A;
+=======
+  background-color: #398378;
+>>>>>>> efb54ae (feat/project-11: format style file)
   width: 100%;
   padding: 8px;
   margin-top: auto;
