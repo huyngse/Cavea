@@ -1,0 +1,32 @@
+.unsupported-message {
+    width: 98vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-size: small;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    display: none;
+}
+.unsupported-message h1{
+    margin-bottom: 0;
+}
+.unsupported-message p{
+    font-size: medium;
+    width: 95%;
+}
+
+.unsupported-message img{
+    width: 200px;
+}
+
+@media (max-width: 575px) {
+    .root {
+        display: none;
+    }
+    .unsupported-message {
+        display: flex;
+    }
+}

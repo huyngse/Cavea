@@ -3,8 +3,17 @@ html {
   width: 100%;
   margin: 0px;
 }
+
+
 /* Ẩn thanh kéo trình duyệt */
 body::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
+@media (max-width: 575px) {
+  #root {
+      display: none;
+  }
+}
+
