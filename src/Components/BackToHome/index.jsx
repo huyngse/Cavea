@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { primaryColor } from "../../color";
 
 const BackToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,7 +37,7 @@ const BackToTopButton = () => {
             position: "fixed",
             bottom: "20px",
             right: "20px",
-            backgroundColor: "#398378",
+            backgroundColor: primaryColor,
             color: "white",
           }}
         >

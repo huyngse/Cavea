@@ -1,13 +1,14 @@
 import styled from "@emotion/styled";
 
 import background from "../../images/background.png";
+import newBackground from "../../images/register-bg.jpg"
 
 export const FormWrapper = styled.div`
   font-family: sans-serif;
 
-  height: 98vh;
+  padding-bottom: 30px;
   padding-top: 5px;
-  background-image: url(${background});
+  background-image: url(${newBackground});
   background-size: cover;
   background-repeat: no-repeat;
 `;

@@ -19,6 +19,16 @@ export default function MediaCard(props) {
     productDiscount,
   } = props;
 
+  const modelDiv = {
+    backgroundColor: "darkOrange",
+    width: "fit-content",
+    marginLeft: "auto",
+    marginRight: "auto",
+    color: "white",
+    padding: "2px 4px",
+    borderRadius: "10px",
+  };
+
   return (
     <CustomCard >
       <form className="compare-div">
@@ -40,7 +50,7 @@ export default function MediaCard(props) {
         <div className="product-name">
           {productName}
         </div>
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>
         <CustomPrice>

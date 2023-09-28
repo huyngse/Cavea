@@ -54,7 +54,7 @@ const CssTextField = styled(CustomInput)({
 const mb4 = {
   marginBottom: '40px',
 };
-const form_card_style = {
+const formCardDiv = {
   boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
 };
 
@@ -76,7 +76,7 @@ export default function SignUpForm() {
   return (
     <>
       <FormWrapper>
-        <CustomLoginForm style={form_card_style}>
+        <CustomLoginForm style={formCardDiv}>
           <CustomTitle style={mb4}>Đăng Ký</CustomTitle>
 
           <div>
@@ -119,6 +119,7 @@ export default function SignUpForm() {
                 </Grid>
                 <Grid item xs={12}>
                   <CssTextField
+                    required
                     label="Email"
                     type="text"
                     name="uname"
