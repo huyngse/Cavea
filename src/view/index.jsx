@@ -16,6 +16,11 @@ const Index = () => {
   const { loggedInUser } = useAuth();
   return (
     <>
+      <div className="unsupported-message">
+        <img src={Unspported}></img>
+        <h1>Hiện tại trang Web chưa hỗ trợ thiết bị màn hình nhỏ!</h1>
+        <p>Vui lòng sử dụng laptop hoặc máy tính để truy cập trang web này</p>
+      </div>
       <div className="root">
         <main ref={mainRef}></main>
         {loggedInUser ? (
@@ -57,11 +62,7 @@ const Index = () => {
         <BackToTopButton />
         <Footer />
       </div>
-      <div className="unsupported-message">
-          <img src={Unspported}></img>
-          <h1>Hiện tại trang Web chưa hỗ trợ thiết bị màn hình nhỏ!</h1>
-          <p>Vui lòng sử dụng laptop hoặc máy tính để truy cập trang web này</p>
-      </div>
+
     </>
 
   );

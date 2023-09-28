@@ -1,7 +1,6 @@
 .unsupported-message {
     width: 98vw;
     height: 100vh;
-    display: flex;
     flex-direction: column;
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: small;
