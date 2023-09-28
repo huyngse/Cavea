@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import Card from "@mui/material/Card";
 import Button from "@mui/material/Button";
-import {secondaryColor} from "../../color"
+import { secondaryColor } from "../../color";
 
 export const CustomCard = styled(Card)`
   max-width: 17rem;
@@ -14,11 +14,7 @@ export const CustomCard = styled(Card)`
 `;
 
 export const CartButton = styled(Button)`
-<<<<<<< HEAD
-  background-color:  #24688A;
-=======
-  background-color: #398378;
->>>>>>> efb54ae (feat/project-11: format style file)
+  background-color: #24688a;
   width: 100%;
   padding: 8px;
   margin-top: auto;
