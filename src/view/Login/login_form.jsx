@@ -36,6 +36,18 @@ function LoginForm() {
     pass: "invalid password",
   };
 
+  // STYLE COMPONENT
+  const inputDiv = {
+    marginBottom: '10px',
+  }
+  const mb4Div = {
+    marginBottom: '40px',
+  }
+  const formCardDiv = {
+    boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
+  };
+
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -79,33 +91,36 @@ function LoginForm() {
 
   return (
     <>
+     
       <FormWrapper>
-        <CustomLoginForm>
-          <CustomTitle>Log In</CustomTitle>
+        <CustomLoginForm style={formCardDiv} >
+          <CustomTitle style={mb4Div}>Đăng Nhập</CustomTitle>
 
           <form onSubmit={handleSubmit}>
             <BirdDecor src={bird_decor} />
             <CssTextField
-              label="Username"
+              label="Tên tài khoản hoặc email"
               type="text"
               name="uname"
               autoComplete="current-password"
+              style={inputDiv}
             >
               {renderErrorMessage("pass")}
             </CssTextField>
             <CssTextField
-              label="Password"
+              label="Mật khẩu"
               type="password"
               name="pass"
               autoComplete="current-password"
+              style={mb4Div}
             >
               {renderErrorMessage("pass")}
             </CssTextField>
             <CustomLoginAndSignUpButton>
-              <LoginAndSignUpButton>Log In</LoginAndSignUpButton>
+              <LoginAndSignUpButton>Đăng nhập</LoginAndSignUpButton>
             </CustomLoginAndSignUpButton>
-            <Text>You don't have an account yet?</Text>
-            <SignUp href="/sign-up">Create an account</SignUp>
+            <Text>Bạn chưa có tài khoản Cavea?</Text>
+            <SignUp href="/sign-up">Đăng ký</SignUp>
           </form>
         </CustomLoginForm>
       </FormWrapper>

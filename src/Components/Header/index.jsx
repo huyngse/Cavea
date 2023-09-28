@@ -23,14 +23,14 @@ function Header({ signUp, Order }) {
       >
         <Menu />
         <CustomLeadText>
-          <div> Home Sweet Cage: </div>
-          <div> Where Birds Soar in Style!</div>
+          <div> Xứ sở lồng chim: </div>
+          <div> Nơi những chú chim cất cánh!</div>
           <CustomSlogan>
-            Every bird deserves a beautiful home to return to
+            Mọi chú chim đều xứng đáng để có một mái nhà
           </CustomSlogan>
           {signUp && (
             <a href="/sign-up">
-              <CustomButtonForHomePage>Sign up</CustomButtonForHomePage>
+              <CustomButtonForHomePage>Đăng ký</CustomButtonForHomePage>
             </a>
           )}
           {Order && (
