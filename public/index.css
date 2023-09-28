@@ -11,9 +11,5 @@ body::-webkit-scrollbar {
   height: 0;
 }
 
-@media (max-width: 575px) {
-  #root {
-      display: none;
-  }
-}
+
 
