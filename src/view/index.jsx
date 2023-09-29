@@ -8,11 +8,9 @@ import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
 import BackToTopButton from "../Components/BackToHome/index.jsx";
 import { useAuth } from "../AuthContext.jsx";
-import {
-  CustomLoginAndSignUpButton,
-  LoginAndSignUpButton,
-} from "../Components/Login-and-signup-form/index.jsx";
 import { useCart } from "../CardContext.jsx";
+import "./index.css";
+import DifferenceIcon from '@mui/icons-material/Difference';
 
 const Index = () => {
   const mainRef = useRef(null);
@@ -32,9 +30,8 @@ const Index = () => {
           <Header signUp={true} />
         </>
       )}
-      <CustomLoginAndSignUpButton onClick={handleCompareClick}>
-        <LoginAndSignUpButton>So sánh</LoginAndSignUpButton>
-      </CustomLoginAndSignUpButton>
+      <button onClick={handleCompareClick} className="compare-button" >So sánh</button>
+
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>

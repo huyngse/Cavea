@@ -49,22 +49,25 @@ export default function MediaCard(props) {
             name="checkbox"
             onChange={() => handleCompare(id)}
           />
+          <span>.</span>
         </label>
       </form>
+      <div className="product-card-image">
+        <img sx={{ height: 260 }} src={productImage} />
 
-      <CardMedia sx={{ height: 260 }} image={productImage} />
+      </div>
       <CardContent sx={{ padding: "6px" }}>
         <BasicRating value={rating}></BasicRating>
         <div className="product-name">{productName}</div>
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>
-        <Typography variant="body2" color="text.secondary" className="price">
+        <p variant="body2" color="text.secondary" className="price">
           {productPrice}
-        </Typography>
-        <Typography variant="body2" color="text.secondary" className="discount">
+        </p>
+        <p className="discount">
           {productDiscount}
-        </Typography>
+        </p>
       </CardContent>
       <CartButton variant="contained" startIcon={<AddShoppingCartIcon />}>
         Thêm vào giỏ
