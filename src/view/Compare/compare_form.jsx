@@ -9,8 +9,10 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { products } from "../../Components/List-cart/list_product";
 import BasicRating from "../../Components/Rating/index.jsx";
-import { CustomRow } from "./style_component";
-import { CartButton } from "../../Components/Cart/style_component.jsx";
+import { CustomRow, CartButton } from "./style_component";
+import TableRow from "@mui/material/TableRow";
+import "./compare_page.css"
+import { width } from "@mui/system";
 
 export default function CompareForm() {
   const location = useLocation();
@@ -27,24 +29,17 @@ export default function CompareForm() {
 
   return (
     <>
-      <TableContainer
-        style={{
-          width: "70%",
-          paddingTop: "5rem",
-          marginLeft: "15rem",
-          textAlign: "center",
-        }}
+      <TableContainer className="table-container"
         component={Paper}
       >
         <h2>Trang so sánh sản phẩm</h2>
-        <Table>
-          <TableBody>
-            <CustomRow>
-              <TableCell>Ảnh mô tả</TableCell>
+        <Table className="compare-table" style={{width: 'fit-content'}}>
+          <TableBody >
+            <TableRow>
+              <TableCell>Sản phẩm</TableCell>
               {compareProductDetails.map((product) => (
-                <TableCell key={product.id}>
+                <TableCell key={product.id} className="compare-cell" >
                   <img
-                    style={{ height: "260px" }}
                     src={product.image}
                     alt={product.name}
                   />
@@ -56,43 +51,73 @@ export default function CompareForm() {
                   </CartButton>
                 </TableCell>
               ))}
-            </CustomRow>
+            </TableRow>
 
-            <CustomRow>
+            <TableRow>
               <TableCell>Tên</TableCell>
               {compareProductDetails.map((product) => (
                 <TableCell key={product.id}>{product.name}</TableCell>
               ))}
-            </CustomRow>
-            <CustomRow>
+            </TableRow>
+            <TableRow>
               <TableCell>Mô tả</TableCell>
               {compareProductDetails.map((product) => (
                 <TableCell key={product.id}>{product.descriptions}</TableCell>
               ))}
-            </CustomRow>
+            </TableRow>
 
-            <CustomRow>
+            <TableRow>
               <TableCell>Đánh giá</TableCell>
               {compareProductDetails.map((product) => (
                 <TableCell key={product.id}>
                   <BasicRating value={product.rating} />
                 </TableCell>
               ))}
-            </CustomRow>
+            </TableRow>
 
-            <CustomRow>
+            <TableRow>
               <TableCell>Giá</TableCell>
-              {compareProductDetails.map((product) => (
-                <TableCell key={product.id}>{product.discount}</TableCell>
-              ))}
-            </CustomRow>
-
-            <CustomRow>
-              <TableCell>Giảm còn</TableCell>
               {compareProductDetails.map((product) => (
                 <TableCell key={product.id}>{product.price}</TableCell>
               ))}
-            </CustomRow>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Giảm còn</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.discount}</TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>Hình dáng</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.shape}</TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>Nguyên liệu</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.material}</TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>Số nan</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.spoke}</TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>Móc</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.hanger}</TableCell>
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>Chân quỳ</TableCell>
+              {compareProductDetails.map((product) => (
+                <TableCell key={product.id}>{product.base}</TableCell>
+              ))}
+            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>

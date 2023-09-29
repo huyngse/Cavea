@@ -10,7 +10,7 @@ import { useAuth } from "../AuthContext.jsx";
 import { products } from "../Components/List-cart/list_product.jsx";
 import { useCart } from "../CardContext.jsx";
 import "./index.css";
-
+import "../view/Compare/compare_button.scss";
 const Index = () => {
   const mainRef = useRef(null);
   const { loggedInUser } = useAuth();
@@ -26,6 +26,7 @@ const Index = () => {
     }
   }, [compareProducts]);
   console.log(compareDetails);
+  const message = "Bạn đã chọn: " + compareDetails.length;
   return (
     <>
       <main ref={mainRef}></main>
@@ -40,22 +41,32 @@ const Index = () => {
           <Header signUp={true} />
         </>
       )}
+
       {compareDetails < 1 ? (
         <></>
       ) : (
-        <h2>
-          Bất ngờ không thằng lồn, địt mẹ mày đã chọn: {compareDetails.length}{" "}
-          sản phẩm{" "}
-        </h2>
+        <div className="compare-message">
+          <button className="btn-flip " data-back="So sánh" data-front={message} onClick={handleCompareClick} ></button>
+     
+          <div>
+            {compareDetails.map((product) => (
+              <a className="compare-demo-card" href={`/product-detail/${product.id}`}>
+                <img src={product.image} alt="Hinh so sanh" />
+
+              </a>
+            ))}
+          </div>
+          <button onClick={handleCompareClick} className="compare-button">
+            So sánh
+          </button>
+        </div>
+
       )}
 
-      {compareDetails.map((product) => (
-        <img style={{ height: "260px" }} src={product.image} alt="" />
-      ))}
 
-      <button onClick={handleCompareClick} className="compare-button">
-        So sánh
-      </button>
+
+
+
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>

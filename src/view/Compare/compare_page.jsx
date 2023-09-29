@@ -19,7 +19,7 @@ const BlogPage = () => {
         </>
       ) : (
         <>
-          <Navbar login={true} signUp={true} />
+          <Navbar login={true}  />
           <CompareForm />
           <Footer />
         </>

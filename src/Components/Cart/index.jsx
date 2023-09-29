@@ -60,10 +60,11 @@ export default function MediaCard(props) {
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>
+        <p className="discount">{productDiscount}</p>
         <p variant="body2" color="text.secondary" className="price">
           {productPrice}
         </p>
-        <p className="discount">{productDiscount}</p>
+        
       </CardContent>
       <CartButton variant="contained" startIcon={<AddShoppingCartIcon />}>
         Thêm vào giỏ
