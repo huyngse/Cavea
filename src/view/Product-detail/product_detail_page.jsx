@@ -19,7 +19,7 @@ const ProductDetailPage = () => {
         </>
       ) : (
         <>
-          <Navbar signUp={true} login={true} />
+          <Navbar login={true} />
           <ProductDetailForm />
           <Footer />
         </>

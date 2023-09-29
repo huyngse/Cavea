@@ -11,7 +11,7 @@ function ListCart() {
       {products.map((product) => (
         <MediaCard
           className="product-card"
-          key={product.id}
+          key={product.model}
           id={product.id}
           productName={
             <Link
@@ -21,7 +21,7 @@ function ListCart() {
               {product.name}
             </Link>
           }
-          productDescription={product.descriptions}
+          productDescription={product.model}
           productImage={product.image}
           rating={product.rating}
           productPrice={product.price}
