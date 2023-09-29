@@ -20,6 +20,7 @@ import GridGoldenratioIcon from '@mui/icons-material/GridGoldenratio';
 import DeskIcon from '@mui/icons-material/Desk';
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { CartButton } from "../../Components/Cart/style_component";
+
 const centerContentStyle = {
   display: "flex",
   flexDirection: "column",
@@ -30,7 +31,6 @@ const centerContentStyle = {
 
 
 export default function ProductDetailForm() {
-
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -48,6 +48,7 @@ export default function ProductDetailForm() {
   if (!productInfo) {
     return <div style={centerContentStyle}>Sản phẩm không tồn tại.</div>;
   }
+
 
 
   return (
@@ -80,16 +81,17 @@ export default function ProductDetailForm() {
             <Divider className="" />
             <Grid container spacing={0}>
               <Grid item xs={6} className="price-box">
+                <p>{productInfo.description}</p>
                 <h2>
                   {productInfo.price}
                 </h2>
                 <h3>
                   {productInfo.discount}
                 </h3>
-                <button className="add-to-cart-button">
-                  {/* <AddShoppingCartIcon style={{marginRight: '5px'}}/> */}
+
+                <button className="btn-9" >
+                  <AddShoppingCartIcon style={{marginRight: '5px'}}/>
                   Thêm vào giỏ
-                  <i class="fa-sharp fa-solid fa-chevron-right"></i>
                 </button>
               </Grid>
               <Grid item xs={6}>
@@ -144,6 +146,7 @@ export default function ProductDetailForm() {
         </Grid>
 
       </div>
+
     </div>
   );
 }
