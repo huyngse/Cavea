@@ -1,55 +1,49 @@
 .product-name {
-    font-size: 0.9rem;
-    font-weight: bold;
-    font-family: 'Roboto', sans-serif;
-    padding: 5px 0;
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-family: "Roboto", sans-serif;
+  padding: 5px 0;
 }
 
 .discount {
-    font-size: 0.8rem;
-    text-decoration: line-through;
+  font-size: 0.8rem;
+  text-decoration: line-through;
 }
 
 .price {
-    font-size: 1.3rem;
-    color: #398378;
+  font-size: 1.3rem;
+  color: #398378;
 }
 
 .compare-div {
-    text-align: left;
-    padding: 0 15px;
-    font-family: 'Roboto', sans-serif;
-    background-color: #1a3962;
-    color: white;
-    height: 40px;
-    align-items: center;
-    display: flex;
+  text-align: left;
+  padding: 0 15px;
+  font-family: "Roboto", sans-serif;
+  background-color: #1a3962;
+  color: white;
+  height: 40px;
+  align-items: center;
+  display: flex;
 }
 
 .compare-div label {
-    margin-left: auto;
+  margin-left: auto;
 }
-
 
 .form-control {
-    font-family: system-ui, sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    line-height: 1.1;
-    display: grid;
-    grid-template-columns: 1em auto;
-    gap: 0em;
-    color: rgba(0, 0, 0, 0);
-    position: relative;
-    width: 20px;
+  font-family: system-ui, sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.1;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0em;
+  color: rgba(0, 0, 0, 0);
+  position: relative;
+  width: 20px;
 }
 
-.form-control span{
-    margin-left: -20px;
-    user-select: none;
-    
-}
-.form-control input{
-    margin: 5px 0;
-    width: 20px;
+.form-control input {
+  margin: 5px 0;
+  width: 20px;
 }
