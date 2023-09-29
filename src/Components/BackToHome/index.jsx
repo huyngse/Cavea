@@ -37,8 +37,9 @@ const BackToTopButton = () => {
             position: "fixed",
             bottom: "20px",
             right: "20px",
-            backgroundColor: primaryColor,
+            backgroundColor: "#2d80a9",
             color: "white",
+            boxShadow: "0 0 5px rgba(0, 0, 0, 0.5)"
           }}
         >
           <KeyboardArrowUpIcon />

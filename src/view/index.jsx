@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
 
 import Navbar from "../Components/Navbar/index.jsx";
 import Header from "../Components/Header/index.jsx";
@@ -7,12 +6,27 @@ import ListCart from "../Components/List-cart/index.jsx";
 import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
 import BackToTopButton from "../Components/BackToHome/index.jsx";
-
 import { useAuth } from "../AuthContext.jsx";
-
+import { products } from "../Components/List-cart/list_product.jsx";
+import { useCart } from "../CardContext.jsx";
+import "./index.css";
+import "../view/Compare/compare_button.scss";
 const Index = () => {
   const mainRef = useRef(null);
   const { loggedInUser } = useAuth();
+  const { handleCompareClick, compareProducts } = useCart();
+  const [compareDetails, setCompareProductDetails] = useState([]);
+
+  useEffect(() => {
+    if (compareProducts.length >= 0) {
+      const compareDetails = products.filter((product) =>
+        compareProducts.includes(product.id)
+      );
+      setCompareProductDetails(compareDetails);
+    }
+  }, [compareProducts]);
+  console.log(compareDetails);
+  const message = "Bạn đã chọn: " + compareDetails.length;
   return (
     <>
       <main ref={mainRef}></main>
@@ -27,6 +41,31 @@ const Index = () => {
           <Header signUp={true} />
         </>
       )}
+
+      {compareDetails < 1 ? (
+        <></>
+      ) : (
+        <div className="compare-message">
+          <button className="btn-flip " data-back="So sánh" data-front={message} onClick={handleCompareClick} ></button>
+     
+          <div>
+            {compareDetails.map((product) => (
+              <a className="compare-demo-card" href={`/product-detail/${product.id}`}>
+                <img src={product.image} alt="Hinh so sanh" />
+
+              </a>
+            ))}
+          </div>
+          <button onClick={handleCompareClick} className="compare-button">
+            So sánh
+          </button>
+        </div>
+
+      )}
+
+
+
+
 
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />

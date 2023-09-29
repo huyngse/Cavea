@@ -1,0 +1,71 @@
+:root {
+  --primary-color: #24688a;
+  --secondary-color: red;
+}
+
+.compare-button {
+  padding: 10px 100px 10px 20px;
+  background-color: #2d80a9;
+  font-weight: bold;
+  color: white;
+  transition: all 0.2s;
+  border: none;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 99;
+  right: -80px;
+  bottom: 100px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.compare-button:hover {
+  background-color: var(--secondary-color);
+  right: -50px;
+}
+
+
+.compare-message {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+
+}
+
+
+.compare-message>div {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  height: 130px;
+
+}
+
+.compare-demo-card {
+  transition: all 0.5s;
+  width: 70px;
+  height: 70px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  /* Use flexbox for vertical alignment */
+  justify-content: center;
+  /* Center the image vertically */
+  align-items: center;
+  border-radius: 50px;
+  border: 2px solid white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.compare-demo-card img {
+  object-fit: cover;
+  width: 150%;
+
+}
+
+.compare-demo-card:hover {
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}

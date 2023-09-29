@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 import { FormListCart } from "./style_component.jsx";
 import MediaCard from "../Cart/index.jsx";
 import { products } from "./list_product.jsx";
+import { useCart } from "../../CardContext.jsx";
 
 function ListCart() {
+  const { handleCompare } = useCart();
+
+  const handleComparison = (productId) => {
+    handleCompare(productId);
+  };
+
   return (
     <FormListCart className="test">
       {products.map((product) => (
@@ -26,6 +33,7 @@ function ListCart() {
           rating={product.rating}
           productPrice={product.price}
           productDiscount={product.discount}
+          onCompare={handleComparison}
         />
       ))}
     </FormListCart>

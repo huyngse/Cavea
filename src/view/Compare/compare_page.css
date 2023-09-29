@@ -1,0 +1,18 @@
+.compare-cell {
+    width: 200px;
+}
+.compare-cell img {
+    width: 100%;
+}
+.compare-table {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    background-color: white;
+}
+
+.table-container {
+
+    background-color: lightgrey;
+}

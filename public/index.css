@@ -2,6 +2,11 @@ body,
 html {
   width: 100%;
   margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  position: relative;
 }
 /* Ẩn thanh kéo trình duyệt */
 body::-webkit-scrollbar {
