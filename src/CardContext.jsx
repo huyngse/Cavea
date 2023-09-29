@@ -13,7 +13,6 @@ export function CartProvider({ children }) {
 
   const handleCompare = (productId) => {
     if (compareProducts.includes(productId)) {
-      console.log(productId);
       setCompareProducts((prevCompare) =>
         prevCompare.filter((id) => id !== productId)
       );
@@ -25,7 +24,6 @@ export function CartProvider({ children }) {
   const handleCompareClick = () => {
     if (compareProducts.length >= 2 && compareProducts.length <= 3) {
       navigate("/compare", { state: { compareProducts } });
-      console.log(compareProducts);
     } else if (compareProducts.length < 2) {
       alert("Vui lòng chọn ít nhất 2 sản phẩm để so sánh.");
     } else {
@@ -33,11 +31,20 @@ export function CartProvider({ children }) {
     }
   };
 
+  const removeFromCompare = (productId) => {
+    const updatedCompare = compareProducts.filter(
+      (product) => product.id !== productId
+    );
+    setCompareProducts(updatedCompare);
+  };
+
   return (
     <CartContext.Provider
       value={{
+        compareProducts,
         handleCompare,
         handleCompareClick,
+        removeFromCompare,
       }}
     >
       {children}

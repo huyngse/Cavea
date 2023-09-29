@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import IconButton from "@mui/material/IconButton";
+import { useCart } from "../../CardContext.jsx";
 
 import BasicRating from "../Rating/index.jsx";
 import { CustomCard, CartButton } from "./style_component.jsx";
 import "./product_cart.css";
 
 export default function MediaCard(props) {
+  const { compareProducts } = useCart();
   const {
     id,
     productName,
@@ -31,10 +30,9 @@ export default function MediaCard(props) {
     padding: "2px 4px",
     borderRadius: "10px",
   };
-
+  const isChecked = compareProducts.includes(id);
   const [isComparing, setIsComparing] = useState(false);
-
-  const handleCompare = async (productId) => {
+  const handleCompareProducts = async (productId) => {
     setIsComparing(!isComparing);
     await onCompare(productId);
   };
@@ -47,15 +45,15 @@ export default function MediaCard(props) {
           <input
             type="checkbox"
             name="checkbox"
-            onChange={() => handleCompare(id)}
+            checked={isChecked}
+            onChange={() => handleCompareProducts(id)}
           />
           <span>.</span>
         </label>
       </form>
-      <div className="product-card-image">
-        <img sx={{ height: 260 }} src={productImage} />
-
-      </div>
+      <a className="product-card-image" href={`/product-detail/${id}`}>
+        <img sx={{ height: 260 }} src={productImage} alt="" />
+      </a>
       <CardContent sx={{ padding: "6px" }}>
         <BasicRating value={rating}></BasicRating>
         <div className="product-name">{productName}</div>
@@ -65,9 +63,7 @@ export default function MediaCard(props) {
         <p variant="body2" color="text.secondary" className="price">
           {productPrice}
         </p>
-        <p className="discount">
-          {productDiscount}
-        </p>
+        <p className="discount">{productDiscount}</p>
       </CardContent>
       <CartButton variant="contained" startIcon={<AddShoppingCartIcon />}>
         Thêm vào giỏ

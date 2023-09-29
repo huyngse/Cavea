@@ -1,5 +1,4 @@
-import React, { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
 
 import Navbar from "../Components/Navbar/index.jsx";
 import Header from "../Components/Header/index.jsx";
@@ -8,14 +7,25 @@ import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
 import BackToTopButton from "../Components/BackToHome/index.jsx";
 import { useAuth } from "../AuthContext.jsx";
+import { products } from "../Components/List-cart/list_product.jsx";
 import { useCart } from "../CardContext.jsx";
 import "./index.css";
-import DifferenceIcon from '@mui/icons-material/Difference';
 
 const Index = () => {
   const mainRef = useRef(null);
   const { loggedInUser } = useAuth();
-  const { handleCompareClick } = useCart();
+  const { handleCompareClick, compareProducts } = useCart();
+  const [compareDetails, setCompareProductDetails] = useState([]);
+
+  useEffect(() => {
+    if (compareProducts.length >= 0) {
+      const compareDetails = products.filter((product) =>
+        compareProducts.includes(product.id)
+      );
+      setCompareProductDetails(compareDetails);
+    }
+  }, [compareProducts]);
+  console.log(compareDetails);
   return (
     <>
       <main ref={mainRef}></main>
@@ -30,8 +40,22 @@ const Index = () => {
           <Header signUp={true} />
         </>
       )}
-      <button onClick={handleCompareClick} className="compare-button" >So sánh</button>
+      {compareDetails < 1 ? (
+        <></>
+      ) : (
+        <h2>
+          Bất ngờ không thằng lồn, địt mẹ mày đã chọn: {compareDetails.length}{" "}
+          sản phẩm{" "}
+        </h2>
+      )}
 
+      {compareDetails.map((product) => (
+        <img style={{ height: "260px" }} src={product.image} alt="" />
+      ))}
+
+      <button onClick={handleCompareClick} className="compare-button">
+        So sánh
+      </button>
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>
