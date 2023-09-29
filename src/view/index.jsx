@@ -7,12 +7,17 @@ import ListCart from "../Components/List-cart/index.jsx";
 import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
 import BackToTopButton from "../Components/BackToHome/index.jsx";
-
 import { useAuth } from "../AuthContext.jsx";
+import {
+  CustomLoginAndSignUpButton,
+  LoginAndSignUpButton,
+} from "../Components/Login-and-signup-form/index.jsx";
+import { useCart } from "../CardContext.jsx";
 
 const Index = () => {
   const mainRef = useRef(null);
   const { loggedInUser } = useAuth();
+  const { handleCompareClick } = useCart();
   return (
     <>
       <main ref={mainRef}></main>
@@ -27,7 +32,9 @@ const Index = () => {
           <Header signUp={true} />
         </>
       )}
-
+      <CustomLoginAndSignUpButton onClick={handleCompareClick}>
+        <LoginAndSignUpButton>So sánh</LoginAndSignUpButton>
+      </CustomLoginAndSignUpButton>
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>
