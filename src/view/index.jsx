@@ -11,8 +11,10 @@ import { products } from "../Components/List-cart/list_product.jsx";
 import { useCart } from "../CardContext.jsx";
 import "./index.css";
 import "../view/Compare/compare_button.scss";
+
 const Index = () => {
   const mainRef = useRef(null);
+
   const { loggedInUser } = useAuth();
   const { handleCompareClick, compareProducts } = useCart();
   const [compareDetails, setCompareProductDetails] = useState([]);
@@ -25,7 +27,7 @@ const Index = () => {
       setCompareProductDetails(compareDetails);
     }
   }, [compareProducts]);
-  console.log(compareDetails);
+
   const message = "Bạn đã chọn: " + compareDetails.length;
   return (
     <>
@@ -42,55 +44,53 @@ const Index = () => {
         </>
       )}
 
-      {compareDetails < 1 ? (
-        <></>
-      ) : (
-        <div className="compare-message">
-          <button className="btn-flip " data-back="So sánh" data-front={message} onClick={handleCompareClick} ></button>
-     
-          <div>
-            {compareDetails.map((product) => (
-              <a className="compare-demo-card" href={`/product-detail/${product.id}`}>
-                <img src={product.image} alt="Hinh so sanh" />
+      <div className="compare-message">
+        <button
+          className="btn-flip "
+          data-back="So sánh"
+          data-front={message}
+          onClick={handleCompareClick}
+        ></button>
 
-              </a>
-            ))}
-          </div>
-          <button onClick={handleCompareClick} className="compare-button">
-            So sánh
-          </button>
+        <div>
+          {compareDetails.map((product) => (
+            <a
+              className="compare-demo-card"
+              href={`/product-detail/${product.id}`}
+            >
+              <img src={product.image} alt="Hinh so sanh" />
+            </a>
+          ))}
         </div>
-
-      )}
-
-
-
-
+        <button onClick={handleCompareClick} className="compare-button">
+          So sánh
+        </button>
+      </div>
 
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <div id="cu-gay">
         <TitleBar label="Lồng chim cu gáy"></TitleBar>
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <div id="hoa-mi">
         <TitleBar label="Lồng chim họa mi"></TitleBar>
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <div id="chao-mao">
         <TitleBar label="Lồng chim chào mào"></TitleBar>
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <div id="khuyen">
         <TitleBar label="Lồng chim khuyên"></TitleBar>
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <div id="choe-than">
         <TitleBar label="Lồng chim chòe than"></TitleBar>
       </div>
-      <ListCart></ListCart>
+      <ListCart />
       <BackToTopButton />
       <Footer />
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 
 import { products } from "../../Components/List-cart/list_product";
@@ -19,7 +19,6 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import GridGoldenratioIcon from "@mui/icons-material/GridGoldenratio";
 import DeskIcon from "@mui/icons-material/Desk";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { CartButton } from "../../Components/Cart/style_component";
 
 const centerContentStyle = {
   display: "flex",

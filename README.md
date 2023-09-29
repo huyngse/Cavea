@@ -18,18 +18,17 @@ npm install @mui/icons-material.\
 npm install framer-motion.\
 npm install react-scroll.\
 npm install @mui/x-date-pickers.\
-npm install @mui/material @emotion/react @emotion/styled./
-npm install @mui/styled-engine-sc styled-components
+npm install @mui/material @emotion/react @emotion/styled.\
+npm install @mui/styled-engine-sc styled-components.
 
-//SASS NGUY HIỂM.\
-npm install sass.\
-//^^^.\
+### `install sass`
 
-//Reset package.json.\
+npm install sass
+
+`Reset package.json`
 npm i -g npm-check-updates.\
 ncu -u.\
-npm install.\
-//^^^.\
+npm install.
 
 ### `npm start`
 

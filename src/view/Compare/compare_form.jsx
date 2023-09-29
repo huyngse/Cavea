@@ -9,10 +9,9 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { products } from "../../Components/List-cart/list_product";
 import BasicRating from "../../Components/Rating/index.jsx";
-import { CustomRow, CartButton } from "./style_component";
+import { CartButton } from "./style_component";
 import TableRow from "@mui/material/TableRow";
-import "./compare_page.css"
-import { width } from "@mui/system";
+import "./compare_page.css";
 
 export default function CompareForm() {
   const location = useLocation();
@@ -29,20 +28,15 @@ export default function CompareForm() {
 
   return (
     <>
-      <TableContainer className="table-container"
-        component={Paper}
-      >
+      <TableContainer className="table-container" component={Paper}>
         <h2>Trang so sánh sản phẩm</h2>
-        <Table className="compare-table" style={{width: 'fit-content'}}>
-          <TableBody >
+        <Table className="compare-table" style={{ width: "fit-content" }}>
+          <TableBody>
             <TableRow>
               <TableCell>Sản phẩm</TableCell>
               {compareProductDetails.map((product) => (
-                <TableCell key={product.id} className="compare-cell" >
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                  />
+                <TableCell key={product.id} className="compare-cell">
+                  <img src={product.image} alt={product.name} />
                   <CartButton
                     variant="contained"
                     startIcon={<AddShoppingCartIcon />}
