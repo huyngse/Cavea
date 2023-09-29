@@ -21,6 +21,16 @@ npm install @mui/x-date-pickers.\
 npm install @mui/material @emotion/react @emotion/styled./
 npm install @mui/styled-engine-sc styled-components
 
+//SASS NGUY HIỂM.\
+npm install sass.\
+//^^^.\
+
+//Reset package.json.\
+npm i -g npm-check-updates.\
+ncu -u.\
+npm install.\
+//^^^.\
+
 ### `npm start`
 
 Runs the app in the development mode.\
