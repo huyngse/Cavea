@@ -44,28 +44,32 @@ const Index = () => {
         </>
       )}
 
-      <div className="compare-message">
-        <button
-          className="btn-flip "
-          data-back="So sánh"
-          data-front={message}
-          onClick={handleCompareClick}
-        ></button>
+      {compareDetails < 1 ? (
+        <></>
+      ) : (
+        <div className="compare-message">
+          <button
+            className="btn-flip "
+            data-back="So sánh"
+            data-front={message}
+            onClick={handleCompareClick}
+          ></button>
 
-        <div>
-          {compareDetails.map((product) => (
-            <a
-              className="compare-demo-card"
-              href={`/product-detail/${product.id}`}
-            >
-              <img src={product.image} alt="Hinh so sanh" />
-            </a>
-          ))}
+          <div>
+            {compareDetails.map((product) => (
+              <a
+                className="compare-demo-card"
+                href={`/product-detail/${product.id}`}
+              >
+                <img src={product.image} alt="Hinh so sanh" />
+              </a>
+            ))}
+          </div>
+          <button onClick={handleCompareClick} className="compare-button">
+            So sánh
+          </button>
         </div>
-        <button onClick={handleCompareClick} className="compare-button">
-          So sánh
-        </button>
-      </div>
+      )}
 
       <div id="phu-kien">
         <TitleBar label="Phụ kiện lồng chim" />
