@@ -270,16 +270,19 @@ function Navbar({ isSearchVisible, login, signUp, avatar }) {
               open={Boolean(anchorElService)}
               onClose={handleCloseServiceMenu}
             >
-              <MenuItem key="DesignCage" onClick={handleCloseServiceMenu}>
-                <Link
-                  to="/service"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
+              <Link
+                to="/service"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem key="DesignCage" onClick={handleCloseServiceMenu}>
+
                   <Typography textAlign="center">
                     Đặt lồng chim theo yêu cầu
                   </Typography>
-                </Link>
-              </MenuItem>
+                </MenuItem>
+
+              </Link>
+
             </Menu>
           </Box>
 

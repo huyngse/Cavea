@@ -15,10 +15,7 @@ export const FormWrapper = styled.div`
 
 export const CustomBackGround = styled.div`
   font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 84vh;
-  padding-top: 0px;
+  padding: 100px 30px 10px 30px;
   background-image: url(${background});
   background-size: cover;
   background-repeat: no-repeat;

@@ -35,10 +35,7 @@ const Index = () => {
           </>
         )}
 
-        <div id="phu-kien">
-          <TitleBar label="Phụ kiện lồng chim" />
-        </div>
-        <ListCart></ListCart>
+     
         <div id="cu-gay">
           <TitleBar label="Lồng chim cu gáy"></TitleBar>
         </div>
