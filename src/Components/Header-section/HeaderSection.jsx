@@ -1,8 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Menu from "../Header-menu/HeaderMenu.jsx";
-import Grid from '@mui/material/Grid';
-import './HeaderSection.css';
+import Grid from "@mui/material/Grid";
+import "./HeaderSection.css";
 
 function HeaderSection({ signUp, Order }) {
   return (
@@ -17,7 +17,6 @@ function HeaderSection({ signUp, Order }) {
           </Grid>
         </Grid>
       </Box>
-
     </section>
   );
 }

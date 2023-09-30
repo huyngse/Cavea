@@ -45,6 +45,15 @@ export default function MediaCard(props) {
     await onAddToCart(productId);
   };
 
+  const price = productPrice.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+  const discount = productDiscount.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+
   return (
     <CustomCard>
       <form className="compare-div">
@@ -68,9 +77,9 @@ export default function MediaCard(props) {
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>
-        <p className="discount">{productDiscount}</p>
+        <p className="discount">{discount}</p>
         <p variant="body2" color="text.secondary" className="price">
-          {productPrice}
+          {price}
         </p>
       </CardContent>
       <CartButton

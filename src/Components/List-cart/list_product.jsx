@@ -6,8 +6,8 @@ export const products = [
     image:
       "https://www.sieuthilongchim.net//img/webroot/upload/image/files/Mai%20tu%20quy%20go%20mun%20noc%20tre%20(3).jpg",
     rating: 4,
-    price: 3500000,
-    discount: 4600000,
+    price: 4600000,
+    discount: 3500000,
     shape: "Quả đào",
     material: "Tre già",
     spoke: "52",
@@ -38,8 +38,8 @@ export const products = [
     image:
       "https://www.sieuthilongchim.net//img/webroot/upload/image/images/L%E1%BB%93ng%20chim%20cu%20g%C3%A1y/long-qua-dao-doi-quy-size40%20(1).jpg",
     rating: 5,
-    price: 900000,
-    discount: 1100000,
+    price: 1100000,
+    discount: 900000,
     shape: "Quả đào",
     material: "Khung mây, nan tre già, móc gỗ",
     spoke: "52",
@@ -53,8 +53,8 @@ export const products = [
     image:
       "https://www.sieuthilongchim.net//img/webroot/upload/image/files/cu%20gay%20390%20(4).jpg",
     rating: 3.5,
-    price: 370000,
-    discount: 450000,
+    price: 450000,
+    discount: 370000,
     shape: "Quả đào",
     material: "Tre già",
     spoke: "56",

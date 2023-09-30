@@ -12,7 +12,7 @@ import BlogPage from "./view/Blog/blog_page.jsx";
 import ServicePage from "./view/Service-page/service_page.jsx";
 import ComparePage from "./view/Compare/compare_page.jsx";
 import ProductDetailPage from "./view/Product-detail/product_detail_page.jsx";
-import ViewCartPage from "./view/View-card/view_cart_page.jsx";
+import ViewCartPage from "./view/ViewCard/view_cart_page.jsx";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);

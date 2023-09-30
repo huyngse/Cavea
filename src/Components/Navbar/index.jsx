@@ -20,14 +20,14 @@ import { useCart } from "../../CardContext.jsx";
 
 const settings = ["Profile", "Logout"];
 
-function Navbar({ isSearchVisible, login, signUp, avatar, cartItemCount }) {
+function Navbar({ isSearchVisible, login, signUp, avatar }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElService, setAnchorElService] = React.useState(null);
   const [anchorElProduct, setAnchorElProduct] = React.useState(null);
   const { cart } = useCart();
 
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -106,26 +106,14 @@ function Navbar({ isSearchVisible, login, signUp, avatar, cartItemCount }) {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <MenuItem key="Index">
-                <Typography textAlign="center">Home</Typography>
+                <Typography textAlign="center">Trang chủ</Typography>
               </MenuItem>
             </Link>
 
-            <Link
-              to="/blog"
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              <MenuItem key="Blog">
-                <Typography textAlign="center">Blog</Typography>
-              </MenuItem>
-            </Link>
-
-            <MenuItem
-              key="Product"
-              onClick={handleOpenProductMenu}
-              sx={{ p: 0 }}
-            >
-              <Typography textAlign="center">Product</Typography>
+            <MenuItem key="Product" onClick={handleOpenProductMenu}>
+              <Typography textAlign="center">Sản phẩm</Typography>
             </MenuItem>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar-product"
@@ -147,13 +135,20 @@ function Navbar({ isSearchVisible, login, signUp, avatar, cartItemCount }) {
               </MenuItem>
             </Menu>
 
-            <MenuItem
-              key="Service"
-              onClick={handleOpenServiceMenu}
-              sx={{ p: 0 }}
-            >
-              <Typography textAlign="center">Service</Typography>
+            <MenuItem key="Service" onClick={handleOpenServiceMenu}>
+              <Typography textAlign="center">Dịch vụ</Typography>
             </MenuItem>
+
+            <MenuItem key="Blog">
+              <Link
+                to="/blog"
+                textAlign="center"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <Typography>Blog</Typography>
+              </Link>
+            </MenuItem>
+
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar-service"
@@ -219,7 +214,7 @@ function Navbar({ isSearchVisible, login, signUp, avatar, cartItemCount }) {
           </Link>
 
           <MenuItem key="Product" onClick={handleOpenProductMenu} sx={{ p: 0 }}>
-            <Typography textAlign="center">SẢM PHẨM</Typography>
+            <Typography textAlign="center">SẢN PHẨM</Typography>
           </MenuItem>
           <Menu
             sx={{ mt: "45px" }}
@@ -292,7 +287,7 @@ function Navbar({ isSearchVisible, login, signUp, avatar, cartItemCount }) {
         >
           <IconButton size="Medium" aria-label="cart" color="inherit">
             <ShoppingCartIcon />
-            <span>{totalQuantity}</span>
+            <span>{cart.length}</span>
           </IconButton>
         </Link>
 
