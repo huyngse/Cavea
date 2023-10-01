@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
-
+import 'bootstrap/dist/css/bootstrap.css';
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
 import Navbar from "../Components/Navbar/index.jsx";
-import Header from "../Components/Header/index.jsx";
+import Header from "../Components/Header/Header.jsx";
 import ListCart from "../Components/List-cart/index.jsx";
 import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
@@ -17,7 +19,7 @@ const Index = () => {
   return (
     <>
       <div className="unsupported-message">
-        <img src={Unspported}></img>
+        <img src={Unspported} alt=""></img>
         <h1>Hiện tại trang Web chưa hỗ trợ thiết bị màn hình nhỏ!</h1>
         <p>Vui lòng sử dụng laptop hoặc máy tính để truy cập trang web này</p>
       </div>

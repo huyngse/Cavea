@@ -1,14 +1,10 @@
 import * as React from 'react';
 import '../SignUp/signup_form.css'
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { styled } from "@mui/material/styles";
 
 import { CustomLoginForm, SignUp, BirdDecor } from "../Login/style_component";
 import {
-  CustomError,
   CustomTitle,
   CustomInput,
   CustomLoginAndSignUpButton,
@@ -17,22 +13,6 @@ import {
 } from "../../Components/Login-and-signup-form/index.jsx";
 import { FormWrapper } from "../../view/SignUp/style_component.jsx";
 import bird_decor from "../../images/bird-decor.png";
-
-
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const CssTextField = styled(CustomInput)({
   "& label.Mui-focused": {
@@ -57,11 +37,6 @@ const mb4 = {
 const formCardDiv = {
   boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
 };
-
-
-// TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
 
 export default function SignUpForm() {
   const handleSubmit = (event) => {

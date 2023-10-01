@@ -1,6 +1,6 @@
 import React from "react";
 import { FormListCart } from "./style_component";
-import MediaCard from "../Cart/index.jsx";
+import MediaCard from "../Cart/product_card";
 
 function ListCart() {
 

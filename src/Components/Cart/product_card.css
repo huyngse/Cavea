@@ -28,6 +28,8 @@
 
 .compare-div label {
     margin-left: auto;
+    background-color: transparent;
+    border: none;
 }
 
 
@@ -52,4 +54,5 @@
 .form-control input{
     margin: 5px 0;
     width: 20px;
+    height: 20px;
 }

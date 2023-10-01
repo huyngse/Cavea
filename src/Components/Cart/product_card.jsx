@@ -7,7 +7,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import BasicRating from "../Rating/index.jsx";
 import { CustomCard, CustomPrice, CartButton } from "./style_component.jsx";
 
-import "./product_cart.css"
+import "./product_card.css"
 
 export default function MediaCard(props) {
   const {
@@ -35,12 +35,7 @@ export default function MediaCard(props) {
         So sánh
         <label className="form-control">
           <input type="checkbox" name="checkbox" />
-          <span>
-            .
-
-          </span>
         </label>
-
       </form>
 
 

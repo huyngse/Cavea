@@ -8,11 +8,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Tooltip from "@mui/material/Tooltip";
 import Avatar from "@mui/material/Avatar";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 import Buttons from "../Button/button.jsx";
-import small_logo from "../../images/small-logo.png";
-import { LogoHeader, CustomContainer, BoxStyle } from "./style_component.jsx";
+import { CustomContainer, BoxStyle } from "./style_component.jsx";
 import { Link } from "react-router-dom";
 import pro_avatar from "../../images/pro_avatar.png";
 import { primaryColor } from "../../color"

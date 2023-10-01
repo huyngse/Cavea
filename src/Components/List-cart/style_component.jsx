@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-import List from "@mui/material/List";
 
 export const FormListCart = styled.div`
   margin: 20px;
