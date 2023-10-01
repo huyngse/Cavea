@@ -10,7 +10,7 @@ import {
   LoginAndSignUpButton,
   Text,
 } from "../../Components/Login-and-signup-form/index.jsx";
-import { FormWrapper } from "../../Components/Header/style_component";
+import { FormWrapper } from "../../Components/Header-section/style_component";
 import bird_decor from "../../images/bird-decor.png";
 
 import { useAuth } from "../../AuthContext.jsx";

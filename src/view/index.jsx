@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 import Navbar from "../Components/Navbar/index.jsx";
-import Header from "../Components/Header/index.jsx";
+import Header from "../Components/Header-section/HeaderSection.jsx";
 import ListCart from "../Components/List-cart/index.jsx";
 import TitleBar from "../Components/Title-bar/index.jsx";
 import Footer from "../Components/footer/index.jsx";
