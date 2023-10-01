@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const CardContext = createContext();
@@ -10,9 +10,34 @@ export function useCart() {
 export function CardProvider({ children }) {
   const navigate = useNavigate();
 
-  const [cart, setCart] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [cart, setCart] = useState(() => {
+    const storedCart = sessionStorage.getItem("cart");
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+  const [totalPrice, setTotalPrice] = useState(() => {
+    const storedTotal = sessionStorage.getItem("totalPrice");
+    return storedTotal ? JSON.parse(storedTotal) : 0;
+  });
   const [compareProducts, setCompareProducts] = useState([]);
+
+  useEffect(() => {
+    sessionStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    sessionStorage.setItem("totalPrice", JSON.parse(totalPrice));
+  }, [totalPrice]);
+
+  useEffect(() => {
+    const storedCompareProducts = sessionStorage.getItem("compareProducts");
+    if (storedCompareProducts) {
+      setCompareProducts(JSON.parse(storedCompareProducts));
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem("compareProducts", JSON.stringify(compareProducts));
+  }, [compareProducts]);
 
   const handleCompare = (productId) => {
     if (compareProducts.includes(productId)) {
