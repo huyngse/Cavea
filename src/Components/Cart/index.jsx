@@ -19,6 +19,7 @@ export default function MediaCard(props) {
     productPrice,
     productDiscount,
     onCompare,
+    onAddToCart,
   } = props;
 
   const modelDiv = {
@@ -30,12 +31,28 @@ export default function MediaCard(props) {
     padding: "2px 4px",
     borderRadius: "10px",
   };
-  const isChecked = compareProducts.includes(id);
+
   const [isComparing, setIsComparing] = useState(false);
+
+  const isChecked = compareProducts.includes(id);
+
   const handleCompareProducts = async (productId) => {
     setIsComparing(!isComparing);
     await onCompare(productId);
   };
+
+  const handleAddToCart = async (productId) => {
+    await onAddToCart(productId);
+  };
+
+  const price = productPrice.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+  const discount = productDiscount.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
 
   return (
     <CustomCard>
@@ -60,13 +77,16 @@ export default function MediaCard(props) {
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>
-        <p className="discount">{productDiscount}</p>
+        <p className="discount">{discount}</p>
         <p variant="body2" color="text.secondary" className="price">
-          {productPrice}
+          {price}
         </p>
-        
       </CardContent>
-      <CartButton variant="contained" startIcon={<AddShoppingCartIcon />}>
+      <CartButton
+        variant="contained"
+        startIcon={<AddShoppingCartIcon />}
+        onClick={() => handleAddToCart(id)}
+      >
         Thêm vào giỏ
       </CartButton>
     </CustomCard>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { products } from "../../Components/List-cart/list_product";
@@ -19,7 +19,7 @@ import CheckroomIcon from "@mui/icons-material/Checkroom";
 import GridGoldenratioIcon from "@mui/icons-material/GridGoldenratio";
 import DeskIcon from "@mui/icons-material/Desk";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { CartButton } from "../../Components/Cart/style_component";
+import { CardContext } from "../../CardContext.jsx";
 
 const centerContentStyle = {
   display: "flex",
@@ -37,14 +37,32 @@ export default function ProductDetailForm() {
     });
   };
 
+  const { addToCart } = useContext(CardContext);
   const { productId } = useParams();
 
   const productInfo = products.find(
     (product) => product.id === parseInt(productId)
   );
+
   if (!productInfo) {
     return <div style={centerContentStyle}>Sản phẩm không tồn tại.</div>;
   }
+
+  const handleAddToCart = (productId) => {
+    const productToAdd = products.find((product) => product.id === productId);
+    if (productToAdd) {
+      addToCart(productToAdd);
+    }
+  };
+
+  const price = productInfo.price.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+  const discount = productInfo.discount.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
 
   return (
     <div className="product-detail-container" onLoad={scrollToTop}>
@@ -74,7 +92,7 @@ export default function ProductDetailForm() {
               <Divider orientation="vertical" flexItem />
               <div>
                 <span>0 </span>
-                Đánh gái
+                Đánh giá
               </div>
               <Divider orientation="vertical" flexItem />
               <div>
@@ -86,10 +104,13 @@ export default function ProductDetailForm() {
             <Grid container spacing={0}>
               <Grid item xs={6} className="price-box">
                 <p>{productInfo.description}</p>
-                <h2>{productInfo.price}</h2>
-                <h3>{productInfo.discount}</h3>
+                <h2>{price}</h2>
+                <h3>{discount}</h3>
 
-                <button className="btn-9">
+                <button
+                  onClick={() => handleAddToCart(productInfo.id)}
+                  className="btn-9"
+                >
                   <AddShoppingCartIcon style={{ marginRight: "5px" }} />
                   Thêm vào giỏ
                 </button>
