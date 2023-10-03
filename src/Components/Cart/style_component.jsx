@@ -4,7 +4,6 @@ import Button from "@mui/material/Button";
 
 export const CustomCard = styled(Card)`
   max-width: 17rem;
-  height: 500px;
   margin: 0.5rem;
   text-align: center;
   position: relative;
@@ -18,7 +17,6 @@ export const CartButton = styled(Button)`
   padding: 8px;
   margin-top: auto;
   border-radius: 0;
-  position: absolute;
   bottom: 0;
   left: 0;
   text-transform: none;

@@ -34,6 +34,12 @@
 
 .compare-div label {
   margin-left: auto;
+  height: 20px;
+}
+
+.compare-div input {
+  width: 20px;
+  height: 20px;
 }
 
 .form-control {
@@ -46,7 +52,6 @@
   gap: 0em;
   color: rgba(0, 0, 0, 0);
   position: relative;
-  width: 20px;
 }
 
 .form-control input {

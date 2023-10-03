@@ -11,6 +11,8 @@ import { products } from "../Components/List-cart/list_product.jsx";
 import { useCart } from "../CardContext.jsx";
 import "./index.css";
 import "../view/Compare/compare_button.scss";
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const Index = () => {
   const mainRef = useRef(null);
