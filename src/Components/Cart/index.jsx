@@ -8,6 +8,8 @@ import BasicRating from "../Rating/index.jsx";
 import { CustomCard, CartButton } from "./style_component.jsx";
 import "./product_cart.css";
 
+import "./product_cart.css";
+
 export default function MediaCard(props) {
   const { compareProducts } = useCart();
   const {
