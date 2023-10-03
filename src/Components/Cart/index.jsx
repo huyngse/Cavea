@@ -8,7 +8,6 @@ import BasicRating from "../Rating/index.jsx";
 import { CustomCard, CartButton } from "./style_component.jsx";
 import "./product_cart.css";
 
-import "./product_cart.css";
 
 export default function MediaCard(props) {
   const { compareProducts } = useCart();
@@ -30,8 +29,10 @@ export default function MediaCard(props) {
     marginLeft: "auto",
     marginRight: "auto",
     color: "white",
-    padding: "2px 4px",
-    borderRadius: "10px",
+    padding: "4px 6px",
+    borderRadius: "20px",
+    fontSize: "10px",
+    fontWeight: "bold",
   };
 
   const [isComparing, setIsComparing] = useState(false);
@@ -60,14 +61,13 @@ export default function MediaCard(props) {
     <CustomCard>
       <form className="compare-div">
         So sánh
-        <label className="form-control">
+        <label>
           <input
             type="checkbox"
             name="checkbox"
             checked={isChecked}
             onChange={() => handleCompareProducts(id)}
           />
-          <span>.</span>
         </label>
       </form>
       <a className="product-card-image" href={`/product-detail/${id}`}>
