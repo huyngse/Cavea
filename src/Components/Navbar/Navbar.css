@@ -1,0 +1,42 @@
+:root {
+    --primary-color: #24688a;
+    --secondary-color: red;
+}
+
+.nav-header {
+    color: white;
+    background-color: var(--primary-color);
+}
+
+.search-bar {
+    background-color: transparent;
+    border: none;
+}
+
+#shopping-cart-button {
+    position: relative;
+}
+
+
+#shopping-cart-button:hover + #shopping-cart-button-div {
+    height: 300px;
+}
+#shopping-cart-button-div:hover {
+    height: 300px;
+}
+
+#shopping-cart-button-div:not(:hover) {
+
+}
+#shopping-cart-button-div {
+    width: 250px;
+    overflow: hidden;
+    height: 0;
+    display: block;
+    position: absolute;
+    top: 50px;
+    left: -200px;
+    z-index: 100;
+    transition: all 1s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}

@@ -41,7 +41,7 @@ const Index = () => {
         </>
       ) : (
         <>
-          <Navbar isSearchVisible={true} login={true} />
+          <Navbar isSearchVisible={true} login={true} signUp={true} large={true}/>
           <Header signUp={true} />
         </>
       )}

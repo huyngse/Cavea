@@ -10,7 +10,7 @@ const SignUp = () => {
       
         
           {/* <Loader></Loader> */}
-          <Navbar isSearchVisible={false} login={true} />
+          <Navbar isSearchVisible={false} login={true}/>
           <SignUpForm  />
         
       

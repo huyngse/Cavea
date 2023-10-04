@@ -18,7 +18,7 @@ const LoginPage = () => {
         </Routes>
       ) : (
         <>
-          <Navbar signUp={true} />
+          <Navbar signUp={true}/>
           <LoginForm />
         </>
       )}

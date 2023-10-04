@@ -14,7 +14,13 @@ export const products = [
     hanger: "Móc đơn giản",
     base: "Chân hoa mai",
     description:
-      "Lồng chim cu gáy size 35 chân nơi nóc đan là một tác phẩm thủ công tinh xảo của nghệ nhân làng nghề truyền thống. Chiếc lồng này được tạo ra để đáp ứng nhu cầu nuôi và chăm sóc cho các con chim cu gáy, đặc biệt là trong việc huấn luyện và duy trì chúng trong môi trường an toàn và thoải mái. Lồng chim cu gáy này có kích thước size 35, đồng nghĩa với việc nó có đủ không gian để chứa một con chim cu gáy hoặc một cặp chim với đủ thoải mái. Mặt nóc của lồng được đan tỉ mỉ bằng các sợi tre tự nhiên, tạo ra một mái che bảo vệ cho chim khỏi nắng, mưa và gió. Điều này giúp bảo vệ sức khỏe của chim và giữ cho chúng cảm thấy an toàn trong không gian của mình. Chân lồng cũng được làm bằng tre tự nhiên và được đan hoặc mạch chéo để tạo nên một cấu trúc vững chắc. ",
+      <p>
+      Lồng chim cu gáy size 35 chân nơi nóc đan là một tác phẩm thủ công tinh xảo của nghệ nhân làng nghề truyền thống.
+       Chiếc lồng này được tạo ra để đáp ứng nhu cầu nuôi và chăm sóc cho các con chim cu gáy, đặc biệt là trong việc huấn luyện và duy trì chúng trong môi trường an toàn và thoải mái.
+        Lồng chim cu gáy này có kích thước size 35, đồng nghĩa với việc nó có đủ không gian để chứa một con chim cu gáy hoặc một cặp chim với đủ thoải mái.<br/><br/>
+         Mặt nóc của lồng được đan tỉ mỉ bằng các sợi tre tự nhiên, tạo ra một mái che bảo vệ cho chim khỏi nắng, mưa và gió.
+          Điều này giúp bảo vệ sức khỏe của chim và giữ cho chúng cảm thấy an toàn trong không gian của mình. Chân lồng cũng được làm bằng tre tự nhiên và được đan hoặc mạch chéo để tạo nên một cấu trúc vững chắc. 
+      </p>
   },
   {
     id: 2,
