@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "../../Components/Navbar/index.jsx";
+import Navbar from "../../Components/Navbar/Navbar.jsx";
 import CompareForm from "./compare_form.jsx";
 import Footer from "../../Components/footer/index.jsx";
 
@@ -13,13 +13,13 @@ const BlogPage = () => {
     <div>
       {loggedInUser ? (
         <>
-          <Navbar avatar={true} />
+          <Navbar showAvatar={true} />
           <CompareForm sx={{ textAlign: "center" }} />
           <Footer />
         </>
       ) : (
         <>
-          <Navbar login={true} />
+          <Navbar showLogin={true} showSignUp={true}/>
           <CompareForm />
           <Footer />
         </>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import ViewCardForm from "./view_cart_form";
-import Navbar from "../../Components/Navbar/index.jsx";
+import Navbar from "../../Components/Navbar/Navbar.jsx";
 import Footer from "../../Components/footer/index.jsx";
 
 const ViewCartPage = () => {

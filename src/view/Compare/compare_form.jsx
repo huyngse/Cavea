@@ -29,8 +29,8 @@ export default function CompareForm() {
   return (
     <>
       <TableContainer className="table-container" component={Paper}>
-        <h2>Trang so sánh sản phẩm</h2>
-        <Table className="compare-table" style={{ width: "fit-content" }}>
+        <h2 className="text-center m-3">Trang so sánh sản phẩm</h2>
+        <Table className="compare-table mb-3" style={{ width: "fit-content" }}>
           <TableBody>
             <TableRow>
               <TableCell>Sản phẩm</TableCell>
@@ -53,13 +53,7 @@ export default function CompareForm() {
                 <TableCell key={product.id}>{product.name}</TableCell>
               ))}
             </TableRow>
-            <TableRow>
-              <TableCell>Mô tả</TableCell>
-              {compareProductDetails.map((product) => (
-                <TableCell key={product.id}>{product.descriptions}</TableCell>
-              ))}
-            </TableRow>
-
+            
             <TableRow>
               <TableCell>Đánh giá</TableCell>
               {compareProductDetails.map((product) => (
@@ -72,14 +66,20 @@ export default function CompareForm() {
             <TableRow>
               <TableCell>Giá</TableCell>
               {compareProductDetails.map((product) => (
-                <TableCell key={product.id}>{product.price}</TableCell>
+                <TableCell key={product.id}>{product.price.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                })}</TableCell>
               ))}
             </TableRow>
 
             <TableRow>
               <TableCell>Giảm còn</TableCell>
               {compareProductDetails.map((product) => (
-                <TableCell key={product.id}>{product.discount}</TableCell>
+                <TableCell key={product.id}>{product.discount.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                })}</TableCell>
               ))}
             </TableRow>
             <TableRow>

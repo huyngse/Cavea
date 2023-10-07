@@ -4,13 +4,17 @@
 }
 
 .nav-header {
-    color: white;
+    color: black;
+    background-color: white;
+}
+.navbar {
     background-color: var(--primary-color);
+
 }
 
 .search-bar {
-    background-color: transparent;
-    border: none;
+    font-size: medium;
+    font-weight: normal;
 }
 
 #shopping-cart-button {

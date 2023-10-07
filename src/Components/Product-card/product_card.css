@@ -70,9 +70,3 @@
   transition: all 0.5s;
 }
 
-.product-card-image img:hover {
-  width: 120%;
-  margin-left: -10%;
-  height: 260px;
-  object-fit: cover;
-}

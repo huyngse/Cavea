@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from "../../Components/Navbar/index.jsx";
+import Navbar from "../../Components/Navbar/Navbar.jsx";
 import BlogForm from "./blog_form.jsx";
 import Footer from "../../Components/footer/index.jsx";
 

@@ -4,7 +4,7 @@ import './Navbar.css';
 import SearchIcon from '@mui/icons-material/Search';
 import React from 'react';
 
-function Navbar({ isSearchVisible, login, signUp, avatar, large }) {
+function Navbar(props) {
 
 
 
@@ -55,14 +55,14 @@ function Navbar({ isSearchVisible, login, signUp, avatar, large }) {
   return (
     <>
       {
-        large ?
+        props.size != "small" ?
           <>
             <nav className="py-0 nav  nav-header shadow-sm" >
               <div className="container d-flex flex-wrap align-items-center">
                 <ul className="nav me-auto ">
-                  <li className="nav-item "><a href="/" className="nav-link link-light px-2 active py-1" aria-current="page">Trang Chủ</a></li>
+                  <li className="nav-item "><a href="/" className="nav-link link-dark px-2 active " aria-current="page">Trang Chủ</a></li>
                   <div className="dropdown nav-item">
-                    <button className=" dropdown-toggle nav-link link-light px-2 active  bg-transparent py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className=" dropdown-toggle nav-link link-dark px-2 active  bg-transparent " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Sản Phẩm
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -75,47 +75,56 @@ function Navbar({ isSearchVisible, login, signUp, avatar, large }) {
                     </ul>
                   </div>
                   <div className="dropdown nav-item">
-                    <button className="dropdown-toggle nav-link link-light px-2 active  bg-transparent py-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button className="dropdown-toggle nav-link link-dark px-2 active  bg-transparent " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                       Dịch Vụ
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                       <li><a className="dropdown-item" href="/service">Đặt lồng chim theo yêu cầu</a></li>
                     </ul>
                   </div>
-                  <li className="nav-item"><a href="/blog" className="nav-link link-light px-2 py-1">Blog</a></li>
+                  <li className="nav-item"><a href="/blog" className="nav-link link-dark px-2 ">Blog</a></li>
                 </ul>
                 <ul className="nav d-flex align-items-center">
                   {
-                    login ?
-                      <li className="nav-item"><a href="/login" className="nav-link link-light px-2 py-1">Đăng Nhập</a></li>
-                      : <></>
-                  }
-                  {
-                    signUp ?
-                      <li className="nav-item"><a href="/sign-up" className="nav-link link-light px-2  me-2 py-1" >Đăng Ký</a></li>
+                    props.showLogin ?
+                      <li className="nav-item"><a href="/login" className="nav-link link-dark px-2">Đăng Nhập</a></li>
                       :
                       <></>
                   }
                   {
-                    avatar ?
-                      <div class="dropdown text-end">
-                        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    props.showLogin && props.showSignUp ?
+                      <>|</>
+                      :
+                      <></>
+                  }
+                  {
+                    props.showSignUp ?
+                      <li className="nav-item"><a href="/sign-up" className="nav-link link-dark px-2  me-2 " >Đăng Ký</a></li>
+                      :
+                      <></>
+                  }
+
+                  {
+                    props.showAvatar ?
+                      <div class="dropdown text-end p-2">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                           <img src="https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-1/274521980_1834277470105356_2367113117133775173_n.jpg?stp=dst-jpg_p320x320&_nc_cat=102&ccb=1-7&_nc_sid=fe8171&_nc_ohc=hVjWZ-K2JFkAX9GopKa&_nc_ht=scontent.fsgn2-8.fna&oh=00_AfBWgJ4zCsefPzPNBqBqIyBBfOTrAZk9AVmdpvBlC_4VxQ&oe=6521F9F0" alt="mdo" width="32" height="32" class="rounded-circle" />
                         </a>
                         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-                          <li><a class="dropdown-item" href="#">New project...</a></li>
-                          <li><a class="dropdown-item" href="#">Settings</a></li>
-                          <li><a class="dropdown-item" href="#">Profile</a></li>
+                          <li><a class="dropdown-item" href="#">Hồ Sơ</a></li>
+                          <li><a class="dropdown-item" href="#">Lịch Sử Đơn Hàng</a></li>
                           <li><hr class="dropdown-divider" /></li>
-                          <li><a class="dropdown-item" href="#">Sign out</a></li>
+                          <li><a class="dropdown-item" href="#" onClick={handleLogout}>Đăng Xuất</a></li>
                         </ul>
-                      </div> :
+                      </div>
+                      :
                       <></>
                   }
+
                 </ul>
               </div>
             </nav>
-            <header className="py-3 border-bottom nav-header shadow-sm ">
+            <header className="py-3 border-bottom navbar shadow-sm ">
               <div className="container d-flex flex-wrap justify-content-center">
                 <a href="/" className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-light text-decoration-none">
                   <svg
@@ -133,38 +142,24 @@ function Navbar({ isSearchVisible, login, signUp, avatar, large }) {
 
                 </a>
                 <form className="input-group col-12 col-lg-auto mb-3 mb-lg-0 me-auto w-50">
-                  <input type="text" className="form-control" placeholder="Tìm Kiếm sản phẩm" aria-label="Recipient's username" aria-describedby="button-addon2" />
+                  <input type="text" className="form-control search-bar" placeholder="Tìm Kiếm sản phẩm" aria-label="Recipient's username" aria-describedby="button-addon2" />
                   <button className="btn btn-light" type="button" id="button-addon2"><SearchIcon /></button>
                 </form>
-                <div className="position-relative">
-                  <a href="/view-cart" id="shopping-cart-button">
-                    <button className="nav-link text-white text-center " >
-                      <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                        {cart.length}
-                        <span className="visually-hidden">unread messages</span>
-                      </span>
-                      <svg fill="white" baseProfile="tiny" height="40px" version="1.2" viewBox="0 0 24 24" width="40px" xmlns="http://www.w3.org/2000/svg"><g id="Layer_1"><g><path d="M20.756,5.345C20.565,5.126,20.29,5,20,5H6.181L5.986,3.836C5.906,3.354,5.489,3,5,3H2.75c-0.553,0-1,0.447-1,1    s0.447,1,1,1h1.403l1.86,11.164c0.008,0.045,0.031,0.082,0.045,0.124c0.016,0.053,0.029,0.103,0.054,0.151    c0.032,0.066,0.075,0.122,0.12,0.179c0.031,0.039,0.059,0.078,0.095,0.112c0.058,0.054,0.125,0.092,0.193,0.13    c0.038,0.021,0.071,0.049,0.112,0.065C6.748,16.972,6.87,17,6.999,17C7,17,18,17,18,17c0.553,0,1-0.447,1-1s-0.447-1-1-1H7.847    l-0.166-1H19c0.498,0,0.92-0.366,0.99-0.858l1-7C21.031,5.854,20.945,5.563,20.756,5.345z M18.847,7l-0.285,2H15V7H18.847z M14,7    v2h-3V7H14z M14,10v2h-3v-2H14z M10,7v2H7C6.947,9,6.899,9.015,6.852,9.03L6.514,7H10z M7.014,10H10v2H7.347L7.014,10z M15,12v-2    h3.418l-0.285,2H15z" /><circle cx="8.5" cy="19.5" r="1.5" /><circle cx="17.5" cy="19.5" r="1.5" /></g></g></svg>
-
-                    </button>
-
-                  </a>
-                  <div id="shopping-cart-button-div" className="bg-light text-dark">
-                    <div className="p-5">
-                      <img className="img-fluid" src="https://simg.nicepng.com/png/small/195-1957315_lol-haha-or-emoji-asian-troll-face-png.png"></img>
-                      Giỏ hàng đang trống
-
-                    </div>
-                  </div>
-                </div>
-
-
-
+                <a href="/view-cart" >
+                  <button className="nav-link text-white text-center position-relative" >
+                    <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                      {cart.length}
+                      <span className="visually-hidden"></span>
+                    </span>
+                    <svg fill="white" baseProfile="tiny" height="40px" version="1.2" viewBox="0 0 24 24" width="40px" xmlns="http://www.w3.org/2000/svg"><g id="Layer_1"><g><path d="M20.756,5.345C20.565,5.126,20.29,5,20,5H6.181L5.986,3.836C5.906,3.354,5.489,3,5,3H2.75c-0.553,0-1,0.447-1,1    s0.447,1,1,1h1.403l1.86,11.164c0.008,0.045,0.031,0.082,0.045,0.124c0.016,0.053,0.029,0.103,0.054,0.151    c0.032,0.066,0.075,0.122,0.12,0.179c0.031,0.039,0.059,0.078,0.095,0.112c0.058,0.054,0.125,0.092,0.193,0.13    c0.038,0.021,0.071,0.049,0.112,0.065C6.748,16.972,6.87,17,6.999,17C7,17,18,17,18,17c0.553,0,1-0.447,1-1s-0.447-1-1-1H7.847    l-0.166-1H19c0.498,0,0.92-0.366,0.99-0.858l1-7C21.031,5.854,20.945,5.563,20.756,5.345z M18.847,7l-0.285,2H15V7H18.847z M14,7    v2h-3V7H14z M14,10v2h-3v-2H14z M10,7v2H7C6.947,9,6.899,9.015,6.852,9.03L6.514,7H10z M7.014,10H10v2H7.347L7.014,10z M15,12v-2    h3.418l-0.285,2H15z" /><circle cx="8.5" cy="19.5" r="1.5" /><circle cx="17.5" cy="19.5" r="1.5" /></g></g></svg>
+                  </button>
+                </a>
               </div>
             </header>
           </>
           :
           // ###################################################################
-          <nav className="py-2 nav nav-header shadow-sm" >
+          <nav className="py-2 nav navbar shadow-sm" >
             <div className="container d-flex flex-wrap align-items-center">
               <a href="/" className="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-light text-decoration-none">
                 <svg
@@ -208,13 +203,20 @@ function Navbar({ isSearchVisible, login, signUp, avatar, large }) {
               </ul>
               <ul className="nav">
                 {
-                  login ?
-                    <li className="nav-item"><a href="/login" className="nav-link link-light px-2 py-1">Đăng Nhập</a></li>
-                    : <></>
+                  props.showLogin ?
+                    <li className="nav-item"><a href="/login" className="nav-link link-light px-2">Đăng Nhập</a></li>
+                    :
+                    <></>
                 }
                 {
-                  signUp ?
-                    <li className="nav-item"><a href="/sign-up" className="nav-link link-light px-2  me-2 py-1" >Đăng Ký</a></li>
+                  props.showLogin && props.showSignUp ?
+                    <>|</>
+                    :
+                    <></>
+                }
+                {
+                  props.showSignUp ?
+                    <li className="nav-item"><a href="/sign-up" className="nav-link link-light px-2  me-2 " >Đăng Ký</a></li>
                     :
                     <></>
                 }

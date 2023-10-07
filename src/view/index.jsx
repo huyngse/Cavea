@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 
-import Navbar from "../Components/Navbar/index.jsx";
+import Navbar from "../Components/Navbar/Navbar.jsx";
 import Header from "../Components/Header-section/HeaderSection.jsx";
 import ListCart from "../Components/List-cart/index.jsx";
 import TitleBar from "../Components/Title-bar/index.jsx";
@@ -10,7 +10,6 @@ import { useAuth } from "../AuthContext.jsx";
 import { products } from "../Components/List-cart/list_product.jsx";
 import { useCart } from "../CardContext.jsx";
 import "./index.css";
-import "../view/Compare/compare_button.scss";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 
@@ -36,12 +35,12 @@ const Index = () => {
       <main ref={mainRef}></main>
       {loggedInUser ? (
         <>
-          <Navbar avatar={true} />
+          <Navbar showAvatar={true} />
           <Header Order={true} />
         </>
       ) : (
         <>
-          <Navbar isSearchVisible={true} login={true} signUp={true} large={true}/>
+          <Navbar isSearchVisible={true} showLogin={true} showSignUp={true} />
           <Header signUp={true} />
         </>
       )}
@@ -50,12 +49,7 @@ const Index = () => {
         <></>
       ) : (
         <div className="compare-message">
-          <button
-            className="btn-flip "
-            data-back="So sánh"
-            data-front={message}
-            onClick={handleCompareClick}
-          ></button>
+          {"Bạn đã chọn: " + compareDetails.length}
 
           <div>
             {compareDetails.map((product) => (

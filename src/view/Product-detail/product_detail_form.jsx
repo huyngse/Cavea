@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { products } from "../../Components/List-cart/list_product";
-import "./../../Components/Cart/product_cart.css";
+import "./../../Components/Product-card/product_card.css";
 import "./product_detail.css";
 import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
@@ -114,6 +114,8 @@ export default function ProductDetailForm() {
                   <AddShoppingCartIcon style={{ marginRight: "5px" }} />
                   Thêm vào giỏ
                 </button>
+                {productInfo.shape}
+                {productInfo.material}
               </Grid>
               <Grid item xs={6}>
                 <List

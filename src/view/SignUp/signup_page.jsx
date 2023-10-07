@@ -1,19 +1,14 @@
 import React, { useState } from "react";
 import SignUpForm from "./signup_form";
-import Navbar from "../../Components/Navbar/index.jsx";
+import Navbar from "../../Components/Navbar/Navbar.jsx";
 
 const SignUp = () => {
   
 
   return (
     <div>
-      
-        
-          {/* <Loader></Loader> */}
-          <Navbar isSearchVisible={false} login={true}/>
+          <Navbar isSearchVisible={false} showLogin={true} size="small"/>
           <SignUpForm  />
-        
-      
     </div>
   );
 };
