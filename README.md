@@ -8,19 +8,19 @@ In the project directory, you can run:
 
 ### `install dependencies`
 
-npm install @mui/material.\
-npm install @emotion/styled.\
-npm install next.\
-npm install react-intl.\
-npm install react-router-dom.\
-npm install reactstrap react react-dom.\
-npm install @mui/icons-material.\
-npm install framer-motion.\
-npm install react-scroll.\
-npm install @mui/x-date-pickers.\
-npm install @mui/material @emotion/react @emotion/styled.\
-npm install @mui/styled-engine-sc styled-components.
-
+npm install @mui/material\
+npm install @emotion/styled\
+npm install next\
+npm install react-intl\
+npm install react-router-dom\
+npm install reactstrap react react-dom\
+npm install @mui/icons-material\
+npm install framer-motion\
+npm install react-scroll\
+npm install @mui/x-date-pickers\
+npm install @mui/material @emotion/react @emotion/styled\
+npm install @mui/styled-engine-sc styled-components\
+npm i react-image-gallery\
 ### `install sass`
 
 npm install sass
