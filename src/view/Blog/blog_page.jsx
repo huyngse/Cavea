@@ -4,16 +4,17 @@ import Navbar from "../../Components/Navbar/Navbar.jsx";
 import BlogForm from "./blog_form.jsx";
 import Footer from "../../Components/footer/index.jsx";
 
-import { useAuth } from "../../AuthContext.jsx";
+import Cookies from "js-cookie";
 
 const BlogPage = () => {
-  const { loggedInUser } = useAuth();
+  const loggedInUser = Cookies.get("loggedInUser");
+  const userRole = Cookies.get("userRole");
 
   return (
     <div>
-      {loggedInUser ? (
+      {loggedInUser && userRole === "customer" ? (
         <>
-          <Navbar avatar={true} />
+          <Navbar showAvatar={true} />
           <BlogForm />
           <Footer />
         </>

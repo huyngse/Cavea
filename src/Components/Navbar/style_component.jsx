@@ -16,8 +16,7 @@ export const CustomContainer = styled(AppBar)`
   background-color: #398378;
   padding: 0 30px;
   z-index: 1000;
-  box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
-
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 `;
 
 export const BoxStyle = styled(Box)`

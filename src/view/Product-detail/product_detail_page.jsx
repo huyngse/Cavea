@@ -1,17 +1,17 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 import ProductDetailForm from "./product_detail_form";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/footer/index.jsx";
 
-import { useAuth } from "../../AuthContext.jsx";
-
 const ProductDetailPage = () => {
-  const { loggedInUser } = useAuth();
+  const loggedInUser = Cookies.get("loggedInUser");
+  const userRole = Cookies.get("userRole");
 
   return (
     <div>
-      {loggedInUser ? (
+      {loggedInUser && userRole === "customer" ? (
         <>
           <Navbar showAvatar={true} />
           <ProductDetailForm />
