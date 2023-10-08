@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import { Box } from "@mui/system";
@@ -6,7 +6,15 @@ import { StyledModal, StyledBackdrop, style } from "./style_component.jsx";
 import { useAuth } from "../../AuthContext.jsx";
 
 export default function Profile() {
-  const { loggedInUser } = useAuth();
+  const {
+    loggedInUser,
+    userRole,
+    userEmail,
+    userFirstName,
+    userLastName,
+    userPhone,
+  } = useAuth();
+
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -15,7 +23,7 @@ export default function Profile() {
   return (
     <>
       <MenuItem onClick={handleOpen}>
-        <Typography textAlign="center">Profile</Typography>
+        <Typography textAlign="center">Hô Sơ</Typography>
       </MenuItem>
 
       <StyledModal
@@ -27,7 +35,18 @@ export default function Profile() {
       >
         <Box sx={style}>
           <h2 id="unstyled-modal-title">User Profile</h2>
-          <p id="unstyled-modal-description">Username: {loggedInUser}</p>
+          {loggedInUser ? (
+            <>
+              <p id="unstyled-modal-description">Username: {loggedInUser}</p>
+              <p id="unstyled-modal-description">Role: {userRole}</p>
+              <p id="unstyled-modal-description">Email: {userEmail}</p>
+              <p id="unstyled-modal-description">FirstName: {userFirstName}</p>
+              <p id="unstyled-modal-description">LastName: {userLastName}</p>
+              <p id="unstyled-modal-description">Phone: {userPhone}</p>
+            </>
+          ) : (
+            <></>
+          )}
         </Box>
       </StyledModal>
     </>

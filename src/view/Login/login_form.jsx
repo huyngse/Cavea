@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
+import Cookies from "js-cookie";
+import axios from "axios";
+import styled from "@emotion/styled";
+import { useNavigate } from "react-router-dom";
 
+import { useAuth } from "../../AuthContext.jsx";
 import { CustomLoginForm, SignUp, BirdDecor } from "./style_component";
 import {
-  CustomError,
   CustomTitle,
   CustomInput,
   CustomLoginAndSignUpButton,
@@ -13,65 +16,75 @@ import {
 import { FormWrapper } from "../../Components/Header-section/style_component";
 import bird_decor from "../../images/bird-decor.png";
 
-import { useAuth } from "../../AuthContext.jsx";
-
 function LoginForm() {
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
   const { login } = useAuth();
-  const [errorMessages, setErrorMessages] = useState({});
+  const [errorMessages, setErrorMessages] = useState("");
 
-  // User Login info
-  const database = [
-    {
-      username: "user1",
-      password: "pass1",
-    },
-    {
-      username: "user2",
-      password: "pass2",
-    },
-  ];
-
-  const errors = {
-    uname: "invalid username",
-    pass: "invalid password",
-  };
-
-  // STYLE COMPONENT
   const inputDiv = {
-    marginBottom: '10px',
-  }
+    marginBottom: "10px",
+  };
   const mb4Div = {
-    marginBottom: '40px',
-  }
+    marginBottom: "40px",
+  };
   const formCardDiv = {
-    boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
-    position: 'relative',
+    boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.5)",
+    position: "relative",
   };
 
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    var { uname, pass } = document.forms[0];
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/login/checklogin",
+        formData
+      );
+      console.log(response.data);
+      if (response.status === 200) {
+        const userData = response.data;
+        const role = userData.role;
+        const email = userData.email;
+        const firstName = userData.firstName;
+        const lastName = userData.lastName;
+        const phone = userData.phone;
 
-    const userData = database.find((user) => user.username === uname.value);
+        formData.username &&
+          role &&
+          Cookies.set("loggedInUser", formData.username);
+        formData.username && role && Cookies.set("userRole", role);
 
-    if (userData) {
-      if (userData.password !== pass.value) {
-        // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        login(userData.username);
+        login({
+          username: formData.username,
+          role,
+          email,
+          firstName,
+          lastName,
+          phone,
+        });
+        if (role === "admin") {
+          navigate("/admin");
+        } else if (role === "customer") {
+          navigate("/");
+        }
       }
-    } else {
-      setErrorMessages({ name: "uname", message: errors.uname });
+    } catch (error) {
+      console.error("Lỗi:", error);
+      setErrorMessages("Sai tên đăng nhập hoặc mật khẩu ");
     }
   };
 
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <CustomError>{errorMessages.message}</CustomError>
-    );
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   const CssTextField = styled(CustomInput)({
     "& label.Mui-focused": {
@@ -92,32 +105,32 @@ function LoginForm() {
 
   return (
     <>
-     
       <FormWrapper>
-        <CustomLoginForm style={formCardDiv} >
+        <CustomLoginForm style={formCardDiv}>
           <CustomTitle style={mb4Div}>Đăng Nhập</CustomTitle>
 
           <form onSubmit={handleSubmit}>
             <BirdDecor src={bird_decor} />
-            <CssTextField
-              label="Tên tài khoản hoặc email"
-              type="text"
-              name="uname"
-              autoComplete="current-password"
+            <CustomInput
+              label="Username"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
               style={inputDiv}
-            >
-              {renderErrorMessage("pass")}
-            </CssTextField>
-            <CssTextField
-              label="Mật khẩu"
+            />
+            <CustomInput
+              label="Password"
+              name="password"
               type="password"
-              name="pass"
-              autoComplete="current-password"
+              value={formData.password}
+              onChange={handleChange}
               style={mb4Div}
-            >
-              {renderErrorMessage("pass")}
-            </CssTextField>
-            <CustomLoginAndSignUpButton>
+            />
+
+            {errorMessages ? (
+              <p style={{ color: "red" }}>{errorMessages}</p>
+            ) : null}
+            <CustomLoginAndSignUpButton type="submit">
               <LoginAndSignUpButton>Đăng nhập</LoginAndSignUpButton>
             </CustomLoginAndSignUpButton>
             <Text>Bạn chưa có tài khoản Cavea?</Text>
@@ -128,4 +141,5 @@ function LoginForm() {
     </>
   );
 }
+
 export default LoginForm;
