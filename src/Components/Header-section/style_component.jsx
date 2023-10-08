@@ -5,8 +5,7 @@ import newBackground from "../../images/register-bg.jpg"
 
 export const FormWrapper = styled.div`
   font-family: sans-serif;
-
-  padding-bottom: 30px;
+  padding-bottom: 55px;
   padding-top: 5px;
   background-image: url(${newBackground});
   background-size: cover;

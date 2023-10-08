@@ -1,7 +1,7 @@
 import React from "react";
 
 import ProductDetailForm from "./product_detail_form";
-import Navbar from "../../Components/Navbar/index";
+import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/footer/index.jsx";
 
 import { useAuth } from "../../AuthContext.jsx";
@@ -13,13 +13,13 @@ const ProductDetailPage = () => {
     <div>
       {loggedInUser ? (
         <>
-          <Navbar avatar={true} />
+          <Navbar showAvatar={true} />
           <ProductDetailForm />
           <Footer />
         </>
       ) : (
         <>
-          <Navbar login={true} />
+          <Navbar showLogin={true} />
           <ProductDetailForm />
           <Footer />
         </>

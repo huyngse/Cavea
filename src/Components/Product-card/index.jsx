@@ -6,7 +6,7 @@ import { useCart } from "../../CardContext.jsx";
 
 import BasicRating from "../Rating/index.jsx";
 import { CustomCard, CartButton } from "./style_component.jsx";
-import "./product_cart.css";
+import "./product_card.css";
 
 
 export default function MediaCard(props) {

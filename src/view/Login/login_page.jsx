@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import LoginForm from "./login_form";
-import Navbar from "../../Components/Navbar/index";
+import Navbar from "../../Components/Navbar/Navbar";
 import Index from "../../view/index";
 
 import { useAuth } from "../../AuthContext.jsx";
@@ -18,7 +18,7 @@ const LoginPage = () => {
         </Routes>
       ) : (
         <>
-          <Navbar signUp={true} />
+          <Navbar showSignUp={true} size="small"/>
           <LoginForm />
         </>
       )}

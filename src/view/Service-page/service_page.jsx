@@ -1,7 +1,7 @@
 import React from "react";
 
 import ServiceForm from "./service_form";
-import Navbar from "../../Components/Navbar/index";
+import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/footer/index.jsx";
 
 import { useAuth } from "../../AuthContext.jsx";

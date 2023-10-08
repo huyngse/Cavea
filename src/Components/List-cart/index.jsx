@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { FormListCart } from "./style_component.jsx";
-import MediaCard from "../Cart/index.jsx";
+import MediaCard from "../Product-card/index.jsx";
 import { products } from "./list_product.jsx";
 
 import { CardContext, useCart } from "../../CardContext.jsx";
