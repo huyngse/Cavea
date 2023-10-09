@@ -12,7 +12,7 @@ import BlogPage from "./view/Blog/blog_page.jsx";
 import ServicePage from "./view/Service-page/service_page.jsx";
 import ComparePage from "./view/Compare/compare_page.jsx";
 import ProductDetailPage from "./view/Product-detail/product_detail_page.jsx";
-import ViewCartPage from "./view/ViewCard/view_cart_page.jsx";
+import ViewCartPage from "./view/ViewCart/view_cart_page.jsx";
 import ScrollToTop from "./scroll-to-top.jsx";
 import "./index.scss";
 import AdminPage from "./view/Admin/admin_form.jsx";
