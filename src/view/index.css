@@ -3,6 +3,16 @@
   --secondary-color: red;
 }
 
+.no-arrow[type=number] {
+  appearance: textfield;
+}
+
+.no-arrow::-webkit-outer-spin-button,
+.no-arrow::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .compare-button {
   padding: 10px 100px 10px 20px;
   background-color: hsl(200, 58%, 42%);
@@ -32,7 +42,7 @@
   font-size: large;
 }
 
-.compare-message > div {
+.compare-message>div {
   display: flex;
   justify-content: center;
   gap: 10px;
