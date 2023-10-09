@@ -36,106 +36,11 @@ const Index = () => {
     <>
       <main ref={mainRef}></main>
       {loggedInUser && userRole === "customer" ? (
-        <>
-          <Navbar showAvatar={true} />
-          <Header Order={true} />
-          {compareDetails.length < 1 ? null : (
-            <div className="compare-message">
-              {"Bạn đã chọn: " + compareDetails.length}
-              <div>
-                {compareDetails.map((product) => (
-                  <a
-                    className="compare-demo-card"
-                    href={`/product-detail/${product.id}`}
-                    key={product.id}
-                  >
-                    <img src={product.image} alt="Hình so sánh" />
-                  </a>
-                ))}
-              </div>
-              <button onClick={handleCompareClick} className="compare-button">
-                So sánh
-              </button>
-            </div>
-          )}
-
-          <div id="cu-gay">
-            <TitleBar label="Lồng chim cu gáy"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="hoa-mi">
-            <TitleBar label="Lồng chim họa mi"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="chao-mao">
-            <TitleBar label="Lồng chim chào mào"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="khuyen">
-            <TitleBar label="Lồng chim khuyên"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="choe-than">
-            <TitleBar label="Lồng chim chòe than"></TitleBar>
-          </div>
-          <ListCart />
-          <BackToTopButton />
-          <Footer />
-        </>
+        <Navbar showAvatar={true} />
       ) : (
-        <>
-          <Navbar isSearchVisible={true} showLogin={true} showSignUp={true} />
-          <Header signUp={true} />
-          {compareDetails.length < 1 ? null : (
-            <div className="compare-message">
-              <button
-                className="btn-flip "
-                data-back="So sánh"
-                data-front={message}
-                onClick={handleCompareClick}
-              ></button>
-
-              <div>
-                {compareDetails.map((product) => (
-                  <a
-                    className="compare-demo-card"
-                    href={`/product-detail/${product.id}`}
-                    key={product.id}
-                  >
-                    <img src={product.image} alt="Hình so sánh" />
-                  </a>
-                ))}
-              </div>
-              <button onClick={handleCompareClick} className="compare-button">
-                So sánh
-              </button>
-            </div>
-          )}
-
-          <div id="cu-gay">
-            <TitleBar label="Lồng chim cu gáy"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="hoa-mi">
-            <TitleBar label="Lồng chim họa mi"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="chao-mao">
-            <TitleBar label="Lồng chim chào mào"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="khuyen">
-            <TitleBar label="Lồng chim khuyên"></TitleBar>
-          </div>
-          <ListCart />
-          <div id="choe-than">
-            <TitleBar label="Lồng chim chòe than"></TitleBar>
-          </div>
-          <ListCart />
-          <BackToTopButton />
-          <Footer />
-        </>
+        <Navbar isSearchVisible={true} showLogin={true} showSignUp={true} />
       )}
+      <Header />
 
       {compareDetails < 1 ? (
         <></>
