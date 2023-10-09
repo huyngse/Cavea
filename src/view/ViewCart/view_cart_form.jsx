@@ -50,17 +50,20 @@ export default function ViewCardForm() {
             archive
           />
         </div>
-        <div className="col-4 p-3">
-          <h2>Tổng cộng: </h2>
-          <h3 className="text-primary">
-            {totalPrice.toLocaleString("vi-VN", {
-              style: "currency",
-              currency: "VND",
-            })}
-          </h3>
-          <button className="btn btn-primary mb-3">
-            Đặt hàng
-          </button>
+        <div className="col-4 ps-5 mt-5">
+          <div className="text-center mb-4">
+            <h2>Tổng cộng </h2>
+            <h3 className="text-primary mb-3">
+              {totalPrice.toLocaleString("vi-VN", { style: "currency", currency: "VND", })}
+            </h3>
+            <a href="/checkout">
+              <button className="btn btn-primary mx-auto w-50">
+                Đặt hàng
+              </button>
+            </a>
+
+          </div>
+
           <ul className="ps-3">
             <a href="/">
               <li>
