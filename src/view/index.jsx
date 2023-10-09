@@ -19,6 +19,13 @@ const Index = () => {
   const { handleCompareClick, compareProducts } = useCart();
   const [compareDetails, setCompareProductDetails] = useState([]);
 
+  const [divVisible, setDivVisible] = useState(true);
+
+  const handleRemoveDivClick = () => {
+    setDivVisible(false);
+  };
+
+
   useEffect(() => {
     if (compareProducts.length >= 0) {
       const compareDetails = products.filter((product) =>
@@ -28,12 +35,18 @@ const Index = () => {
     }
   }, [compareProducts]);
 
-  const message = "Bạn đã chọn: " + compareDetails.length;
-
   const loggedInUser = Cookies.get("loggedInUser");
   const userRole = Cookies.get("userRole");
   return (
     <>
+      {divVisible &&
+        <div className="bg-dark">
+          <a href="/checkout" className="me-3 link-light">checkout</a>
+          <a href="/admin" className="me-3 link-light">admin</a>
+          <span onClick={handleRemoveDivClick} className="link-light text-decoration-underline">Hide</span>
+        </div>
+      }
+
       <main ref={mainRef}></main>
       {loggedInUser && userRole === "customer" ? (
         <Navbar showAvatar={true} />
