@@ -1,20 +1,19 @@
 import * as React from "react";
 import ListItemText from "@mui/material/ListItemText";
 
-import List from '@mui/material/List';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import Avatar from '@mui/material/Avatar';
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
 
-import chimCuGay from '../../images/Bird-photos/chim-cu-gay.jpg';
-import chimHoaMi from '../../images/Bird-photos/chim-hoa-mi.jpg';
-import chimChaoMao from '../../images/Bird-photos/chim-chao-mao.jpg';
-import chimKhuyen from '../../images/Bird-photos/chim-khuyen.jpg';
-import chimChoeThan from '../../images/Bird-photos/chim-choe-than.jpg';
-import chimKhuou from '../../images/Bird-photos/chim-khuou.jpg';
-import chimHutMat from '../../images/Bird-photos/chim-hut-mat.jpg';
-import chimChoeLua from '../../images/Bird-photos/chim-chich-choe-lua.jpg';
-
+import chimCuGay from "../../images/Bird-photos/chim-cu-gay.jpg";
+import chimHoaMi from "../../images/Bird-photos/chim-hoa-mi.jpg";
+import chimChaoMao from "../../images/Bird-photos/chim-chao-mao.jpg";
+import chimKhuyen from "../../images/Bird-photos/chim-khuyen.jpg";
+import chimChoeThan from "../../images/Bird-photos/chim-choe-than.jpg";
+import chimKhuou from "../../images/Bird-photos/chim-khuou.jpg";
+import chimHutMat from "../../images/Bird-photos/chim-hut-mat.jpg";
+import chimChoeLua from "../../images/Bird-photos/chim-chich-choe-lua.jpg";
 
 export default function HeaderMenu() {
   const menuItems = [
@@ -58,27 +57,27 @@ export default function HeaderMenu() {
       image: chimHutMat,
       href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-choe-lua",
     },
-  ]
+  ];
   return (
     <List
-      sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper'}}
+      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
       component="nav"
       aria-labelledby="nested-list-subheader"
-
     >
       {menuItems.map((item, index) => (
-        <a href={item.href} key={index} style={{ textDecoration: "none", color: "black"}}>
-          <ListItemButton >
+        <a
+          href={item.href}
+          key={index}
+          style={{ textDecoration: "none", color: "black" }}
+        >
+          <ListItemButton>
             <ListItemAvatar>
-              <Avatar src={item.image}>
-              </Avatar>
+              <Avatar src={item.image}></Avatar>
             </ListItemAvatar>
             <ListItemText primary={item.text} />
           </ListItemButton>
         </a>
-      )
-      )}
+      ))}
     </List>
   );
-
 }

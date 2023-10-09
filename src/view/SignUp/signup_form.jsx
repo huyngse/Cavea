@@ -1,14 +1,10 @@
-import * as React from 'react';
-import '../SignUp/signup_form.css'
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import * as React from "react";
+import "../SignUp/signup_form.css";
+import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 
 import { CustomLoginForm, SignUp, BirdDecor } from "../Login/style_component";
 import {
-  CustomError,
   CustomTitle,
   CustomInput,
   CustomLoginAndSignUpButton,
@@ -17,22 +13,6 @@ import {
 } from "../../Components/Login-and-signup-form/index.jsx";
 import { FormWrapper } from "../../view/SignUp/style_component.jsx";
 import bird_decor from "../../images/bird-decor.png";
-
-
-
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const CssTextField = styled(CustomInput)({
   "& label.Mui-focused": {
@@ -52,25 +32,22 @@ const CssTextField = styled(CustomInput)({
 });
 // STYLE COMPONENTS
 const mb4 = {
-  marginBottom: '40px',
+  marginBottom: "40px",
 };
 const formCardDiv = {
-  boxShadow: '5px 5px 10px rgba(0, 0, 0, 0.5)',
-  position: 'relative',
+  boxShadow: "5px 5px 10px rgba(0, 0, 0, 0.5)",
+  position: "relative",
 };
 
-
 // TODO remove, this demo shouldn't need to reset the theme.
-
-const defaultTheme = createTheme();
 
 export default function SignUpForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+      email: data.get("email"),
+      password: data.get("password"),
     });
   };
 
@@ -81,21 +58,20 @@ export default function SignUpForm() {
           <CustomTitle style={mb4}>Đăng Ký</CustomTitle>
 
           <div>
-
             <form onSubmit={handleSubmit}>
               <BirdDecor src={bird_decor} />
-              <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
-
+              <Grid
+                container
+                rowSpacing={1}
+                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              >
                 <Grid item xs={6}>
                   <CssTextField
                     required
                     label="Họ"
                     type="text"
                     name="uname"
-                  >
-
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
                 <Grid item xs={6}>
                   <CssTextField
@@ -103,9 +79,7 @@ export default function SignUpForm() {
                     label="Tên"
                     type="text"
                     name="uname"
-                  >
-
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
 
                 <Grid item xs={12}>
@@ -115,8 +89,7 @@ export default function SignUpForm() {
                     type="text"
                     name="uname"
                     autoComplete="current-password"
-                  >
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
                 <Grid item xs={12}>
                   <CssTextField
@@ -125,8 +98,7 @@ export default function SignUpForm() {
                     type="text"
                     name="uname"
                     autoComplete="current-password"
-                  >
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
                 <Grid item xs={12}>
                   <CssTextField
@@ -135,11 +107,8 @@ export default function SignUpForm() {
                     type="password"
                     name="pass"
                     autoComplete="current-password"
-                  >
-
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
-
 
                 <Grid item xs={12}>
                   <CssTextField
@@ -149,11 +118,8 @@ export default function SignUpForm() {
                     name="pass"
                     autoComplete="current-password"
                     style={mb4}
-                  >
-
-                  </CssTextField>
+                  ></CssTextField>
                 </Grid>
-
 
                 {/* <Grid item xs={6}>
                   <RadioGroup
@@ -177,16 +143,10 @@ export default function SignUpForm() {
 
                   </LocalizationProvider>
                 </Grid> */}
-
-
-
-
-
               </Grid>
             </form>
             <Grid item xs={12}>
               <CustomLoginAndSignUpButton>
-
                 <LoginAndSignUpButton>Đăng ký</LoginAndSignUpButton>
               </CustomLoginAndSignUpButton>
 
@@ -194,9 +154,8 @@ export default function SignUpForm() {
               <SignUp href="/login-page">Đăng nhập</SignUp>
             </Grid>
           </div>
-
         </CustomLoginForm>
-      </FormWrapper >
+      </FormWrapper>
     </>
   );
 }

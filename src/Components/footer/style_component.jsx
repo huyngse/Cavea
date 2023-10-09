@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 
-
 export const FormFooter = styled.div`
 background-color: primaryColor;
 color: white;

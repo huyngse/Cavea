@@ -1,10 +1,13 @@
-import * as React from 'react';
-import { Unstable_NumberInput as NumberInput } from '@mui/base/Unstable_NumberInput';
-import { styled } from '@mui/system';
-import RemoveIcon from '@mui/icons-material/Remove';
-import AddIcon from '@mui/icons-material/Add';
+import * as React from "react";
+import { Unstable_NumberInput as NumberInput } from "@mui/base/Unstable_NumberInput";
+import { styled } from "@mui/system";
+import RemoveIcon from "@mui/icons-material/Remove";
+import AddIcon from "@mui/icons-material/Add";
 
-const CustomNumberInput = React.forwardRef(function CustomNumberInput(props, ref) {
+const CustomNumberInput = React.forwardRef(function CustomNumberInput(
+  props,
+  ref
+) {
   return (
     <NumberInput
       slots={{
@@ -16,7 +19,7 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(props, ref
       slotProps={{
         incrementButton: {
           children: <AddIcon />,
-          className: 'increment',
+          className: "increment",
         },
         decrementButton: {
           children: <RemoveIcon />,
@@ -29,53 +32,60 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(props, ref
 });
 
 export default function QuantityInput() {
-  return <CustomNumberInput aria-label="Quantity Input" min={1} max={99} defaultValue={1}/>;
+  return (
+    <CustomNumberInput
+      aria-label="Quantity Input"
+      min={1}
+      max={99}
+      defaultValue={1}
+    />
+  );
 }
 
 const blue = {
-  100: '#daecff',
-  200: '#b6daff',
-  300: '#66b2ff',
-  400: '#3399ff',
-  500: '#007fff',
-  600: '#0072e5',
-  800: '#004c99',
+  100: "#daecff",
+  200: "#b6daff",
+  300: "#66b2ff",
+  400: "#3399ff",
+  500: "#007fff",
+  600: "#0072e5",
+  800: "#004c99",
 };
 
 const grey = {
-  50: '#f6f8fa',
-  100: '#eaeef2',
-  200: '#d0d7de',
-  300: '#afb8c1',
-  400: '#8c959f',
-  500: '#6e7781',
-  600: '#57606a',
-  700: '#424a53',
-  800: '#32383f',
-  900: '#24292f',
+  50: "#f6f8fa",
+  100: "#eaeef2",
+  200: "#d0d7de",
+  300: "#afb8c1",
+  400: "#8c959f",
+  500: "#6e7781",
+  600: "#57606a",
+  700: "#424a53",
+  800: "#32383f",
+  900: "#24292f",
 };
 
-const StyledInputRoot = styled('div')(
+const StyledInputRoot = styled("div")(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
   font-weight: 400;
-  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[500]};
+  color: ${theme.palette.mode === "dark" ? grey[300] : grey[500]};
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
   align-items: center;
-`,
+`
 );
 
-const StyledInput = styled('input')(
+const StyledInput = styled("input")(
   ({ theme }) => `
   font-size: 0.875rem;
   font-family: inherit;
   font-weight: 400;
   line-height: 1.375;
-  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
+  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
+  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
+  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
   border-radius: 4px;
   margin: 0 4px;
   padding: 10px 12px;
@@ -90,16 +100,18 @@ const StyledInput = styled('input')(
 
   &:focus {
     border-color: ${blue[400]};
-    box-shadow: 0 0 0 3px ${theme.palette.mode === 'dark' ? blue[500] : blue[200]};
+    box-shadow: 0 0 0 3px ${
+      theme.palette.mode === "dark" ? blue[500] : blue[200]
+    };
   }
 
   &:focus-visible {
     outline: 0;
   }
-`,
+`
 );
 
-const StyledButton = styled('button')(
+const StyledButton = styled("button")(
   ({ theme }) => `
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
@@ -107,7 +119,7 @@ const StyledButton = styled('button')(
   line-height: 1.5;
   border: 0;
   border-radius: 999px;
-  color: ${theme.palette.mode === 'dark' ? blue[300] : blue[600]};
+  color: ${theme.palette.mode === "dark" ? blue[300] : blue[600]};
   background: transparent;
   width: 40px;
   height: 40px;
@@ -120,7 +132,7 @@ const StyledButton = styled('button')(
   transition-duration: 120ms;
 
   &:hover {
-    background: ${theme.palette.mode === 'dark' ? blue[800] : blue[100]};
+    background: ${theme.palette.mode === "dark" ? blue[800] : blue[100]};
     cursor: pointer;
   }
 
@@ -131,5 +143,5 @@ const StyledButton = styled('button')(
   &.increment {
     order: 1;
   }
-`,
+`
 );

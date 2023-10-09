@@ -22,7 +22,6 @@
   background-color: var(--secondary-color);
 }
 
-
 .compare-message {
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -33,14 +32,12 @@
   font-size: large;
 }
 
-
-.compare-message>div {
+.compare-message > div {
   display: flex;
   justify-content: center;
   gap: 10px;
   align-items: center;
   height: 130px;
-
 }
 
 .compare-demo-card {
@@ -61,4 +58,3 @@
   object-fit: cover;
   width: 150%;
 }
-

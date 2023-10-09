@@ -1,19 +1,19 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 import ServiceForm from "./service_form";
 import Navbar from "../../Components/Navbar/Navbar";
 import Footer from "../../Components/footer/index.jsx";
 
-import { useAuth } from "../../AuthContext.jsx";
-
 const ServicePage = () => {
-  const { loggedInUser } = useAuth();
+  const loggedInUser = Cookies.get("loggedInUser");
+  const userRole = Cookies.get("userRole");
 
   return (
     <div>
-      {loggedInUser ? (
+      {loggedInUser && userRole === "customer" ? (
         <>
-          <Navbar avatar={true} />
+          <Navbar avatar={true} showAvatar={true} />
           <ServiceForm />
           <Footer />
         </>

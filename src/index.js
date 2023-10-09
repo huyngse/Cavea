@@ -13,9 +13,9 @@ import ServicePage from "./view/Service-page/service_page.jsx";
 import ComparePage from "./view/Compare/compare_page.jsx";
 import ProductDetailPage from "./view/Product-detail/product_detail_page.jsx";
 import ViewCartPage from "./view/ViewCard/view_cart_page.jsx";
-import  ScrollToTop  from "./scroll-to-top.jsx";
-
-import './index.scss'
+import ScrollToTop from "./scroll-to-top.jsx";
+import "./index.scss";
+import AdminPage from "./view/Admin/admin_form.jsx";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,7 +37,10 @@ const App = () => {
           <ScrollToTop>
             <Routes>
               <Route path="/" element={isLoading ? <Loader /> : <Index />} />
-              <Route path="/login" element={isLoading ? <Loader /> : <Login />} />
+              <Route
+                path="/login/*"
+                element={isLoading ? <Loader /> : <Login />}
+              />
               <Route
                 path="/sign-up"
                 element={isLoading ? <Loader /> : <SignUp />}
@@ -62,10 +65,13 @@ const App = () => {
                 path="view-cart"
                 element={isLoading ? <Loader /> : <ViewCartPage />}
               />
+              <Route
+                path="/admin"
+                element={isLoading ? <Loader /> : <AdminPage />}
+              />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </ScrollToTop>
-
         </CardProvider>
       </AuthProvider>
     </BrowserRouter>

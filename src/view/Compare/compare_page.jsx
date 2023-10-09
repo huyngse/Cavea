@@ -1,17 +1,17 @@
 import React from "react";
+import Cookies from "js-cookie";
 
 import Navbar from "../../Components/Navbar/Navbar.jsx";
 import CompareForm from "./compare_form.jsx";
 import Footer from "../../Components/footer/index.jsx";
 
-import { useAuth } from "../../AuthContext.jsx";
-
 const BlogPage = () => {
-  const { loggedInUser } = useAuth();
+  const loggedInUser = Cookies.get("loggedInUser");
+  const userRole = Cookies.get("userRole");
 
   return (
     <div>
-      {loggedInUser ? (
+      {loggedInUser && userRole === "customer" ? (
         <>
           <Navbar showAvatar={true} />
           <CompareForm sx={{ textAlign: "center" }} />
@@ -19,7 +19,7 @@ const BlogPage = () => {
         </>
       ) : (
         <>
-          <Navbar showLogin={true} showSignUp={true}/>
+          <Navbar showLogin={true} showSignUp={true} />
           <CompareForm />
           <Footer />
         </>
