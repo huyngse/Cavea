@@ -17,6 +17,9 @@ import CheckoutPage from "./view/CheckoutPage/CheckoutPage.jsx";
 import ScrollToTop from "./scroll-to-top.jsx";
 import "./index.scss";
 import AdminPage from "./view/Admin/admin_form.jsx";
+import MainLayout from "./view/Layout/MainLayout.jsx"
+import AccountLayout from "./view/Layout/AccountLayout.jsx"
+import EditProfile from "./view/AccountPage/EditProfile.jsx";
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,7 +77,24 @@ const App = () => {
                 path="/checkout"
                 element={isLoading ? <Loader /> : <CheckoutPage />}
               />
-              <Route path="*" element={<Navigate to="/" replace />} />
+               <Route
+                path="account/profile"
+                element={isLoading ? <Loader /> : <MainLayout><AccountLayout><EditProfile/></AccountLayout></MainLayout>}
+              />
+              <Route
+                path="account/order"
+                element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+              />
+              <Route
+                path="account/change-password"
+                element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+              />
+              <Route
+                path="account/notification"
+                element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+              />
+              
+              <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt=""/>} />
             </Routes>
           </ScrollToTop>
         </CardProvider>

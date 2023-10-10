@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../../AuthContext.jsx";
 import { useCart } from "../../CardContext.jsx";
-
-import Profile from "../Profile/index.jsx";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
 import "./Navbar.css";
@@ -52,7 +50,7 @@ function Navbar(props) {
   ];
 
   const { cart } = useCart();
-  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
+  // const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
 
   return (
     <>
@@ -145,45 +143,46 @@ function Navbar(props) {
                 )}
 
                 {props.showAvatar ? (
-                  <div class="dropdown text-end p-2">
-                    <a
-                      href="#"
-                      class="d-block link-dark text-decoration-none dropdown-toggle"
+                  <div className="dropdown text-end p-2 ">
+                    <button
+                      className="d-block link-dark text-decoration-none dropdown-toggle d-flex align-items-center bg-transparent border-0"
                       id="dropdownUser1"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <img
-                        src="https://scontent.fsgn2-8.fna.fbcdn.net/v/t39.30808-1/274521980_1834277470105356_2367113117133775173_n.jpg?stp=dst-jpg_p320x320&_nc_cat=102&ccb=1-7&_nc_sid=fe8171&_nc_ohc=hVjWZ-K2JFkAX9GopKa&_nc_ht=scontent.fsgn2-8.fna&oh=00_AfBWgJ4zCsefPzPNBqBqIyBBfOTrAZk9AVmdpvBlC_4VxQ&oe=6521F9F0"
-                        alt="mdo"
-                        width="32"
-                        height="32"
-                        class="rounded-circle"
-                      />
-                    </a>
+                      <div className="object-fit-cover object-position-center rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
+                        <img
+                          src="https://cdn5.vectorstock.com/i/1000x1000/64/39/sketch-cute-sparrow-vector-3176439.jpg"
+                          alt="mdo"
+                          className="img-fluid"
+                        />
+                      </div>
+
+                    </button>
                     <ul
-                      class="dropdown-menu text-small"
+                      className="dropdown-menu text-small"
                       aria-labelledby="dropdownUser1"
                     >
                       <li>
-                        <Profile />
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Lịch Sử Đơn Hàng
+                        <a className="dropdown-item" href="account/profile">
+                          Tài khoản của tôi
                         </a>
                       </li>
                       <li>
-                        <hr class="dropdown-divider" />
+                        <a className="dropdown-item" href="account/order">
+                          Lịch sử đơn hàng
+                        </a>
                       </li>
                       <li>
-                        <a
-                          class="dropdown-item"
-                          href="#"
+                        <hr className="dropdown-divider" />
+                      </li>
+                      <li>
+                        <button
+                          className="dropdown-item"
                           onClick={handleLogout}
                         >
-                          Đăng Xuất
-                        </a>
+                          Đăng xuất
+                        </button>
                       </li>
                     </ul>
                   </div>

@@ -13,6 +13,10 @@
   margin: 0;
 }
 
+.bg-gray {
+  background-color: lightgray;
+}
+
 .compare-button {
   padding: 10px 100px 10px 20px;
   background-color: hsl(200, 58%, 42%);
