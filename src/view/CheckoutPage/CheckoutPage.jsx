@@ -6,26 +6,26 @@ import Footer from "../../Components/footer/index.jsx";
 import CheckoutContent from "./CheckoutContent.jsx";
 
 const CheckoutPage = () => {
-    const loggedInUser = Cookies.get("loggedInUser");
-    const userRole = Cookies.get("userRole");
+  const loggedInUser = Cookies.get("loggedInUser");
+  const userRole = Cookies.get("userRole");
 
-    return (
-        <div className="min-vh-100 d-flex flex-column">
-            {loggedInUser && userRole === "customer" ? (
-                <>
-                    <Navbar showAvatar={true} />
-                    <CheckoutContent />
-                    <Footer />
-                </>
-            ) : (
-                <>
-                    <Navbar showLogin={true} showSignUp={true} />
-                    <CheckoutContent />
-                    <Footer />
-                </>
-            )}
-        </div>
-    );
+  return (
+    <div className="min-vh-100 d-flex flex-column">
+      {loggedInUser && userRole === "customer" ? (
+        <>
+          <Navbar showAvatar={true} />
+          <CheckoutContent />
+          <Footer />
+        </>
+      ) : (
+        <>
+          <Navbar showLogin={true} showSignUp={true} />
+          <CheckoutContent />
+          <Footer />
+        </>
+      )}
+    </div>
+  );
 };
 
 export default CheckoutPage;
