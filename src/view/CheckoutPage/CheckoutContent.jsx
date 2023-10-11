@@ -109,7 +109,7 @@ const CheckoutContent = () => {
                         <h2 className='h5'>Phương thức thanh toán</h2>
                         <div className='ps-3'>
                             <div className="form-check">
-                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="paymentMethod1" checked/>
+                                <input className="form-check-input" type="radio" name="flexRadioDefault" id="paymentMethod1"/>
                                 <label className="form-check-label" htmlFor="paymentMethod1">
                                     Bằng VNPay
                                 </label>

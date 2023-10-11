@@ -68,7 +68,7 @@ function EditProfile() {
   };
 
   return (
-    <div>
+    <div className="py-3 px-4 bg-white ">
       <h1 className='h4 fw-normal'>Hồ sơ của tôi</h1>
       <p className='fs-6 fw-normal text-muted'>Quản lý thông tin hồ sơ để bảo mật tài khoản</p>
       <hr className='mb-3' />
@@ -111,7 +111,7 @@ function EditProfile() {
                 </td>
                 <td>
                   <p className='mb-2'>
-                    098-8392-933
+                    0707672032
                   </p>
                 </td>
               </tr>
