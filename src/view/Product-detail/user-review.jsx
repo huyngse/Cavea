@@ -22,6 +22,7 @@ function UserReview(props) {
         <img
           src={props.avatar}
           className="review-avatar me-3 align-self-start"
+          alt=""
         ></img>
         <div className="flex-grow-1">
           {props.username}

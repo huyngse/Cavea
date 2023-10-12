@@ -58,9 +58,7 @@ export default function ViewCardForm() {
                 Đặt hàng
               </button>
             </a>
-
           </div>
-
           <ul className="ps-3">
             <a href="/">
               <li>Tiếp tục mua hàng</li>

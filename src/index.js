@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-
+// import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { AuthProvider } from "./AuthContext.jsx";
 import { CardProvider } from "./CardContext.jsx";
 import Loader from "./Components/Loading/index.jsx";
@@ -17,7 +17,18 @@ import CheckoutPage from "./view/CheckoutPage/CheckoutPage.jsx";
 import ScrollToTop from "./scroll-to-top.jsx";
 import "./index.scss";
 import AdminPage from "./view/Admin/admin_form.jsx";
+import MainLayout from "./view/Layout/MainLayout.jsx"
+import AccountLayout from "./view/Layout/AccountLayout.jsx"
+import EditProfile from "./view/AccountPage/EditProfile.jsx";
+import UserOrder from "./view/AccountPage/UserOrder.jsx";
 
+// const theme = createTheme({
+//   palette: {
+//     secondary: {
+//       main: '#E33E7F'
+//     }
+//   }
+// });
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -32,54 +43,81 @@ const App = () => {
   }, []);
 
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <CardProvider>
-          <ScrollToTop>
-            <Routes>
-              <Route path="/" element={isLoading ? <Loader /> : <Index />} />
-              <Route
-                path="/login/*"
-                element={isLoading ? <Loader /> : <Login />}
-              />
-              <Route
-                path="/sign-up"
-                element={isLoading ? <Loader /> : <SignUp />}
-              />
-              <Route
-                path="/service"
-                element={isLoading ? <Loader /> : <ServicePage />}
-              />
-              <Route
-                path="/blog"
-                element={isLoading ? <Loader /> : <BlogPage />}
-              />
-              <Route
-                path="/compare"
-                element={isLoading ? <Loader /> : <ComparePage />}
-              />
-              <Route
-                path="/product-detail/:productId"
-                element={isLoading ? <Loader /> : <ProductDetailPage />}
-              />
-              <Route
-                path="view-cart"
-                element={isLoading ? <Loader /> : <ViewCartPage />}
-              />
-              <Route
-                path="/admin"
-                element={isLoading ? <Loader /> : <AdminPage />}
-              />
-               <Route
-                path="/checkout"
-                element={isLoading ? <Loader /> : <CheckoutPage />}
-              />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </ScrollToTop>
-        </CardProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    // <MuiThemeProvider theme={theme}>
+      <BrowserRouter>
+        <AuthProvider>
+          <CardProvider>
+            <ScrollToTop>
+              <Routes>
+                <Route path="/" element={isLoading ? <Loader /> : <Index />} />
+                <Route path="/Cavea" element={isLoading ? <Loader /> : <Index />} />
+
+                <Route
+                  path="/login/*"
+                  element={isLoading ? <Loader /> : <Login />}
+                />
+                <Route
+                  path="/sign-up"
+                  element={isLoading ? <Loader /> : <SignUp />}
+                />
+                <Route
+                  path="/service"
+                  element={isLoading ? <Loader /> : <ServicePage />}
+                />
+                <Route
+                  path="/blog"
+                  element={isLoading ? <Loader /> : <BlogPage />}
+                />
+                <Route
+                  path="/compare"
+                  element={isLoading ? <Loader /> : <ComparePage />}
+                />
+                <Route
+                  path="/product-detail/:productId"
+                  element={isLoading ? <Loader /> : <ProductDetailPage />}
+                />
+                <Route
+                  path="view-cart"
+                  element={isLoading ? <Loader /> : <ViewCartPage />}
+                />
+                <Route
+                  path="/admin"
+                  element={isLoading ? <Loader /> : <AdminPage />}
+                />
+                <Route
+                  path="/checkout"
+                  element={isLoading ? <Loader /> : <CheckoutPage />}
+                />
+                <Route
+                  path="account/profile"
+                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><EditProfile /></AccountLayout></MainLayout>}
+                />
+                <Route
+                  path="account/order"
+                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><UserOrder /></AccountLayout></MainLayout>}
+                />
+                <Route
+                  path="account/custom-order"
+                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                />
+                <Route
+                  path="account/change-password"
+                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                />
+                <Route
+                  path="account/notification"
+                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                />
+
+
+                <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt="" />} />
+              </Routes>
+            </ScrollToTop>
+          </CardProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    // </MuiThemeProvider>
+
   );
 };
 
