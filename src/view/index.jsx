@@ -46,6 +46,14 @@ const Index = () => {
     Cookies.set("loggedInUser", "DEV");
     Cookies.set("userRole", "customer");
     navigate("/");
+    login({
+      username: "joeywheeler",
+      role: "customer",
+      email: "joeywheeler@gmail.com",
+      firstName: "Wheeler",
+      lastName: "Joey",
+      phone: "087 2234 832",
+    });
   }
   const { logout } = useAuth();
   const { login } = useAuth();
@@ -54,14 +62,7 @@ const Index = () => {
     logout();
     navigate("/");
   };
-  login({
-    username: "joeywheeler",
-    role: "customer",
-    email: "joeywheeler@gmail.com",
-    firstName: "Wheeler",
-    lastName: "Joey",
-    phone: "087 2234 832",
-  });
+
   return (
     <>
       {divVisible &&

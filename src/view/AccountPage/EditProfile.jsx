@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from "../../AuthContext.jsx";
+import Cookies from "js-cookie";
 
 function EditProfile() {
   const [cities, setCities] = useState([]);
@@ -10,14 +11,11 @@ function EditProfile() {
   const [wards, setWards] = useState([]);
   const [selectedWard, setSelectedWard] = useState('');
 
-  const {
-    loggedInUser,
-    userRole,
-    userEmail,
-    userFirstName,
-    userLastName,
-    userPhone,
-  } = useAuth();
+  const email = Cookies.get("email");
+  const phone = Cookies.get("phone");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
+  const username = Cookies.get("loggedInUser");
 
 
   useEffect(() => {
@@ -81,7 +79,7 @@ function EditProfile() {
                   <label htmlFor="usernameInput" className="form-label text-muted">Tên đăng nhập</label>
                 </td>
                 <td>
-                  <input type="text" className="form-control" id="usernameInput" aria-describedby="username" defaultValue="shymastic" />
+                  <input type="text" className="form-control" id="usernameInput" aria-describedby="username" defaultValue={username} />
                 </td>
               </tr >
               <tr>
@@ -90,7 +88,7 @@ function EditProfile() {
                 </td>
                 <td>
                   <div className='d-flex gap-3'>
-                    <input type="text" className="form-control" id="fullName" aria-describedby="lastNameInput" defaultValue="Lê Nguyễn Đăng Khoa" />
+                    <input type="text" className="form-control" id="fullName" aria-describedby="lastNameInput" defaultValue={lastName + " " + firstName} />
                   </div>
 
                 </td>
@@ -101,7 +99,7 @@ function EditProfile() {
                 </td>
                 <td>
                   <p className='mb-2'>
-                    khoalndse173249@fpt.edu.vn
+                    {email}
                   </p>
                 </td>
               </tr>
@@ -111,7 +109,7 @@ function EditProfile() {
                 </td>
                 <td>
                   <p className='mb-2'>
-                    0707672032
+                    {phone}
                   </p>
                 </td>
               </tr>

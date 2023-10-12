@@ -130,7 +130,6 @@ export default function CheckoutContent() {
                   type="radio"
                   name="flexRadioDefault"
                   id="paymentMethod1"
-                  checked
                 />
                 <label className="form-check-label" htmlFor="paymentMethod1">
                   Bằng VNPay
