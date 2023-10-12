@@ -3,16 +3,15 @@ import { useCart } from "../../CardContext";
 import CartItem from "./CartItem";
 
 export default function ViewCardForm() {
-  const {
-    cart,
-    totalPrice,
-  } = useCart();
-
+  const { cart, totalPrice } = useCart();
+  const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
   return (
-    <div className="container" style={{ minHeight: '500px' }}>
+    <div className="container" style={{ minHeight: "500px" }}>
       <div className="row my-3">
         <div className="col-8">
-          <h2 className="border-bottom py-3 mb-3">Hiện đang có # sản phẩm trong giỏ hàng</h2>
+          <h2 className="border-bottom py-3 mb-3">
+            Hiện đang có {totalQuantity} sản phẩm trong giỏ hàng
+          </h2>
           {cart && cart.length > 0 ? (
             <div>
               {cart.map((item) => (
@@ -32,9 +31,7 @@ export default function ViewCardForm() {
                 variant="h6"
                 color="text.secondary"
                 style={{ padding: "1rem" }}
-              >
-
-              </div>
+              ></div>
             </div>
           ) : (
             <p>Giỏ đang trống.</p>
@@ -66,20 +63,14 @@ export default function ViewCardForm() {
 
           <ul className="ps-3">
             <a href="/">
-              <li>
-                Tiếp tục mua hàng
-              </li>
+              <li>Tiếp tục mua hàng</li>
             </a>
             <a href="/">
-              <li>
-                Trở về
-              </li>
+              <li>Trở về</li>
             </a>
-
           </ul>
         </div>
       </div>
     </div>
-
   );
 }
