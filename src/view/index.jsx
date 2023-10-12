@@ -39,14 +39,21 @@ const Index = () => {
     }
   }, [compareProducts]);
 
-  const message = "Bạn đã chọn: " + compareDetails.length;
-
+  // DEV MODE
   const loggedInUser = Cookies.get("loggedInUser");
   const userRole = Cookies.get("userRole");
   function handleDevLogin() {
     Cookies.set("loggedInUser", "DEV");
     Cookies.set("userRole", "customer");
     navigate("/");
+    login({
+      username: "joeywheeler",
+      role: "customer",
+      email: "joeywheeler@gmail.com",
+      firstName: "Wheeler",
+      lastName: "Joey",
+      phone: "087 2234 832",
+    });
   }
   const { logout } = useAuth();
   const { login } = useAuth();
@@ -55,16 +62,19 @@ const Index = () => {
     logout();
     navigate("/");
   };
-  login({
-    username: "joeywheeler",
-    role: "customer",
-    email: "joeywheeler@gmail.com",
-    firstName: "Wheeler",
-    lastName: "Joey",
-    phone: "087 2234 832",
-  });
+
   return (
     <>
+      {divVisible &&
+        <div className="bg-dark">
+          <a href="/checkout" className="me-3 link-light">checkout</a>
+          <a href="/admin" className="me-3 link-light">admin</a>
+          <span onClick={handleDevLogin} className="link-light text-decoration-underline me-3">Login as customer</span>
+          <span onClick={handleDevLogout} className="link-light text-decoration-underline me-3">Logout</span>
+          <span onClick={handleRemoveDivClick} className="link-light text-decoration-underline">Hide</span>
+        </div>
+      }
+
       <main ref={mainRef}></main>
       {loggedInUser && userRole === "customer" ? (
         <Navbar showAvatar={true} />
