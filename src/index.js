@@ -13,6 +13,7 @@ import ServicePage from "./view/Service-page/service_page.jsx";
 import ComparePage from "./view/Compare/compare_page.jsx";
 import ProductDetailPage from "./view/Product-detail/product_detail_page.jsx";
 import ViewCartPage from "./view/ViewCart/view_cart_page.jsx";
+import CheckoutPage from "./view/CheckoutPage/CheckoutPage.jsx";
 import ScrollToTop from "./scroll-to-top.jsx";
 import "./index.scss";
 import AdminPage from "./view/Admin/admin_form.jsx";
@@ -68,6 +69,10 @@ const App = () => {
               <Route
                 path="/admin"
                 element={isLoading ? <Loader /> : <AdminPage />}
+              />
+               <Route
+                path="/checkout"
+                element={isLoading ? <Loader /> : <CheckoutPage />}
               />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>

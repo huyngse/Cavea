@@ -141,12 +141,14 @@ export default function ProductDetailForm() {
                   <strong>Số lượng:</strong> <QuantityInput />
                 </div>
                 <div className="">
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary btn-lg me-3"
-                  >
-                    Mua Ngay
-                  </button>
+                  <a href="/view-cart">
+                    <button
+                      type="button"
+                      className="btn btn-outline-primary btn-lg me-3"
+                    >
+                      Mua Ngay
+                    </button>
+                  </a>
                   <button
                     type="button"
                     className="btn btn-primary btn-lg"
