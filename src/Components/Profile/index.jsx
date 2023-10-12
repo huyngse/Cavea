@@ -3,17 +3,15 @@ import Typography from "@mui/material/Typography";
 import MenuItem from "@mui/material/MenuItem";
 import { Box } from "@mui/system";
 import { StyledModal, StyledBackdrop, style } from "./style_component.jsx";
-import { useAuth } from "../../AuthContext.jsx";
+import Cookies from "js-cookie";
 
 export default function Profile() {
-  const {
-    loggedInUser,
-    userRole,
-    userEmail,
-    userFirstName,
-    userLastName,
-    userPhone,
-  } = useAuth();
+  const loggedInUser = Cookies.get("loggedInUser");
+  const role = Cookies.get("userRole");
+  const email = Cookies.get("email");
+  const phone = Cookies.get("phone");
+  const firstName = Cookies.get("firstName");
+  const lastName = Cookies.get("lastName");
 
   const [open, setOpen] = React.useState(false);
 
@@ -38,11 +36,11 @@ export default function Profile() {
           {loggedInUser ? (
             <>
               <p id="unstyled-modal-description">Username: {loggedInUser}</p>
-              <p id="unstyled-modal-description">Role: {userRole}</p>
-              <p id="unstyled-modal-description">Email: {userEmail}</p>
-              <p id="unstyled-modal-description">FirstName: {userFirstName}</p>
-              <p id="unstyled-modal-description">LastName: {userLastName}</p>
-              <p id="unstyled-modal-description">Phone: {userPhone}</p>
+              <p id="unstyled-modal-description">Role: {role}</p>
+              <p id="unstyled-modal-description">Email: {email}</p>
+              <p id="unstyled-modal-description">FirstName: {firstName}</p>
+              <p id="unstyled-modal-description">LastName: {lastName}</p>
+              <p id="unstyled-modal-description">Phone: {phone}</p>
             </>
           ) : (
             <></>
