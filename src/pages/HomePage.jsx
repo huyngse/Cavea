@@ -3,12 +3,12 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
-import ListCart from "../Components/CageList/CageList.jsx";
-import BackToTopButton from "../Components/BackToHome.jsx";
-import { products } from "../Components/CageList/list_product.jsx";
+import ListCart from "../components/CageList/CageList.jsx";
+import BackToTopButton from "../components/BackToHome.jsx";
+import { products } from "../components/CageList/list_product.jsx";
 import { useCart } from "../contexts/CardContext.jsx";
-import HeaderMenu from "../Components/HeaderMenu.jsx";
-import Carousel from "../Components/Carousel.jsx"
+import HeaderMenu from "../components/HeaderMenu.jsx";
+import Carousel from "../components/Carousel.jsx"
 import MainLayout from "../layouts/MainLayout.jsx";
 
 const Index = () => {

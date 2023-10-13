@@ -5,9 +5,9 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ImageGallery from "react-image-gallery";
 
 import { CardContext } from "../contexts/CardContext.jsx";
-import { products } from "../Components/CageList/list_product.jsx";
-import QuantityInput from "../Components/QuantityInpu.jsx";
-import UserReview from "../Components/UserReview";
+import { products } from "../components/CageList/list_product.jsx";
+import QuantityInput from "../components/QuantityInput.jsx";
+import UserReview from "../components/UserReview";
 import MainLayout from "../layouts/MainLayout";
 
 export default function ProductDetailPage() {

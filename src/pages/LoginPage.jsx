@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
-import { LoginInput } from "../Components/LoginInput.jsx";
+import { LoginInput } from "../components/LoginInput.jsx";
 import bird_decor from "../assets/bird-decor.png";
 import LoginLayout from "../layouts/LoginLayout.jsx";
 

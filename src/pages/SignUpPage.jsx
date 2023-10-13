@@ -2,7 +2,7 @@ import * as React from "react";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 
-import { CustomInput } from "../Components/LoginInput.jsx";
+import { CustomInput } from "../components/LoginInput.jsx";
 import bird_decor from "../assets/bird-decor.png";
 import LoginLayout from "../layouts/LoginLayout.jsx";
 const CssTextField = styled(CustomInput)({
