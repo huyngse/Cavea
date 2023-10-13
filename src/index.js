@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-// import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
-import { AuthProvider } from "./AuthContext.jsx";
-import { CardProvider } from "./CardContext.jsx";
-import Loader from "./Components/Loading/index.jsx";
-import Index from "./view/index";
-import Login from "./view/Login/login_page.jsx";
-import SignUp from "./view/SignUp/signup_page.jsx";
-import BlogPage from "./view/Blog/blog_page.jsx";
-import ServicePage from "./view/Service-page/service_page.jsx";
-import ComparePage from "./view/Compare/compare_page.jsx";
-import ProductDetailPage from "./view/Product-detail/product_detail_page.jsx";
-import ViewCartPage from "./view/ViewCart/view_cart_page.jsx";
-import CheckoutPage from "./view/CheckoutPage/CheckoutPage.jsx";
-import ScrollToTop from "./scroll-to-top.jsx";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
+import { CardProvider } from "./contexts/CardContext.jsx";
+import Loader from "./components/Loading/index.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import SignUp from "./pages/SignUpPage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
+import ServicePage from "./pages/CustomOrderPage.jsx";
+import ComparePage from "./pages/ComparePage.jsx";
+import ProductDetailPage from "./pages/ProductDetailPage.jsx";
+import ViewCartPage from "./pages/ViewCartPage.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
+import AdminPage from "./pages/Admin/admin_form.jsx";
+import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
+import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
+import { useLocation } from "react-router";
 import "./index.scss";
-import AdminPage from "./view/Admin/admin_form.jsx";
-import MainLayout from "./view/Layout/MainLayout.jsx"
-import AccountLayout from "./view/Layout/AccountLayout.jsx"
-import EditProfile from "./view/AccountPage/EditProfile.jsx";
-import UserOrder from "./view/AccountPage/UserOrder.jsx";
+import "./index.css";
+const ScrollToTop = (props) => {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
-// const theme = createTheme({
-//   palette: {
-//     secondary: {
-//       main: '#E33E7F'
-//     }
-//   }
-// });
+  return <>{props.children}</>;
+};
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,12 +48,12 @@ const App = () => {
           <CardProvider>
             <ScrollToTop>
               <Routes>
-                <Route path="/" element={isLoading ? <Loader /> : <Index />} />
-                <Route path="/Cavea" element={isLoading ? <Loader /> : <Index />} />
+                <Route path="/" element={isLoading ? <Loader /> : <HomePage />} />
+                <Route path="/Cavea" element={isLoading ? <Loader /> : <HomePage />} />
 
                 <Route
                   path="/login/*"
-                  element={isLoading ? <Loader /> : <Login />}
+                  element={isLoading ? <Loader /> : <LoginPage />}
                 />
                 <Route
                   path="/sign-up"
@@ -90,23 +89,23 @@ const App = () => {
                 />
                 <Route
                   path="account/profile"
-                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><EditProfile /></AccountLayout></MainLayout>}
+                  element={isLoading ? <Loader /> : <EditProfile />}
                 />
                 <Route
                   path="account/order"
-                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><UserOrder /></AccountLayout></MainLayout>}
+                  element={isLoading ? <Loader /> : <UserOrder />}
                 />
                 <Route
                   path="account/custom-order"
-                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                  element={isLoading ? <Loader /> : <h1>TODO: </h1>}
                 />
                 <Route
                   path="account/change-password"
-                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                  element={isLoading ? <Loader /> : <h1>TODO: </h1>}
                 />
                 <Route
                   path="account/notification"
-                  element={isLoading ? <Loader /> : <MainLayout><AccountLayout><h1>TODO: </h1></AccountLayout></MainLayout>}
+                  element={isLoading ? <Loader /> : <h1>TODO: </h1>}
                 />
 
 

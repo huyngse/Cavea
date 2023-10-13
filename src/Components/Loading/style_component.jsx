@@ -1,4 +1,3 @@
-import { primaryColor } from "../../color";
 export const loadingContainer = {
   width: "10rem",
   height: "100vh",
@@ -13,6 +12,5 @@ export const loadingCircle = {
   display: "block",
   width: "1.5rem",
   height: "1.5rem",
-  backgroundColor: primaryColor,
   borderRadius: "10rem",
 };
