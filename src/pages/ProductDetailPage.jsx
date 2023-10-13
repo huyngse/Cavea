@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { products } from "../components/CageList/list_product";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import { CardContext } from "../contexts/CardContext.jsx";
 import ImageGallery from "react-image-gallery";
-import QuantityInput from "../components/QuantityInput";
-import UserReview from "../components/UserReview";
+
+import { CardContext } from "../contexts/CardContext.jsx";
+import { products } from "../Components/CageList/list_product.jsx";
+import QuantityInput from "../Components/QuantityInpu.jsx";
+import UserReview from "../Components/UserReview";
 import MainLayout from "../layouts/MainLayout";
 
 export default function ProductDetailPage() {
