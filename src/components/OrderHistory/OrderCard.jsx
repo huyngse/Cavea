@@ -1,6 +1,13 @@
 import React from "react";
+import Modal from "@mui/material/Modal";
 
-const OrderCard = (props) => {
+import OrderDetail from "./OrderDetail";
+
+export default function OrderCard(props) {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <div className="bg-white p-3 mb-3">
       <div className="d-flex">
@@ -20,19 +27,34 @@ const OrderCard = (props) => {
         </h4>
       </div>
       <div className="d-flex">
-        <button className="ms-auto btn btn-outline-primary me-3">
+        {/* ################# */}
+        {/* CHI TIẾT ĐƠN HÀNG */}
+        {/* ################# */}
+        <button
+          className="ms-auto btn btn-outline-primary me-3"
+          onClick={handleOpen}
+        >
           Xem chi tiết
         </button>
-        {props.status === "đã hủy" && (
-          <button className="btn btn-outline-primary me-3">
-            Xem chi tiết hủy đơn
-          </button>
-        )}
-
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+          className="overflow-auto"
+        >
+          <div className="m-5 bg-white rounded-3 overflow-hidden">
+            <div className="bg-primary p-3 text-white d-flex">
+              <h3 className="me-auto">Chi tiết đơn hàng</h3>
+              <button className="btn btn-primary" onClick={handleClose}>
+                <i class="bi bi-x-lg me-3"></i>Đóng
+              </button>
+            </div>
+            <OrderDetail id="1" />
+          </div>
+        </Modal>
         <button className="btn btn-primary">Mua lại</button>
       </div>
     </div>
   );
-};
-
-export default OrderCard;
+}

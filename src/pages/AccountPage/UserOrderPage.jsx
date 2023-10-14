@@ -56,7 +56,7 @@ export default function UserOrderPage() {
             centered
           >
             <Tab label="Tất cả" {...a11yProps(0)} />
-            <Tab label="Chờ thanh toán" {...a11yProps(1)} />
+            <Tab label="Chờ xác nhận" {...a11yProps(1)} />
             <Tab label="Đang giao" {...a11yProps(2)} />
             <Tab label="Hoàn thành" {...a11yProps(3)} />
             <Tab label="Đã hủy" {...a11yProps(4)} />
@@ -74,7 +74,7 @@ export default function UserOrderPage() {
               placeholder="Bạn có thể tìm kiếm theo tên sản phẩm hoặc ID đơn hàng "
             />
           </div>
-          <OrderCard name="Đơn hàng số 5" status="đã hủy" total={300000}>
+          <OrderCard id="5" name="Đơn hàng số 5" status="đã hủy" total={300000}>
             <OrderItem
               image="https://www.sieuthilongchim.net//img/webroot/upload/image/files/z3499916531542_b5a4c3b50ec285e71f530bc901c35438.jpg"
               name="LỒNG MI TRIỆN TRÚC CẬT HÀNG SIÊU KỸ"
@@ -84,7 +84,12 @@ export default function UserOrderPage() {
               quantity={1}
             />
           </OrderCard>
-          <OrderCard name="Đơn hàng số 1" status="hoàn thành" total={100000}>
+          <OrderCard
+            id="1"
+            name="Đơn hàng số 1"
+            status="hoàn thành"
+            total={100000}
+          >
             <OrderItem
               image="https://www.sieuthilongchim.net//img/webroot/upload/image/files/z3499916531542_b5a4c3b50ec285e71f530bc901c35438.jpg"
               name="LỒNG MI TRIỆN TRÚC CẬT HÀNG SIÊU KỸ"
@@ -94,7 +99,12 @@ export default function UserOrderPage() {
               quantity={2}
             />
           </OrderCard>
-          <OrderCard name="Đơn hàng số 2" status="hoàn thành" total={200000}>
+          <OrderCard
+            id="2"
+            name="Đơn hàng số 2"
+            status="hoàn thành"
+            total={200000}
+          >
             <OrderItem
               image="https://www.sieuthilongchim.net//img/webroot/upload/image/files/z3499916531542_b5a4c3b50ec285e71f530bc901c35438.jpg"
               name="LỒNG MI TRIỆN TRÚC CẬT HÀNG SIÊU KỸ"
@@ -113,6 +123,7 @@ export default function UserOrderPage() {
             />
           </OrderCard>
           <OrderCard
+            id="3"
             name="Đơn hàng số 3"
             status="chờ thanh toán"
             total={300000}
@@ -126,7 +137,12 @@ export default function UserOrderPage() {
               quantity={3}
             />
           </OrderCard>
-          <OrderCard name="Đơn hàng số 4" status="đang giao" total={300000}>
+          <OrderCard
+            id="4"
+            name="Đơn hàng số 4"
+            status="đang giao"
+            total={300000}
+          >
             <OrderItem
               image="https://www.sieuthilongchim.net//img/webroot/upload/image/files/z3499916531542_b5a4c3b50ec285e71f530bc901c35438.jpg"
               name="LỒNG MI TRIỆN TRÚC CẬT HÀNG SIÊU KỸ"
@@ -137,7 +153,7 @@ export default function UserOrderPage() {
             />
           </OrderCard>
         </CustomTabPanel>
-        {/* chờ thanht toán */}
+        {/* chờ xác nhận */}
         <CustomTabPanel value={value} index={1}>
           <OrderCard
             name="Đơn hàng số 3"

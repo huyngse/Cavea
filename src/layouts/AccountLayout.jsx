@@ -7,7 +7,7 @@ const AccountLayout = (props) => {
     <MainLayout>
       <div className="d-flex">
         <AccountSidebar />
-        <div className="flex-grow-1 m-3 ">{props.children}</div>
+        <div className="flex-grow-1 p-3 bg-gray">{props.children}</div>
       </div>
     </MainLayout>
   );

@@ -190,9 +190,9 @@ export default function CheckoutPage() {
                 </div>
               </div>
               <div className="d-flex">
-                <button className="btn btn-primary mx-auto w-50">
-                  Thanh toán
-                </button>
+                <a href="/order-detail" className="mx-auto w-50">
+                  <button className="btn btn-primary ">Thanh toán</button>
+                </a>
               </div>
             </div>
           </div>

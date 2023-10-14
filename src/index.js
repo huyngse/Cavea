@@ -17,6 +17,7 @@ import CheckoutPage from "./pages/CheckoutPage.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
+import OrderDetailPage from "./pages/OrderDetailPage.jsx";
 import { useLocation } from "react-router";
 import "./index.scss";
 import "./index.css";
@@ -111,7 +112,10 @@ const App = () => {
                 path="account/notification"
                 element={isLoading ? <Loader /> : <h1>TODO: </h1>}
               />
-
+              <Route
+                path="order-detail"
+                element={isLoading ? <Loader /> : <OrderDetailPage />}
+              />
               <Route
                 path="*"
                 element={
