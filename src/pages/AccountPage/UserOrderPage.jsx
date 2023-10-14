@@ -53,7 +53,7 @@ export default function UserOrderPage() {
                         indicatorColor="secondary"
                         aria-label="basic tabs example" className='bg-light' centered>
                         <Tab label="Tất cả" {...a11yProps(0)} />
-                        <Tab label="Chờ thanh toán" {...a11yProps(1)} />
+                        <Tab label="Chờ xác nhận" {...a11yProps(1)} />
                         <Tab label="Đang giao" {...a11yProps(2)} />
                         <Tab label="Hoàn thành" {...a11yProps(3)} />
                         <Tab label="Đã hủy" {...a11yProps(4)} />
@@ -66,7 +66,7 @@ export default function UserOrderPage() {
                         <button className="input-group-text rounded-0" id="basic-addon1"><i className="bi bi-search"></i></button>
                         <input type="text" className='form-control rounded-0 py-2' placeholder='Bạn có thể tìm kiếm theo tên sản phẩm hoặc ID đơn hàng ' />
                     </div>
-                    <OrderCard name="Đơn hàng số 5" status="đã hủy"
+                    <OrderCard id="5" name="Đơn hàng số 5" status="đã hủy"
                         total={300000}
                     >
                         <OrderItem
@@ -78,7 +78,7 @@ export default function UserOrderPage() {
                             quantity={1}
                         />
                     </OrderCard>
-                    <OrderCard name="Đơn hàng số 1" status="hoàn thành"
+                    <OrderCard id="1" name="Đơn hàng số 1" status="hoàn thành"
                         total={100000}
                     >
                         <OrderItem
@@ -90,7 +90,7 @@ export default function UserOrderPage() {
                             quantity={2}
                         />
                     </OrderCard>
-                    <OrderCard name="Đơn hàng số 2" status="hoàn thành"
+                    <OrderCard id="2" name="Đơn hàng số 2" status="hoàn thành"
                         total={200000}
                     >
                         <OrderItem
@@ -110,7 +110,7 @@ export default function UserOrderPage() {
                             quantity={1}
                         />
                     </OrderCard>
-                    <OrderCard name="Đơn hàng số 3" status="chờ thanh toán"
+                    <OrderCard id="3" name="Đơn hàng số 3" status="chờ thanh toán"
                         total={300000}
                     >
                         <OrderItem
@@ -122,7 +122,7 @@ export default function UserOrderPage() {
                             quantity={3}
                         />
                     </OrderCard>
-                    <OrderCard name="Đơn hàng số 4" status="đang giao"
+                    <OrderCard id="4" name="Đơn hàng số 4" status="đang giao"
                         total={300000}
                     >
                         <OrderItem
@@ -136,7 +136,7 @@ export default function UserOrderPage() {
                     </OrderCard>
 
                 </CustomTabPanel>
-                {/* chờ thanht toán */}
+                {/* chờ xác nhận */}
                 <CustomTabPanel value={value} index={1}>
                     <OrderCard name="Đơn hàng số 3" status="chờ thanh toán"
                         total={300000}
