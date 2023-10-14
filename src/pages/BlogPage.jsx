@@ -8,7 +8,6 @@ import {
   Button,
 } from "@mui/material";
 
-
 const blogPosts = [
   {
     title: "Blog Post 1",

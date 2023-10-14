@@ -69,10 +69,18 @@ export default function LoginPage() {
 
   return (
     <LoginLayout login>
-      <div className="bg-white mx-auto px-4 py-3 text-center rounded-3 shadow position-relative" style={{ width: "450px", marginTop: "70px" }}>
+      <div
+        className="bg-white mx-auto px-4 py-3 text-center rounded-3 shadow position-relative"
+        style={{ width: "450px", marginTop: "70px" }}
+      >
         <h1 className="my-5">Đăng Nhập</h1>
         <form onSubmit={handleSubmit}>
-          <img className="position-absolute" src={bird_decor} style={{ width: "120px", top: "-73px", right: "80px" }} alt="" />
+          <img
+            className="position-absolute"
+            src={bird_decor}
+            style={{ width: "120px", top: "-73px", right: "80px" }}
+            alt=""
+          />
           <LoginInput
             label="Tên đăng nhập"
             name="username"
@@ -96,12 +104,11 @@ export default function LoginPage() {
             </button>
           </div>
           <div style={{ minHeight: "50px" }}>
-            {errorMessages &&
-              <p style={{ color: "red" }}>{errorMessages}</p>
-            }
+            {errorMessages && <p style={{ color: "red" }}>{errorMessages}</p>}
           </div>
 
-          <small>Bạn chưa có tài khoản?
+          <small>
+            Bạn chưa có tài khoản?
             <a href="/sign-up"> Đăng ký</a>
           </small>
         </form>

@@ -76,7 +76,11 @@ export default function CheckoutPage() {
                       <th scope="row">{index + 1}</th>
                       <td>
                         <div style={{ maxWidth: "100px" }}>
-                          <img className="img-fluid" src={item.image} alt=""></img>
+                          <img
+                            className="img-fluid"
+                            src={item.image}
+                            alt=""
+                          ></img>
                         </div>
                       </td>
                       <td>
@@ -134,7 +138,10 @@ export default function CheckoutPage() {
                       name="flexRadioDefault"
                       id="paymentMethod1"
                     />
-                    <label className="form-check-label" htmlFor="paymentMethod1">
+                    <label
+                      className="form-check-label"
+                      htmlFor="paymentMethod1"
+                    >
                       Bằng VNPay
                     </label>
                   </div>
@@ -145,7 +152,10 @@ export default function CheckoutPage() {
                       name="flexRadioDefault"
                       id="paymentMethod2"
                     />
-                    <label className="form-check-label" htmlFor="paymentMethod2">
+                    <label
+                      className="form-check-label"
+                      htmlFor="paymentMethod2"
+                    >
                       Thanh toán tại cửa hàng
                     </label>
                   </div>
@@ -156,7 +166,10 @@ export default function CheckoutPage() {
                       name="flexRadioDefault"
                       id="paymentMethod3"
                     />
-                    <label className="form-check-label" htmlFor="paymentMethod3">
+                    <label
+                      className="form-check-label"
+                      htmlFor="paymentMethod3"
+                    >
                       Đặt cọc trước 50%
                     </label>
                   </div>
@@ -167,20 +180,24 @@ export default function CheckoutPage() {
                       name="flexRadioDefault"
                       id="paymentMethod4"
                     />
-                    <label className="form-check-label" htmlFor="paymentMethod4">
+                    <label
+                      className="form-check-label"
+                      htmlFor="paymentMethod4"
+                    >
                       Thanh toán trực tiếp cho nhân viên giao hàng
                     </label>
                   </div>
                 </div>
               </div>
               <div className="d-flex">
-                <button className="btn btn-primary mx-auto w-50">Thanh toán</button>
+                <button className="btn btn-primary mx-auto w-50">
+                  Thanh toán
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </MainLayout>
   );
 }
