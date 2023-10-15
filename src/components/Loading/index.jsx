@@ -49,14 +49,12 @@ const Loader = () => {
         variants={loadingCircleVariants}
         transition={loadingCircleTransition}
         className="bg-primary"
-
       ></motion.span>
       <motion.span
         style={loadingCircle}
         variants={loadingCircleVariants}
         transition={loadingCircleTransition}
         className="bg-primary"
-
       ></motion.span>
     </motion.div>
   );

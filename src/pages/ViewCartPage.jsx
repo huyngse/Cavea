@@ -53,7 +53,10 @@ export default function ViewCardForm() {
             <div className="text-center mb-4">
               <h2>Tổng cộng </h2>
               <h3 className="text-primary mb-3">
-                {totalPrice.toLocaleString("vi-VN", { style: "currency", currency: "VND", })}
+                {totalPrice.toLocaleString("vi-VN", {
+                  style: "currency",
+                  currency: "VND",
+                })}
               </h3>
               <a href="/checkout">
                 <button className="btn btn-primary mx-auto w-50">
@@ -73,6 +76,5 @@ export default function ViewCardForm() {
         </div>
       </div>
     </MainLayout>
-
   );
 }

@@ -23,7 +23,7 @@ function UserReview(props) {
           src={props.avatar}
           className="me-3 align-self-start rounded-circle"
           alt=""
-          style={{width: "50px"}}
+          style={{ width: "50px" }}
         />
         <div className="flex-grow-1">
           {props.username}

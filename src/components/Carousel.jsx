@@ -23,8 +23,7 @@ const HeaderCarousel = () => {
       id="carouselExampleCaptions"
       className="carousel slide carousel-fade shadow"
       data-bs-ride="carousel"
-      style={{height: "463px"}}
-
+      style={{ height: "463px" }}
     >
       <div className="carousel-indicators">
         <button

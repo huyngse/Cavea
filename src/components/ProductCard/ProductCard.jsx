@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useCart } from "../../contexts/CardContext.jsx";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 import { CartButton } from "./style_component.jsx";
 import "./ProductCard.css";
 export default function ProductCard(props) {
@@ -68,7 +68,7 @@ export default function ProductCard(props) {
         </label>
       </form>
       <a className="product-card-image" href={`/product-detail/${id}`}>
-        <img sx={{ height: 260 }} src={productImage} alt=""/>
+        <img sx={{ height: 260 }} src={productImage} alt="" />
       </a>
       <CardContent sx={{ padding: "6px" }}>
         <Rating name="read-only" value={rating} readOnly precision={0.5} />

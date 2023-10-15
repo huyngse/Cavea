@@ -48,16 +48,24 @@ export default class Footer extends Component {
               </Typography>
               <div className="footer-link-box">
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Vị trí cửa hàng</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Vị trí cửa hàng
+                  </a>
                 </div>
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Tài khoản của tôi</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Tài khoản của tôi
+                  </a>
                 </div>
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Theo dõi đơn hàng</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Theo dõi đơn hàng
+                  </a>
                 </div>
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Câu hỏi thường gặp</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Câu hỏi thường gặp
+                  </a>
                 </div>
               </div>
             </Grid>
@@ -67,13 +75,19 @@ export default class Footer extends Component {
               </Typography>
               <div className="footer-link-box">
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Giới thiệu về Cavea</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Giới thiệu về Cavea
+                  </a>
                 </div>
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Điều khoản sử dụng</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Điều khoản sử dụng
+                  </a>
                 </div>
                 <div className="mb-1">
-                  <a href="https://www.google.com" className="link-light">Chính sách bảo mật</a>
+                  <a href="https://www.google.com" className="link-light">
+                    Chính sách bảo mật
+                  </a>
                 </div>
                 <div className="mb-1">
                   <a href="https://www.google.com">Chính sách hoàn trả</a>
@@ -109,7 +123,6 @@ export default class Footer extends Component {
             </Grid>
           </Grid>
         </div>
-
       </div>
     );
   }
