@@ -46,7 +46,7 @@ function AccountSidebar(props) {
         <li>
           <a href="/account/custom-order" className={`nav-link ${location.pathname === '/account/custom-order' ? "active" : "link-dark"
             }`} aria-current={location.pathname === '/account/custom-order' ? 'page' : undefined}>
-            <i className="bi bi-pass me-2"></i>
+            <i class="bi bi-tools me-2"></i>
             Đơn mua gia công
           </a>
         </li>

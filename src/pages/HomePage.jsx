@@ -26,11 +26,11 @@ const Index = () => {
 
   return (
     <MainLayout>
-      <div className="row">
+      <div className="row w-100 mx-auto">
         <div className="col-3 pe-0">
           <HeaderMenu />
         </div>
-        <div className="col-9 ps-0">
+        <div className="col-9">
           <Carousel />
         </div>
 
