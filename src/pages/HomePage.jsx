@@ -8,7 +8,7 @@ import BackToTopButton from "../components/BackToHome.jsx";
 import { products } from "../components/CageList/list_product.jsx";
 import { useCart } from "../contexts/CardContext.jsx";
 import HeaderMenu from "../components/HeaderMenu.jsx";
-import Carousel from "../components/Carousel.jsx"
+import Carousel from "../components/Carousel.jsx";
 import MainLayout from "../layouts/MainLayout.jsx";
 
 const Index = () => {

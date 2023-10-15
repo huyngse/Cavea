@@ -6,7 +6,7 @@ export const loadingContainer = {
   alignItems: "center",
   marginLeft: "auto",
   marginRight: "auto",
-  gap: "0.5rem"
+  gap: "0.5rem",
 };
 export const loadingCircle = {
   display: "block",

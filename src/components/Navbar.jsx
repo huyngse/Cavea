@@ -153,14 +153,16 @@ function Navbar(props) {
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      <div className="object-fit-cover object-position-center rounded-circle overflow-hidden" style={{ width: "32px", height: "32px" }}>
+                      <div
+                        className="object-fit-cover object-position-center rounded-circle overflow-hidden"
+                        style={{ width: "32px", height: "32px" }}
+                      >
                         <img
                           src="https://cdn5.vectorstock.com/i/1000x1000/64/39/sketch-cute-sparrow-vector-3176439.jpg"
                           alt="mdo"
                           className="img-fluid"
                         />
                       </div>
-
                     </button>
                     <ul
                       className="dropdown-menu text-small"

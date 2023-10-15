@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { CardProvider } from "./contexts/CardContext.jsx";
 import Loader from "./components/Loading/index.jsx";
@@ -13,7 +14,7 @@ import ComparePage from "./pages/ComparePage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ViewCartPage from "./pages/ViewCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-import AdminPage from "./pages/Admin/admin_form.jsx";
+import AdminPage from "./pages/AdminPage.jsx";
 import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
@@ -45,14 +46,16 @@ const App = () => {
 
   return (
     // <MuiThemeProvider theme={theme}>
-      <BrowserRouter>
-        <AuthProvider>
-          <CardProvider>
-            <ScrollToTop>
-              <Routes>
-                <Route path="/" element={isLoading ? <Loader /> : <HomePage />} />
-                <Route path="/Cavea" element={isLoading ? <Loader /> : <HomePage />} />
-
+    <BrowserRouter>
+      <AuthProvider>
+        <CardProvider>
+          <ScrollToTop>
+            <Routes>
+              <Route path="/" element={isLoading ? <Loader /> : <HomePage />} />
+              <Route
+                path="/Cavea"
+                element={isLoading ? <Loader /> : <HomePage />}
+              />
                 <Route
                   path="/login/*"
                   element={isLoading ? <Loader /> : <LoginPage />}
@@ -124,7 +127,6 @@ const App = () => {
         </AuthProvider>
       </BrowserRouter>
     // </MuiThemeProvider>
-
   );
 };
 

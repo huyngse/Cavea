@@ -48,6 +48,5 @@ export default function CageList() {
         ))}
       </div>
     </div>
-
   );
 }

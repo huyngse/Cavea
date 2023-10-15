@@ -3,7 +3,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import { useCart } from "../../contexts/CardContext.jsx";
-import Rating from '@mui/material/Rating';
+import Rating from "@mui/material/Rating";
 import { CartButton } from "./style_component.jsx";
 import "./ProductCard.css";
 export default function ProductCard(props) {

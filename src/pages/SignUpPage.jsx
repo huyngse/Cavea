@@ -1,10 +1,14 @@
 import * as React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 
 import { CustomInput } from "../components/LoginInput.jsx";
 import bird_decor from "../assets/bird-decor.png";
 import LoginLayout from "../layouts/LoginLayout.jsx";
+import axios from "axios";
+
 const CssTextField = styled(CustomInput)({
   "& label.Mui-focused": {
     color: "#398378",
@@ -23,22 +27,68 @@ const CssTextField = styled(CustomInput)({
 });
 
 export default function SignUpPage() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+  });
+  const navigate = useNavigate();
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [passwordMismatchError, setPasswordMismatchError] = useState(false);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({
+      ...formData,
+      [name]: value,
     });
+  };
+  const handlePasswordConfirmationChange = (event) => {
+    const { value } = event.target;
+    setPasswordConfirmation(value);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (formData.password !== passwordConfirmation) {
+      setPasswordMismatchError(true);
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/login/register",
+        formData
+      );
+      if (response.status === 200) {
+        navigate("/login/*");
+      }
+    } catch (error) {
+      console.error("Lỗi:", error);
+    } finally {
+      setPasswordMismatchError(false);
+    }
   };
 
   return (
     <LoginLayout signup>
-      <div className="bg-white mx-auto px-4 py-3 text-center rounded-3 shadow position-relative" style={{ width: "450px", marginTop: "70px" }}>
+      <div
+        className="bg-white mx-auto px-4 py-3 text-center rounded-3 shadow position-relative"
+        style={{ width: "450px", marginTop: "70px" }}
+      >
         <h1 className="my-5">Đăng Ký</h1>
         <div>
           <form onSubmit={handleSubmit}>
-            <img className="position-absolute" src={bird_decor} style={{ width: "120px", top: "-73px", right: "80px" }} alt="" />
+            <img
+              className="position-absolute"
+              src={bird_decor}
+              style={{ width: "120px", top: "-73px", right: "80px" }}
+              alt=""
+            />
             <Grid
               container
               rowSpacing={1}
@@ -47,46 +97,48 @@ export default function SignUpPage() {
             >
               <Grid item xs={6}>
                 <CssTextField
-                  required
+                  name="firstName"
                   label="Họ"
-                  type="text"
-                  name="uname"
+                  value={formData.firstName}
+                  onChange={handleChange}
                 ></CssTextField>
               </Grid>
               <Grid item xs={6}>
                 <CssTextField
-                  required
+                  name="lastName"
                   label="Tên"
-                  type="text"
-                  name="uname"
+                  value={formData.lastName}
+                  onChange={handleChange}
                 ></CssTextField>
               </Grid>
 
               <Grid item xs={12}>
                 <CssTextField
                   required
+                  name="username"
                   label="Tên tài khoản"
                   type="text"
-                  name="uname"
-                  autoComplete="current-password"
+                  value={formData.username}
+                  onChange={handleChange}
                 ></CssTextField>
               </Grid>
               <Grid item xs={12}>
                 <CssTextField
-                  required
+                  type="email"
+                  name="email"
                   label="Email"
-                  type="text"
-                  name="uname"
-                  autoComplete="current-password"
+                  value={formData.email}
+                  onChange={handleChange}
                 ></CssTextField>
               </Grid>
               <Grid item xs={12}>
                 <CssTextField
                   required
-                  label="Mật khẩu"
                   type="password"
-                  name="pass"
-                  autoComplete="current-password"
+                  name="password"
+                  label="Mật khẩu"
+                  value={formData.password}
+                  onChange={handleChange}
                 ></CssTextField>
               </Grid>
 
@@ -95,25 +147,31 @@ export default function SignUpPage() {
                   required
                   label="Xác nhận mật khẩu"
                   type="password"
-                  name="pass"
+                  name="passwordConfirmation"
+                  value={passwordConfirmation}
+                  onChange={handlePasswordConfirmationChange}
                   autoComplete="current-password"
                 ></CssTextField>
+                {passwordMismatchError && (
+                  <div style={{ color: "red" }}>
+                    Mật khẩu và xác nhận mật khẩu không khớp.
+                  </div>
+                )}
               </Grid>
             </Grid>
+            <Grid item xs={12}>
+              <div className="mb-3">
+                <button type="submit" className="btn btn-secondary w-100 p-3">
+                  Đăng ký
+                </button>
+              </div>
+              <div style={{ minHeight: "50px" }}></div>
+              <small>
+                Bạn đã có tài khoản?
+                <a href="/login/*"> Đăng nhập</a>
+              </small>
+            </Grid>
           </form>
-          <Grid item xs={12}>
-            <div className="mb-3">
-              <button type="submit" className="btn btn-secondary w-100 p-3">
-                Đăng nhập
-              </button>
-            </div>
-            <div style={{ minHeight: "50px" }}>
-
-            </div>
-            <small>Bạn đã có tài khoản?
-              <a href="/login-page"> Đăng nhập</a>
-            </small>
-          </Grid>
         </div>
       </div>
     </LoginLayout>

@@ -1,6 +1,6 @@
-import React from 'react'
+import React from "react";
 import AccountSidebar from "../components/AccountSidebar";
-import MainLayout from "./MainLayout"
+import MainLayout from "./MainLayout";
 
 const AccountLayout = (props) => {
     return (
@@ -15,4 +15,4 @@ const AccountLayout = (props) => {
     )
 }
 
-export default AccountLayout
+export default AccountLayout;
