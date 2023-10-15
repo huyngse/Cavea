@@ -68,13 +68,11 @@ export default function ProductCard(props) {
         </label>
       </form>
       <a className="product-card-image" href={`/product-detail/${id}`}>
-        <img sx={{ height: 260 }} src={productImage} alt=""/>
+        <img sx={{ height: 260 }} src={productImage} alt="" />
       </a>
       <CardContent sx={{ padding: "6px" }}>
         <Rating name="read-only" value={rating} readOnly precision={0.5} />
-        <a className="text-decoration-none" href={`/product-detail/${id}`}>
-          <div className="product-name text-dark">{productName}</div>
-        </a>
+        <div className="product-name text-dark">{productName}</div>
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>

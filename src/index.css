@@ -14,7 +14,7 @@
 }
 
 .bg-gray {
-  background-color: lightgray;
+  background-color: rgb(228, 227, 227);
 }
 
 .compare-button {
@@ -71,4 +71,32 @@
 .compare-demo-card img {
   object-fit: cover;
   width: 150%;
+}
+
+.sorting-panel {
+  background-color: lightgray;
+}
+
+.sorting-panel label {
+  background-color: white;
+  padding: 0.4em 1em;
+}
+
+.sorting-panel input {
+  display: none;
+}
+
+.sorting-panel input[type="radio"]:checked+label {
+  color: white;
+  background-color: var(--primary-color);
+}
+.sm-product-card:hover {
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+.sm-product-card .card-menu {
+  color: white;
+}
+.sm-product-card:hover .card-menu {
+  background-color: white;
+  color: black;
 }

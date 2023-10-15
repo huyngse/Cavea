@@ -3,11 +3,14 @@ import { useAuth } from "../contexts/AuthContext.jsx";
 import { useCart } from "../contexts/CardContext.jsx";
 import SearchIcon from "@mui/icons-material/Search";
 import React from "react";
-// import "./Navbar.css";
 
 function Navbar(props) {
   const navigate = useNavigate();
   const { logout } = useAuth();
+
+  const handleSearch = () => {
+    navigate("/search");
+  }
 
   const handleLogout = () => {
     logout();
@@ -224,6 +227,7 @@ function Navbar(props) {
                   className="btn btn-light"
                   type="button"
                   id="button-addon2"
+                  onClick={handleSearch}
                 >
                   <SearchIcon />
                 </button>

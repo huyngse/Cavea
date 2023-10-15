@@ -2,6 +2,9 @@ import React from 'react'
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext.jsx";
+import Cookies from "js-cookie";
+
+const username = Cookies.get("loggedInUser");
 
 function AccountSidebar(props) {
   const { logout } = useAuth();
@@ -19,7 +22,7 @@ function AccountSidebar(props) {
         </div>
         <div>
           <div>
-            <strong>{"shymastic"}</strong>
+            <strong>{username}</strong>
           </div>
           <div className='text-muted'>
             <i className="bi bi-pencil-fill  me-2"></i>
