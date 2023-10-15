@@ -122,7 +122,7 @@ const AdminPage = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(`${API_BASE_URL}/admin/${id}`);
-      if (response.status === 204) {
+      if (response.status === 200) {
         setData((prevData) => prevData.filter((item) => item.id !== id));
       }
     } catch (error) {
