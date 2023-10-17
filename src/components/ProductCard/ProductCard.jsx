@@ -72,9 +72,7 @@ export default function ProductCard(props) {
       </a>
       <CardContent sx={{ padding: "6px" }}>
         <Rating name="read-only" value={rating} readOnly precision={0.5} />
-        <a className="text-decoration-none" href={`/product-detail/${id}`}>
-          <div className="product-name text-dark">{productName}</div>
-        </a>
+        <div className="product-name text-dark">{productName}</div>
         <Typography variant="body2" color="text.secondary" style={modelDiv}>
           {productDescription}
         </Typography>

@@ -26,14 +26,17 @@ const Index = () => {
 
   return (
     <MainLayout>
-      <div className="row">
-        <div className="col-3 pe-0">
-          <HeaderMenu />
-        </div>
-        <div className="col-9 ps-0">
-          <Carousel />
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3">
+            <HeaderMenu />
+          </div>
+          <div className="col-9">
+            <Carousel />
+          </div>
         </div>
       </div>
+
       {compareDetails < 1 ? (
         <></>
       ) : (
