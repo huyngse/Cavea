@@ -5,13 +5,9 @@ const AdminLayout = (props) => {
   
   return (
     <div className="container-fluid">
-      <div className="row">
-        <div className="col-3 p-0">
+      <div className="d-flex">
           <AdminSideBar />
-        </div>
-        <div className="col-9 p-0">
           {props.children}
-        </div>
       </div>
     </div>
   );

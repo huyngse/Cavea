@@ -103,7 +103,7 @@ const AdminManageAccountPage = () => {
 
   return (
     <AdminLayout>
-      <div className="bg-gray p-4 min-vh-100">
+      <div className="bg-gray p-4 min-vh-100 w-100">
         <form className="input-group mb-3">
           <input
             type="text"
