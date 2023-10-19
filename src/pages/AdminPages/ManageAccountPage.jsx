@@ -1,14 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-import { useAuth } from "../contexts/AuthContext.jsx";
-import UserTable from "../components/UserTable/UserTable.jsx";
-import AdminLayout from "../layouts/AdminLayout.jsx"
+import UserTable from "../../components/UserTable/UserTable.jsx";
+import AdminLayout from "../../layouts/AdminLayout.jsx"
 
 const AdminManageAccountPage = () => {
-  const navigate = useNavigate();
-  const { logout } = useAuth();
   const API_BASE_URL = "http://localhost:8080";
 
   const [data, setData] = useState([]);

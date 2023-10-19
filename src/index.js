@@ -14,11 +14,11 @@ import ComparePage from "./pages/ComparePage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ViewCartPage from "./pages/ViewCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
-import AdminManageAccountPage from "./pages/AdminManageAccountPage.jsx";
-import AdminDashboardPage from "./pages/AdminDashboardPage.jsx";
-import AdminManageOrderPage from "./pages/AdminManageOrderPage.jsx";
-import AdminCustomOrderPage from "./pages/AdminCustomOrderPage.jsx";
-import AdminRevenuePage from "./pages/AdminRevenuePage.jsx"
+import AdminManageAccountPage from "./pages/AdminPages/ManageAccountPage.jsx";
+import AdminDashboardPage from "./pages/AdminPages/DashboardPage.jsx";
+import AdminManageOrderPage from "./pages/AdminPages/ManageOrderPage.jsx";
+import AdminCustomOrderPage from "./pages/AdminPages/CustomOrderPage.jsx";
+import AdminRevenuePage from "./pages/AdminPages/RevenuePage.jsx"
 import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
