@@ -14,7 +14,7 @@ import {
   selectColor,
   selectHook,
   selectLeg,
-} from "../layouts/data/CustomOptionData.jsx";
+} from "../data/CustomOptionData.jsx";
 
 export default function CustomerOrderPage() {
   const [selectedModel, setSelectedModel] = useState(selectModel[0].value);

@@ -24,6 +24,13 @@ import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
+import BirdTypeConfigPage from "./pages/CageConfigPages/BirdTypeConfigPage.jsx"
+import ComponentConfigPage from "./pages/CageConfigPages/ComponentConfigPage.jsx"
+import ConfigSummaryPage from "./pages/CageConfigPages/ConfigSummaryPage.jsx"
+import MaterialConfigPage from "./pages/CageConfigPages/MaterialConfigPage.jsx"
+import ShapeConfigPage from "./pages/CageConfigPages/ShapeConfigPage.jsx"
+import SizeConfigPage from "./pages/CageConfigPages/SizeConfigPage.jsx"
+
 import { useLocation } from "react-router";
 import "./index.scss";
 import "./index.css";
@@ -42,7 +49,7 @@ const App = () => {
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
 
     return () => {
       clearTimeout(loadingTimeout);
@@ -149,6 +156,34 @@ const App = () => {
               <Route
                 path="/search"
                 element={isLoading ? <Loader /> : <SearchPage />}
+              />
+              <Route
+                path="/configurator"
+                element={<Navigate to="/configurator/bird-type" />}
+              />
+              <Route
+                path="/configurator/bird-type"
+                element={isLoading ? <Loader /> : <BirdTypeConfigPage />}
+              />
+              <Route
+                path="/configurator/shape"
+                element={isLoading ? <Loader /> : <ShapeConfigPage />}
+              />
+              <Route
+                path="/configurator/size"
+                element={isLoading ? <Loader /> : <SizeConfigPage />}
+              />
+              <Route
+                path="/configurator/material"
+                element={isLoading ? <Loader /> : <MaterialConfigPage />}
+              />
+              <Route
+                path="/configurator/component"
+                element={isLoading ? <Loader /> : <ComponentConfigPage />}
+              />
+              <Route
+                path="/configurator/summary"
+                element={isLoading ? <Loader /> : <ConfigSummaryPage />}
               />
               <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt="" />} />
             </Routes>

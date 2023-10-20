@@ -109,7 +109,7 @@ function Navbar(props) {
                     aria-labelledby="dropdownMenuButton1"
                   >
                     <li>
-                      <a className="dropdown-item" href="/service">
+                      <a className="dropdown-item" href="/configurator">
                         Đặt lồng chim theo yêu cầu
                       </a>
                     </li>
