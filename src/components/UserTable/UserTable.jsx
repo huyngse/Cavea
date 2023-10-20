@@ -54,9 +54,9 @@ export default function UserTable(props) {
                 </td>
                 <td>
                   <input
-                    value={editingItem.fullName}
+                    value={editingItem.firstName}
                     onChange={(e) =>
-                      handleFieldChange("fullName", e.target.value)
+                      handleFieldChange("firstName", e.target.value)
                     }
                   />
                 </td>
@@ -72,7 +72,7 @@ export default function UserTable(props) {
             ) : (
               <>
                 <td>{item.email}</td>
-                <td>{item.fullName}</td>
+                <td>{item.firstName}</td>
                 <td>{item.username}</td>
                 <td>{item.phone}</td>
                 <td>{item.role}</td>

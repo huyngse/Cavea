@@ -61,7 +61,7 @@ function AdminManageOrderPage() {
           </div>
         </div>
 
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Mã đơn</th>
@@ -83,6 +83,7 @@ function AdminManageOrderPage() {
               expectedDate=""
               cost={500000}
               status="chờ xác nhận"
+              href="/admin/order-detail"
             />
             <OrderTableRow
               id={13}
@@ -92,6 +93,7 @@ function AdminManageOrderPage() {
               expectedDate="24/10/2023"
               cost={760000}
               status="đang xử lí"
+              href="/admin/order-detail"
             />
             <OrderTableRow
               id={14}
@@ -101,6 +103,7 @@ function AdminManageOrderPage() {
               expectedDate=""
               cost={1200000}
               status="chờ xác nhận"
+              href="/admin/order-detail"
             />
           </tbody>
         </table>

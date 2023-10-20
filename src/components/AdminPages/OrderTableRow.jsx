@@ -20,7 +20,11 @@ function OrderTableRow(props) {
                     <span className='fw-bold text-primary'>đang xử lí</span>
                 }
             </td>
-            <td className='p-1'><button className="btn text-primary"><i class="bi bi-eye-fill"></i></button></td>
+            <td className='p-1'>
+                <a href={props.href}>
+                    <button className="btn text-primary"><i className="bi bi-eye-fill"></i></button>
+                </a>
+            </td>
         </tr>
     )
 }

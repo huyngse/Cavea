@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes, Navigate  } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { CardProvider } from "./contexts/CardContext.jsx";
@@ -19,6 +19,7 @@ import AdminDashboardPage from "./pages/AdminPages/DashboardPage.jsx";
 import AdminManageOrderPage from "./pages/AdminPages/ManageOrderPage.jsx";
 import AdminCustomOrderPage from "./pages/AdminPages/CustomOrderPage.jsx";
 import AdminRevenuePage from "./pages/AdminPages/RevenuePage.jsx"
+import AdminOrderDetailPage from "./pages/AdminPages/OrderDetailPage.jsx"
 import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
@@ -54,7 +55,7 @@ const App = () => {
         <CardProvider>
           <ScrollToTop>
             <Routes>
-              <Route path="/" element={isLoading ? <Loader /> : <HomePage />} />
+              <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/home" element={isLoading ? <Loader /> : <HomePage />} />
               <Route
                 path="/Cavea"
@@ -98,20 +99,28 @@ const App = () => {
                 element={<AdminManageOrderPage />}
               />
               <Route
+                path="/admin/order-detail"
+                element={<AdminOrderDetailPage />}
+              />
+              <Route
                 path="/admin/custom-order"
                 element={<AdminCustomOrderPage />}
               />
-               <Route
+              <Route
                 path="/admin/dashboard"
                 element={<AdminDashboardPage />}
               />
-               <Route
+              <Route
                 path="/admin/revenue"
                 element={<AdminRevenuePage />}
               />
               <Route
                 path="/checkout"
                 element={isLoading ? <Loader /> : <CheckoutPage />}
+              />
+              <Route
+                path="/account"
+                element={<Navigate to="/account/profile" />}
               />
               <Route
                 path="/account/profile"

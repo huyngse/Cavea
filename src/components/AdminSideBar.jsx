@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 function AdminSideBar() {
     const username = Cookies.get("loggedInUser");
     const location = useLocation();
+    const currentURL = location.pathname;
     const navigate = useNavigate();
     const { logout } = useAuth();
 
@@ -32,7 +33,7 @@ function AdminSideBar() {
                     </a>
                 </li>
                 <li>
-                    <a href="/admin/manage-order" className={`nav-link ${location.pathname === "/admin/manage-order" ? "active" : "link-dark"
+                    <a href="/admin/manage-order" className={`nav-link ${currentURL === "/admin/manage-order" || currentURL.includes("/admin/order-detail") ? "active" : "link-dark"
                         }`}
                         aria-current={
                             location.pathname === "/account/profile" ? "page" : undefined
