@@ -26,6 +26,7 @@ export default function LoginPage() {
         formData
       );
       console.log(response.data);
+      console.log(response.status);
       if (response.status === 200) {
         const userData = response.data;
         const role = userData.role;

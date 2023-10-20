@@ -1,14 +1,4 @@
 import React, { useState } from "react";
-import {
-  Table,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  TextField,
-  Button,
-} from "@mui/material";
-
 export default function UserTable(props) {
   const { data, onEdit, onCancel, onSave, onDelete } = props;
   const [editingItem, setEditingItem] = useState(null);
@@ -40,95 +30,78 @@ export default function UserTable(props) {
   };
 
   return (
-    <Table style={{ width: "90%" }}>
-      <TableHead>
-        <TableRow>
-          <TableCell>Email</TableCell>
-          <TableCell>First Name</TableCell>
-          <TableCell>Last Name</TableCell>
-          <TableCell>Username</TableCell>
-          <TableCell>Phone</TableCell>
-          <TableCell>Role</TableCell>
-          <TableCell style={{ width: "80%" }}>Action</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
+    <table className="table">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Họ và tên</th>
+          <th>Tên tài khoản</th>
+          <th>Số điện thoại</th>
+          <th>Quyền</th>
+          <th>Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
         {data.map((item) => (
-          <TableRow key={item.id}>
+          <tr key={item.id}>
             {editingItem && editingItem.id === item.id ? (
               <>
-                <TableCell>
-                  <TextField
+                <td>
+                  <input
                     value={editingItem.email}
                     onChange={(e) => handleFieldChange("email", e.target.value)}
                   />
-                </TableCell>
-                <TableCell>
-                  <TextField
+                </td>
+                <td>
+                  <input
                     value={editingItem.firstName}
                     onChange={(e) =>
                       handleFieldChange("firstName", e.target.value)
                     }
                   />
-                </TableCell>
-                <TableCell>
-                  <TextField
-                    value={editingItem.lastName}
-                    onChange={(e) =>
-                      handleFieldChange("lastName", e.target.value)
-                    }
-                  />
-                </TableCell>
-                <TableCell>{editingItem.username}</TableCell>
-                <TableCell>
-                  <TextField
+                </td>
+                <td>{editingItem.username}</td>
+                <td>
+                  <input
                     value={editingItem.phone}
                     onChange={(e) => handleFieldChange("phone", e.target.value)}
                   />
-                </TableCell>
-                <TableCell>{editingItem.role}</TableCell>
+                </td>
+                <td>{editingItem.role}</td>
               </>
             ) : (
               <>
-                <TableCell>{item.email}</TableCell>
-                <TableCell>{item.firstName}</TableCell>
-                <TableCell>{item.lastName}</TableCell>
-                <TableCell>{item.username}</TableCell>
-                <TableCell>{item.phone}</TableCell>
-                <TableCell>{item.role}</TableCell>
+                <td>{item.email}</td>
+                <td>{item.firstName}</td>
+                <td>{item.username}</td>
+                <td>{item.phone}</td>
+                <td>{item.role}</td>
               </>
             )}
-            <TableCell>
+            <td>
               {editingItem && editingItem.id === item.id ? (
                 <>
-                  <Button variant="outlined" onClick={handleSaveClick}>
-                    Save
-                  </Button>
-                  <Button variant="outlined" onClick={handleCancelClick}>
-                    Cancel
-                  </Button>
+                  <button className="border-0 bg-transparent text-decoration-underline text-primary" onClick={handleSaveClick}>
+                    Lưu
+                  </button>
+                  <button className="border-0 bg-transparent" onClick={handleCancelClick}>
+                    <i className="bi bi-x-circle text-danger"></i>
+                  </button>
                 </>
               ) : (
-                <>
-                  <Button
-                    variant="outlined"
-                    onClick={() => handleEditClick(item)}
-                  >
-                    Sửa
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    color="secondary"
-                    onClick={() => handleDeleteClick(item.id)}
-                  >
-                    Xóa
-                  </Button>
-                </>
+                <div>
+                  <button className="border-0 bg-transparent" onClick={() => handleEditClick(item)}>
+                    <i className="bi bi-pencil-square text-primary"></i>
+                  </button>
+                  <button className="border-0 bg-transparent" onClick={() => handleDeleteClick(item.id)}>
+                    <i className="bi bi-trash text-danger"></i>
+                  </button>
+                </div>
               )}
-            </TableCell>
-          </TableRow>
+            </td>
+          </tr>
         ))}
-      </TableBody>
-    </Table>
+      </tbody>
+    </table>
   );
 }
