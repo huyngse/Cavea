@@ -58,17 +58,27 @@ export default function SignUpPage() {
       setPasswordMismatchError(true);
       return;
     }
-
     try {
-      const response = await axios.post(
+      const registrationResponse = await axios.post(
         "http://localhost:8080/login/register",
         formData
       );
-      if (response.status === 200) {
-        navigate("/login/*");
+
+      const emailResponse = await axios.post(
+        "http://localhost:8080/sendemail/sendEmailVerify",
+        { email: formData.email },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (registrationResponse.status && emailResponse.status === 200) {
+        navigate("/verify-email");
       }
     } catch (error) {
-      console.error("Lỗi:", error);
+      console.error("Error:", error);
     } finally {
       setPasswordMismatchError(false);
     }
