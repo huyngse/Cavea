@@ -66,14 +66,16 @@ function CartItem(props) {
                 </p>
                 <p>
                   <button className="bg-transparent border-0 text-primary text-start text-decoration-underline">
-                    <small onClick={() => removeFromCart(props.id)}>Xóa?</small>
+                    <small onClick={() => removeFromCart(props.cageId)}>
+                      Xóa?
+                    </small>
                   </button>
                 </p>
 
                 <div className="text-center mt-auto d-flex align-items-center">
                   <button
                     className="btn "
-                    onClick={() => decreaseQuantity(props.id)}
+                    onClick={() => decreaseQuantity(props.cageId)}
                   >
                     -
                   </button>
@@ -85,7 +87,7 @@ function CartItem(props) {
                   />
                   <button
                     className="btn"
-                    onClick={() => increaseQuantity(props.id)}
+                    onClick={() => increaseQuantity(props.cageId)}
                   >
                     +
                   </button>
