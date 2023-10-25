@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ImageGallery from "react-image-gallery";
+import axios from "axios";
+import { useState } from "react";
 
 import { CardContext } from "../contexts/CardContext.jsx";
-import { products } from "../components/CageList/list_product.jsx";
 import QuantityInput from "../components/QuantityInput.jsx";
 import UserReview from "../components/UserReview";
 import MainLayout from "../layouts/MainLayout";
@@ -13,9 +14,16 @@ import MainLayout from "../layouts/MainLayout";
 export default function ProductDetailPage() {
   const { addToCart } = useContext(CardContext);
   const { productId } = useParams();
+  const [products, setProducts] = useState([]);
+  console.log(products);
+  useEffect(() => {
+    axios.get("http://localhost:8080/product/all").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
 
   const productInfo = products.find(
-    (product) => product.id === parseInt(productId)
+    (product) => product.cageId === parseInt(productId)
   );
 
   if (!productInfo) {
@@ -47,7 +55,9 @@ export default function ProductDetailPage() {
   ];
 
   const handleAddToCart = (productId) => {
-    const productToAdd = products.find((product) => product.id === productId);
+    const productToAdd = products.find(
+      (product) => product.cageId === productId
+    );
     if (productToAdd) {
       addToCart(productToAdd);
     }
@@ -72,13 +82,13 @@ export default function ProductDetailPage() {
             </div>
             <div className="col-8 p-3 mb-3">
               <h1>
-                {productInfo.name}
+                {productInfo.cageName}
                 <br />
                 <span
                   className="px-2 py-1 h6 text-white rounded-5"
                   style={{ backgroundColor: "darkOrange" }}
                 >
-                  {productInfo.model}
+                  {productInfo.cageCode}
                 </span>
               </h1>
               <hr />
@@ -86,12 +96,12 @@ export default function ProductDetailPage() {
                 <div className="me">
                   {" "}
                   <span className="h5 mb-0 text-danger border-danger border-bottom">
-                    {productInfo.rating.toFixed(1)}
+                    {productInfo.rate}
                   </span>
                 </div>
                 <Rating
                   name="read-only"
-                  value={productInfo.rating}
+                  value={productInfo.rate}
                   readOnly
                   precision={0.5}
                   style={{ marginLeft: "10px" }}
@@ -120,14 +130,15 @@ export default function ProductDetailPage() {
                     {productInfo.material}
                   </div>
                   <div>
-                    <span className="fw-bold">Số nan:</span> {productInfo.spoke}
+                    <span className="fw-bold">Số nan:</span>{" "}
+                    {productInfo.spokes}
                   </div>
                   <div>
                     <span className="fw-bold">Móc: </span> {productInfo.hanger}
                   </div>
                   <div>
                     <span className="fw-bold"> Chân quỳ: </span>
-                    {productInfo.base}
+                    {productInfo.feet}
                   </div>
                 </div>
                 <div className="col-7">
@@ -150,7 +161,7 @@ export default function ProductDetailPage() {
                     <button
                       type="button"
                       className="btn btn-primary btn-lg"
-                      onClick={() => handleAddToCart(productInfo.id)}
+                      onClick={() => handleAddToCart(productInfo.cageId)}
                     >
                       <AddShoppingCartIcon style={{ marginRight: "5px" }} />
                       Thêm vào giỏ
@@ -271,14 +282,12 @@ export default function ProductDetailPage() {
               <div className="accordion-body">
                 <div className="rating-box text-center p-3 mb-3">
                   <p className="h5">
-                    <span className="h3 fw-bold">
-                      {productInfo.rating.toFixed(1)}
-                    </span>{" "}
-                    trên 5
+                    <span className="h3 fw-bold">{productInfo.rate}</span> trên
+                    5
                   </p>
                   <Rating
                     name="size-large"
-                    defaultValue={productInfo.rating}
+                    defaultValue={productInfo.rate}
                     size="large"
                     precision={0.5}
                     readOnly
@@ -287,18 +296,18 @@ export default function ProductDetailPage() {
                 <UserReview
                   avatar="https://i.stack.imgur.com/34AD2.jpg"
                   username="phthanh159"
-                  rating={productInfo.rating}
+                  rating={productInfo.rate}
                   date="2023-01-17 06:40"
                   likeCount={50}
                 >
                   <p>
-                    Cảm ơn Shopee đã luôn là người đồng hành với những sản phẩm
-                    chất lượng đã tạo nên uy tín cho cửa hàng shopee. Với
-                    shipper giao hàng tận tay và được kiểm tra hàng trước khi
-                    nhận làm cho khách hàng rất thích những sản phẩm đó và không
-                    lâu xa khách hàng(em) có thể đặt nhiều hơn nữa để ủng hộ
-                    shoppe. Cảm ơn shoppe rất nhiều hẹn gặp lại vào dịp khác rất
-                    hân hạnh được đặt hàng từ shopee. Thanks
+                    Cảm ơn Cavea đã luôn là người đồng hành với những sản phẩm
+                    chất lượng đã tạo nên uy tín cho cửa hàng cavea. Với shipper
+                    giao hàng tận tay và được kiểm tra hàng trước khi nhận làm
+                    cho khách hàng rất thích những sản phẩm đó và không lâu xa
+                    khách hàng(em) có thể đặt nhiều hơn nữa để ủng hộ shoppe.
+                    Cảm ơn shoppe rất nhiều hẹn gặp lại vào dịp khác rất hân
+                    hạnh được đặt hàng từ cavea. Thanks
                   </p>
                 </UserReview>
                 <UserReview

@@ -18,10 +18,10 @@ export default function ViewCardForm() {
               <div>
                 {cart.map((item) => (
                   <CartItem
-                    key={item.id}
-                    id={item.id}
+                    key={item.cageId}
+                    id={item.cageId}
                     image={item.image}
-                    name={item.name}
+                    name={item.cageName}
                     description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum magnam maxime, aperiam harum blanditiis ducimus alias nemo, qui autem doloribus ea, voluptatibus quo in nisi vitae explicabo assumenda ipsam vero!"
                     price={item.price}
                     cost={item.price}

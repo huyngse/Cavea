@@ -16,7 +16,6 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
   const [errorMessages, setErrorMessages] = useState("");
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -25,8 +24,6 @@ export default function LoginPage() {
         "http://localhost:8080/login/checklogin",
         formData
       );
-      console.log(response.data);
-      console.log(response.status);
       if (response.status === 200) {
         const userData = response.data;
         const role = userData.role;
@@ -39,7 +36,7 @@ export default function LoginPage() {
           role &&
           Cookies.set("loggedInUser", formData.username);
         formData.username && role && Cookies.set("userRole", role);
-
+        console.log(formData);
         login({
           username: formData.username,
           role,
@@ -49,7 +46,7 @@ export default function LoginPage() {
           phone,
         });
         if (role === "admin") {
-          navigate("/admin");
+          navigate("/admin/dashboard");
         } else if (role === "customer") {
           navigate("/");
         }

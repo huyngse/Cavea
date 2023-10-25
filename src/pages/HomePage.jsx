@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 import ListCart from "../components/CageList/CageList.jsx";
 import BackToTopButton from "../components/BackToHome.jsx";
-import { products } from "../components/CageList/list_product.jsx";
 import { useCart } from "../contexts/CardContext.jsx";
 import HeaderMenu from "../components/HeaderMenu.jsx";
 import Carousel from "../components/Carousel.jsx";
@@ -14,15 +14,22 @@ import MainLayout from "../layouts/MainLayout.jsx";
 const Index = () => {
   const { handleCompareClick, compareProducts } = useCart();
   const [compareDetails, setCompareProductDetails] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     if (compareProducts.length >= 0) {
       const compareDetails = products.filter((product) =>
-        compareProducts.includes(product.id)
+        compareProducts.includes(product.cageId)
       );
       setCompareProductDetails(compareDetails);
     }
-  }, [compareProducts]);
+  }, [compareProducts, products]);
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/product/all").then((response) => {
+      setProducts(response.data);
+    });
+  }, []);
 
   return (
     <MainLayout>
@@ -47,7 +54,7 @@ const Index = () => {
             {compareDetails.map((product, index) => (
               <a
                 className="compare-demo-card"
-                href={`/product-detail/${product.id}`}
+                href={`/product-detail/${product.cageId}`}
                 key={index}
               >
                 <img src={product.image} alt="Hinh so sanh" />
@@ -61,7 +68,7 @@ const Index = () => {
       )}
 
       <div id="cu-gay">
-        <div className="bg-primary text-white h4 p-3">Lồng chim cu gáy</div>
+        <div className="bg-primary text-white h4 p-3">Sản phẩm đang có</div>
       </div>
       <ListCart />
       <BackToTopButton />
