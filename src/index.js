@@ -20,6 +20,8 @@ import AdminManageOrderPage from "./pages/AdminPages/ManageOrderPage.jsx";
 import AdminCustomOrderPage from "./pages/AdminPages/CustomOrderPage.jsx";
 import AdminRevenuePage from "./pages/AdminPages/RevenuePage.jsx"
 import AdminOrderDetailPage from "./pages/AdminPages/OrderDetailPage.jsx"
+import AdminManageProductPage from "./pages/AdminPages/ManageProductPage.jsx"
+import AdminManageCategoryPage from "./pages/AdminPages/ManageCategoryPage.jsx"
 import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
@@ -30,6 +32,7 @@ import ConfigSummaryPage from "./pages/CageConfigPages/ConfigSummaryPage.jsx"
 import MaterialConfigPage from "./pages/CageConfigPages/MaterialConfigPage.jsx"
 import ShapeConfigPage from "./pages/CageConfigPages/ShapeConfigPage.jsx"
 import SizeConfigPage from "./pages/CageConfigPages/SizeConfigPage.jsx"
+import ManageCloudPage from "./pages/ManageCloudPage.jsx";
 
 import { useLocation } from "react-router";
 import "./index.scss";
@@ -122,6 +125,14 @@ const App = () => {
                 element={<AdminRevenuePage />}
               />
               <Route
+                path="/admin/manage-product"
+                element={<AdminManageProductPage />}
+              />
+              <Route
+                path="/admin/manage-category"
+                element={<AdminManageCategoryPage />}
+              />
+              <Route
                 path="/checkout"
                 element={isLoading ? <Loader /> : <CheckoutPage />}
               />
@@ -184,6 +195,10 @@ const App = () => {
               <Route
                 path="/configurator/summary"
                 element={isLoading ? <Loader /> : <ConfigSummaryPage />}
+              />
+               <Route
+                path="/manage-file"
+                element={ <ManageCloudPage />}
               />
               <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt="" />} />
             </Routes>

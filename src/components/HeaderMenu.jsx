@@ -49,12 +49,12 @@ export default function HeaderMenu() {
     },
     {
       text: "Lồng Chim Hút Mật",
-      image: chimChoeLua,
+      image: chimHutMat,
       href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-yen-hut-mat",
     },
     {
       text: "Lồng Chim Chòe Lửa",
-      image: chimHutMat,
+      image: chimChoeLua,
       href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-choe-lua",
     },
   ];

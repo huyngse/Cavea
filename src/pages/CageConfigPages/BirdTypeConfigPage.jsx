@@ -12,7 +12,7 @@ const BirdTypeConfigPage = () => {
   return (
     <CageConfigLayout>
       <div className="p-2">
-        <h1 className="h3">Chọn loại chim</h1>
+        <h1 className="h3">Chọn loại lồng chim</h1>
       </div>
       <div className='container-fluid mb-3'>
         <div className="row p-2">
@@ -23,7 +23,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Cu Gáy
+                  Lồng Chim Cu Gáy
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -38,7 +38,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Họa Mi
+                  Lồng Chim Họa Mi
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -53,7 +53,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Chào Mào
+                  Lồng Chim Chào Mào
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -68,7 +68,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Khuyên
+                  Lồng Chim Khuyên
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -83,7 +83,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Chòe Than
+                  Lồng Chim Chòe Than
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -98,7 +98,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Khướu
+                  Lồng Chim Khướu
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -113,7 +113,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Hút Mật
+                  Lồng Chim Hút Mật
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>
@@ -128,7 +128,7 @@ const BirdTypeConfigPage = () => {
               </div>
               <div className='text-center'>
                 <h3 className='h5'>
-                  Chim Chòe Lửa
+                  Lồng Chim Chòe Lửa
                 </h3>
                 <a href="/configurator/shape">
                   <button className="btn btn-primary mb-3">Chọn</button>

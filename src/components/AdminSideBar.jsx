@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import Cookies from "js-cookie";
+import NavItem from "./NavItem.jsx"
 function AdminSideBar() {
     const username = Cookies.get("loggedInUser");
     const location = useLocation();
@@ -15,63 +16,20 @@ function AdminSideBar() {
         navigate("/login");
     };
     return (
-        <div className="d-flex flex-column flex-shrink-0 py-3 px-1 bg-light min-vh-100" style={{width: "250px"}}>
+        <div className="d-flex flex-column flex-shrink-0 py-3 px-1 bg-light min-vh-100" style={{ width: "250px" }}>
             <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
                 <svg className="bi me-2" width="40" height="32"></svg>
                 <span className="fs-4">Cavea</span>
             </a>
             <hr />
             <ul className="nav nav-pills flex-column mb-auto">
-                <li className="nav-item">
-                    <a href="/admin/dashboard" className={`nav-link ${location.pathname === "/admin/dashboard" ? "active" : "link-dark"
-                        }`}
-                        aria-current={
-                            location.pathname === "/account/profile" ? "page" : undefined
-                        }>
-                        <i className="bi bi-graph-up-arrow me-3"></i>
-                        Thống kê
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/manage-order" className={`nav-link ${currentURL === "/admin/manage-order" || currentURL.includes("/admin/order-detail") ? "active" : "link-dark"
-                        }`}
-                        aria-current={
-                            location.pathname === "/account/profile" ? "page" : undefined
-                        }>
-                        <i className="bi bi-clipboard-check me-3"></i>
-                        Quản lý đơn hàng
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/custom-order" className={`nav-link ${location.pathname === "/admin/custom-order" ? "active" : "link-dark"
-                        }`}
-                        aria-current={
-                            location.pathname === "/account/profile" ? "page" : undefined
-                        }>
-                        <i className="bi bi-tools me-3"></i>
-                        Đơn hàng gia công
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/manage-account" className={`nav-link ${location.pathname === "/admin/manage-account" ? "active" : "link-dark"
-                        }`}
-                        aria-current={
-                            location.pathname === "/account/profile" ? "page" : undefined
-                        }>
-                        <i className="bi bi-people-fill me-3"></i>
-                        Quản lý người dùng
-                    </a>
-                </li>
-                <li>
-                    <a href="/admin/revenue" className={`nav-link ${location.pathname === "/admin/revenue" ? "active" : "link-dark"
-                        }`}
-                        aria-current={
-                            location.pathname === "/account/profile" ? "page" : undefined
-                        }>
-                        <i className="bi bi-cash-stack me-3"></i>
-                        Doanh thu
-                    </a>
-                </li>
+                <NavItem href="/admin/dashboard"><i className="bi bi-graph-up-arrow me-2"></i> Thống kê</NavItem>
+                <NavItem href="/admin/manage-order"><i className="bi bi-clipboard-check me-2"></i> Quản lý đơn hàng</NavItem>
+                <NavItem href="/admin/custom-order"><i className="bi bi-tools me-2"></i> Đơn hàng gia công</NavItem>
+                <NavItem href="/admin/manage-account"><i className="bi bi-people-fill me-2"></i> Quản lý người dùng</NavItem>
+                <NavItem href="/admin/manage-product"><i className="bi bi-box-seam me-2"></i> Quản lý sản phẩm</NavItem>
+                <NavItem href="/admin/manage-category"><i className="bi bi-inboxes me-2"></i> Quản lý danh mục</NavItem>
+                <NavItem href="/admin/revenue"><i className="bi bi-cash-stack me-2"></i> Doanh thu</NavItem>
             </ul>
             <hr />
             <div className="dropdown">
