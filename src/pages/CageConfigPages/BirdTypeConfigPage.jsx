@@ -1,14 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CageConfigLayout from '../../layouts/CageConfigLayout'
-import chimCuGay from "../../assets/Bird-photos/chim-cu-gay.jpg";
-import chimHoaMi from "../../assets/Bird-photos/chim-hoa-mi.jpg";
-import chimChaoMao from "../../assets/Bird-photos/chim-chao-mao.jpg";
-import chimKhuyen from "../../assets/Bird-photos/chim-khuyen.jpg";
-import chimChoeThan from "../../assets/Bird-photos/chim-choe-than.jpg";
-import chimKhuou from "../../assets/Bird-photos/chim-khuou.jpg";
-import chimHutMat from "../../assets/Bird-photos/chim-hut-mat.jpg";
-import chimChoeLua from "../../assets/Bird-photos/chim-chich-choe-lua.jpg";
+import { formatCurrency } from '../../utils/utils'
+import axios from "axios";
+import Cookies from 'js-cookie';
 const BirdTypeConfigPage = () => {
+  const API_BASE_URL = "http://localhost:8080";
+  const [birdTypes, setBirdTypes] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/birdtypes`);
+        setBirdTypes(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+  function handleChooseBirdType(param) {
+    Cookies.remove('selected-shape');
+    Cookies.remove('selected-material');
+    Cookies.remove('selected-height');
+    Cookies.remove('selected-spoke');
+    Cookies.set('selected-bird-type', JSON.stringify(param), { expires: 7 });
+  }
+
   return (
     <CageConfigLayout>
       <div className="p-2">
@@ -16,126 +32,33 @@ const BirdTypeConfigPage = () => {
       </div>
       <div className='container-fluid mb-3'>
         <div className="row p-2">
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimCuGay} alt="" className='h-100 w-100 object-fit-cover' />
+          {
+            birdTypes.map((birdType) =>
+            (
+              <div className='col-4' key={birdType.birdTypeId}>
+                <div className='rounded shadow'>
+                  <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
+                    <img src={birdType.birdImageUrl} alt="" className='h-100 w-100 object-fit-cover' />
+                  </div>
+                  <div className='text-center'>
+                    <h3 className='h5'>
+                      Lồng {birdType.birdName}
+                    </h3>
+                    <div>
+                      Giá cơ sở: {formatCurrency(birdType.basePrice)}
+                    </div>
+                    <a href="/configurator/shape">
+                      <button className="btn btn-primary mb-3" onClick={() => handleChooseBirdType(birdType)}>Chọn</button>
+                    </a>
+                  </div>
+                </div>
               </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Cu Gáy
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimHoaMi} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Họa Mi
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimChaoMao} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Chào Mào
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimKhuyen} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Khuyên
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimChoeThan} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Chòe Than
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimKhuou} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Khướu
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimHutMat} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Hút Mật
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className='col-4'>
-            <div className='rounded shadow'>
-              <div className='p-2 overflow-hidden' style={{ height: "200px" }}>
-                <img src={chimChoeLua} alt="" className='h-100 w-100 object-fit-cover' />
-              </div>
-              <div className='text-center'>
-                <h3 className='h5'>
-                  Lồng Chim Chòe Lửa
-                </h3>
-                <a href="/configurator/shape">
-                  <button className="btn btn-primary mb-3">Chọn</button>
-                </a>
-              </div>
-            </div>
-          </div>
+            )
+            )
+          }
+
+
+
         </div>
       </div>
 

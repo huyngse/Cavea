@@ -1,5 +1,4 @@
 import React from 'react'
-import { CloudinaryContext, Image, Transformation } from 'cloudinary-react';
 import { useState } from 'react';
 import axios from 'axios';
 

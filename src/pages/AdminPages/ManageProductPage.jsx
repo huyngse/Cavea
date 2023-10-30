@@ -3,12 +3,22 @@ import AdminLayout from '../../layouts/AdminLayout'
 import { formatCurrency } from '../../utils/utils'
 import axios from "axios";
 import Modal from '@mui/material/Modal';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 function ManageProductPage() {
   const [cages, setCages] = useState([]);
   const [selectedCage, setSelectedCage] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [longDescription, setLongDescription] = useState('');
+  const handleLongDescriptionChange = (value) => {
+    setLongDescription(value);
+  };
   const openModal = (cage) => {
     setSelectedCage(cage);
+    setPrice(cage.cagePrice);
+    setDiscountPercent(cage.discount);
+    setDiscountPrice(cage.cagePrice - cage.cagePrice * cage.discount);
+    setLongDescription(cage.longDescription);
     setShowModal(true);
   };
 
@@ -129,6 +139,37 @@ function ManageProductPage() {
   //   event.preventDefault();
   //   // Handle any other save actions if needed
   // };
+  const [price, setPrice] = useState(0);
+  const [discountPercent, setDiscountPercent] = useState(0);
+  const [discountPrice, setDiscountPrice] = useState(0);
+
+  const handlePriceChange = (event) => {
+    const newPrice = event.target.value * 1;
+    setPrice(newPrice);
+    calculateDiscountPrice(newPrice, discountPercent);
+  };
+
+  const handleDiscountPercentChange = (event) => {
+    const newDiscountPercent = event.target.value * 1;
+    setDiscountPercent(newDiscountPercent);
+    calculateDiscountPrice(price, newDiscountPercent);
+  };
+
+  const handleDiscountPriceChange = (event) => {
+    const newDiscountPrice = event.target.value * 1;
+    setDiscountPrice(newDiscountPrice);
+    calculateDiscountPercent(price, newDiscountPrice);
+  };
+
+  const calculateDiscountPrice = (price, discountPercent) => {
+    const calculatedDiscountPrice = price - (price * discountPercent);
+    setDiscountPrice(calculatedDiscountPrice);
+  };
+
+  const calculateDiscountPercent = (price, discountPrice) => {
+    const calculatedDiscountPercent = ((price - discountPrice) / price);
+    setDiscountPercent(calculatedDiscountPercent);
+  };
 
   return (
     <AdminLayout>
@@ -176,7 +217,7 @@ function ManageProductPage() {
                 <td>{cage.cageName}</td>
                 <td>{cage.birdType.birdName}</td>
                 <td>{formatCurrency(cage.cagePrice)}</td>
-                <td>{formatCurrency(cage.discount)}</td>
+                <td>{formatCurrency(cage.cagePrice - cage.discount * cage.cagePrice)}</td>
                 <td>{cage.quantity}</td>
                 <td>
                   <input
@@ -214,13 +255,47 @@ function ManageProductPage() {
               <div className="row">
                 <div className="col-8">
                   <div className="mb-3">
-                    <label htmlFor="cageName" className="form-label">Tên lồng</label>
+                    <label htmlFor="cageName" className="form-label fw-bold">Tên lồng</label>
                     <input type="email" className="form-control" id="cageName" defaultValue={selectedCage.cageName} />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="shortDescription" className="form-label">Mô tả ngắn</label>
+                    <label htmlFor="shortDescription" className="form-label fw-bold">Mô tả ngắn</label>
                     <textarea className="form-control" id="shortDescription" rows="3" defaultValue={selectedCage.shortDescription}></textarea>
                   </div>
+                  <div className="mb-3">
+                    <strong>Mô tả đầy đủ</strong>
+                    <ReactQuill value={longDescription} onChange={handleLongDescriptionChange} />
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-6">
+
+                      <div className="mb-3">
+                        <label htmlFor="price" className="form-label fw-bold">Giá</label>
+                        <input type="number" className="form-control" id="price" value={price} onChange={handlePriceChange}></input>
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="discount" className="form-label fw-bold">Giảm (%)</label>
+                        <input type="number" className="form-control" id="discount" value={discountPercent}
+                          onChange={handleDiscountPercentChange}></input>
+                      </div>
+                      <div className="mb-3">
+                        <label htmlFor="discountPrice" className="form-label fw-bold">Giảm còn</label>
+                        <input type="number" className="form-control" id="discountPrice" value={discountPrice}
+                          onChange={handleDiscountPriceChange}></input>
+                      </div>
+                    </div>
+                    <div className="col-6">
+                      <strong>Giá:</strong> {formatCurrency(price)}
+                      <br />
+                      <strong>Giảm:</strong> {discountPercent.toFixed(2) * 100}%
+                      <br />
+                      <strong>Giảm còn:</strong> {formatCurrency(discountPrice)}
+                      
+
+                    </div>
+                  </div>
+
                 </div>
                 <div className="col-4">
                   <div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-
+import { CustomOrderProvider } from './contexts/CustomOrderContext'
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import { CardProvider } from "./contexts/CardContext.jsx";
 import Loader from "./components/Loading/index.jsx";
@@ -63,146 +63,148 @@ const App = () => {
     <BrowserRouter>
       <AuthProvider>
         <CardProvider>
-          <ScrollToTop>
-            <Routes>
-              <Route path="/" element={<Navigate to="/home" />} />
-              <Route path="/home" element={isLoading ? <Loader /> : <HomePage />} />
-              <Route
-                path="/Cavea"
-                element={isLoading ? <Loader /> : <HomePage />}
-              />
-              <Route
-                path="/login/*"
-                element={isLoading ? <Loader /> : <LoginPage />}
-              />
-              <Route
-                path="/sign-up"
-                element={isLoading ? <Loader /> : <SignUp />}
-              />
-              <Route
-                path="/service"
-                element={isLoading ? <Loader /> : <ServicePage />}
-              />
-              <Route
-                path="/blog"
-                element={isLoading ? <Loader /> : <BlogPage />}
-              />
-              <Route
-                path="/compare"
-                element={isLoading ? <Loader /> : <ComparePage />}
-              />
-              <Route
-                path="/product-detail/:productId"
-                element={isLoading ? <Loader /> : <ProductDetailPage />}
-              />
-              <Route
-                path="/view-cart"
-                element={isLoading ? <Loader /> : <ViewCartPage />}
-              />
-              <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
-              <Route
-                path="/admin/manage-account"
-                element={<AdminManageAccountPage />}
-              />
-              <Route
-                path="/admin/manage-order"
-                element={<AdminManageOrderPage />}
-              />
-              <Route
-                path="/admin/order-detail"
-                element={<AdminOrderDetailPage />}
-              />
-              <Route
-                path="/admin/custom-order"
-                element={<AdminCustomOrderPage />}
-              />
-              <Route
-                path="/admin/dashboard"
-                element={<AdminDashboardPage />}
-              />
-              <Route
-                path="/admin/revenue"
-                element={<AdminRevenuePage />}
-              />
-              <Route
-                path="/admin/manage-product"
-                element={<AdminManageProductPage />}
-              />
-              <Route
-                path="/admin/manage-category"
-                element={<AdminManageCategoryPage />}
-              />
-              <Route
-                path="/checkout"
-                element={isLoading ? <Loader /> : <CheckoutPage />}
-              />
-              <Route
-                path="/account"
-                element={<Navigate to="/account/profile" />}
-              />
-              <Route
-                path="/account/profile"
-                element={<EditProfile />}
-              />
-              <Route
-                path="/account/order"
-                element={<UserOrder />}
-              />
-              <Route
-                path="/account/custom-order"
-                element={<h1>TODO: </h1>}
-              />
-              <Route
-                path="/account/change-password"
-                element={<h1>TODO: </h1>}
-              />
-              <Route
-                path="/account/notification"
-                element={<h1>TODO: </h1>}
-              />
-              <Route
-                path="/order-detail"
-                element={isLoading ? <Loader /> : <OrderDetailPage />}
-              />
-              <Route
-                path="/search"
-                element={isLoading ? <Loader /> : <SearchPage />}
-              />
-              <Route
-                path="/configurator"
-                element={<Navigate to="/configurator/bird-type" />}
-              />
-              <Route
-                path="/configurator/bird-type"
-                element={isLoading ? <Loader /> : <BirdTypeConfigPage />}
-              />
-              <Route
-                path="/configurator/shape"
-                element={isLoading ? <Loader /> : <ShapeConfigPage />}
-              />
-              <Route
-                path="/configurator/size"
-                element={isLoading ? <Loader /> : <SizeConfigPage />}
-              />
-              <Route
-                path="/configurator/material"
-                element={isLoading ? <Loader /> : <MaterialConfigPage />}
-              />
-              <Route
-                path="/configurator/component"
-                element={isLoading ? <Loader /> : <ComponentConfigPage />}
-              />
-              <Route
-                path="/configurator/summary"
-                element={isLoading ? <Loader /> : <ConfigSummaryPage />}
-              />
-               <Route
-                path="/manage-file"
-                element={ <ManageCloudPage />}
-              />
-              <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt="" />} />
-            </Routes>
-          </ScrollToTop>
+          <CustomOrderProvider>
+            <ScrollToTop>
+              <Routes>
+                <Route path="/" element={<Navigate to="/home" />} />
+                <Route path="/home" element={isLoading ? <Loader /> : <HomePage />} />
+                <Route
+                  path="/Cavea"
+                  element={isLoading ? <Loader /> : <HomePage />}
+                />
+                <Route
+                  path="/login/*"
+                  element={isLoading ? <Loader /> : <LoginPage />}
+                />
+                <Route
+                  path="/sign-up"
+                  element={isLoading ? <Loader /> : <SignUp />}
+                />
+                <Route
+                  path="/service"
+                  element={isLoading ? <Loader /> : <ServicePage />}
+                />
+                <Route
+                  path="/blog"
+                  element={isLoading ? <Loader /> : <BlogPage />}
+                />
+                <Route
+                  path="/compare"
+                  element={isLoading ? <Loader /> : <ComparePage />}
+                />
+                <Route
+                  path="/product-detail/:productId"
+                  element={isLoading ? <Loader /> : <ProductDetailPage />}
+                />
+                <Route
+                  path="/view-cart"
+                  element={isLoading ? <Loader /> : <ViewCartPage />}
+                />
+                <Route path="/admin" element={<Navigate to="/admin/dashboard" />} />
+                <Route
+                  path="/admin/manage-account"
+                  element={<AdminManageAccountPage />}
+                />
+                <Route
+                  path="/admin/manage-order"
+                  element={<AdminManageOrderPage />}
+                />
+                <Route
+                  path="/admin/order-detail"
+                  element={<AdminOrderDetailPage />}
+                />
+                <Route
+                  path="/admin/custom-order"
+                  element={<AdminCustomOrderPage />}
+                />
+                <Route
+                  path="/admin/dashboard"
+                  element={<AdminDashboardPage />}
+                />
+                <Route
+                  path="/admin/revenue"
+                  element={<AdminRevenuePage />}
+                />
+                <Route
+                  path="/admin/manage-product"
+                  element={<AdminManageProductPage />}
+                />
+                <Route
+                  path="/admin/manage-category"
+                  element={<AdminManageCategoryPage />}
+                />
+                <Route
+                  path="/checkout"
+                  element={isLoading ? <Loader /> : <CheckoutPage />}
+                />
+                <Route
+                  path="/account"
+                  element={<Navigate to="/account/profile" />}
+                />
+                <Route
+                  path="/account/profile"
+                  element={<EditProfile />}
+                />
+                <Route
+                  path="/account/order"
+                  element={<UserOrder />}
+                />
+                <Route
+                  path="/account/custom-order"
+                  element={<h1>TODO: </h1>}
+                />
+                <Route
+                  path="/account/change-password"
+                  element={<h1>TODO: </h1>}
+                />
+                <Route
+                  path="/account/notification"
+                  element={<h1>TODO: </h1>}
+                />
+                <Route
+                  path="/order-detail"
+                  element={isLoading ? <Loader /> : <OrderDetailPage />}
+                />
+                <Route
+                  path="/search"
+                  element={isLoading ? <Loader /> : <SearchPage />}
+                />
+                <Route
+                  path="/configurator"
+                  element={<Navigate to="/configurator/bird-type" />}
+                />
+                <Route
+                  path="/configurator/bird-type"
+                  element={isLoading ? <Loader /> : <BirdTypeConfigPage />}
+                />
+                <Route
+                  path="/configurator/shape"
+                  element={isLoading ? <Loader /> : <ShapeConfigPage />}
+                />
+                <Route
+                  path="/configurator/size"
+                  element={isLoading ? <Loader /> : <SizeConfigPage />}
+                />
+                <Route
+                  path="/configurator/material"
+                  element={isLoading ? <Loader /> : <MaterialConfigPage />}
+                />
+                <Route
+                  path="/configurator/component"
+                  element={isLoading ? <Loader /> : <ComponentConfigPage />}
+                />
+                <Route
+                  path="/configurator/summary"
+                  element={isLoading ? <Loader /> : <ConfigSummaryPage />}
+                />
+                <Route
+                  path="/manage-file"
+                  element={<ManageCloudPage />}
+                />
+                <Route path="*" element={<img src="https://bristeeritech.com/wp-content/uploads/2020/02/Untitled-1.jpg" alt="" />} />
+              </Routes>
+            </ScrollToTop>
+          </CustomOrderProvider>
         </CardProvider>
       </AuthProvider>
     </BrowserRouter>
