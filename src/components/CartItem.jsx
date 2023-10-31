@@ -2,7 +2,9 @@ import React from "react";
 import { useCart } from "../contexts/CardContext";
 
 function CartItem(props) {
-  function handleChangeQuantity() {}
+  function handleChangeQuantity() {
+
+  }
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
   return (
     <div className="row mb-3  p-3 shadow">

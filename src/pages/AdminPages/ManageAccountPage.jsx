@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UserTable from "../../components/UserTable/UserTable.jsx";
-import AdminLayout from "../../layouts/AdminLayout.jsx"
+import AdminLayout from "../../layouts/AdminLayout.jsx";
 
 const AdminManageAccountPage = () => {
-  const API_BASE_URL = "http://localhost:8080";
+  const API_BASE_URL = "http://localhost:8089";
 
   const [data, setData] = useState([]);
   const [, setEditingItem] = useState(null);
@@ -109,11 +109,7 @@ const AdminManageAccountPage = () => {
             value={search}
             onChange={handleSearchChange}
           />
-          <button
-            className="btn btn-light"
-            type="button"
-            id="button-addon2"
-          >
+          <button className="btn btn-light" type="button" id="button-addon2">
             <i className="bi bi-search"></i>
           </button>
         </form>
@@ -125,8 +121,7 @@ const AdminManageAccountPage = () => {
           onDelete={handleDelete}
         />
       </div>
-
-    </AdminLayout >
+    </AdminLayout>
   );
 };
 

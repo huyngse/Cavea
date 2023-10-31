@@ -9,7 +9,8 @@ import "./ProductCard.css";
 export default function ProductCard(props) {
   const { compareProducts } = useCart();
   const {
-    id,
+    cageid,
+    userid,
     productName,
     productDescription,
     productImage,
@@ -34,15 +35,15 @@ export default function ProductCard(props) {
 
   const [isComparing, setIsComparing] = useState(false);
 
-  const isChecked = compareProducts.includes(id);
+  const isChecked = compareProducts.includes(cageid);
 
   const handleCompareProducts = async (productId) => {
     setIsComparing(!isComparing);
     await onCompare(productId);
   };
 
-  const handleAddToCart = async (productId) => {
-    await onAddToCart(productId);
+  const handleAddToCart = async (productId,userid) => {
+    await onAddToCart(productId,userid);
   };
 
   const price = productPrice.toLocaleString("vi-VN", {
@@ -63,11 +64,11 @@ export default function ProductCard(props) {
             type="checkbox"
             name="checkbox"
             checked={isChecked}
-            onChange={() => handleCompareProducts(id)}
+            onChange={() => handleCompareProducts(cageid)}
           />
         </label>
       </form>
-      <a className="product-card-image" href={`/product-detail/${id}`}>
+      <a className="product-card-image" href={`/product-detail/${cageid}`}>
         <img sx={{ height: 260 }} src={productImage} alt="" />
       </a>
       <CardContent sx={{ padding: "6px" }}>
@@ -84,7 +85,7 @@ export default function ProductCard(props) {
       <CartButton
         variant="contained"
         startIcon={<AddShoppingCartIcon />}
-        onClick={() => handleAddToCart(id)}
+        onClick={() => handleAddToCart(cageid,userid)}
       >
         Thêm vào giỏ
       </CartButton>
