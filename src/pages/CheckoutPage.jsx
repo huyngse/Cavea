@@ -2,6 +2,9 @@ import React from "react";
 import Cookies from "js-cookie";
 import { useCart } from "../contexts/CardContext";
 import MainLayout from "../layouts/MainLayout";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 export default function CheckoutPage() {
   const email = Cookies.get("email");
@@ -9,7 +12,104 @@ export default function CheckoutPage() {
   const firstName = Cookies.get("firstName");
   const lastName = Cookies.get("lastName");
   const { cart, totalPrice } = useCart();
+  const [carts, setCarts] = useState([]);
+  const [cuscarts, setCusCarts] = useState([]);
+  const [objectcart,setObject]=useState({})
+  const userIdC=Cookies.get("loggedInUser")
+  
+  var urldata;
+  var checkCus;
 
+  const handleClick = () => {
+    var typePays = document.getElementsByName('flexRadioDefault');
+    var userid = document.getElementById('usernn');
+    var typePay = "";
+    var payUrl = '';
+    for (var i = 0; i < typePays.length; i++) {
+      if (typePays[i].checked) {
+        typePay = typePays[i].value;
+      }
+    }
+    if (typePay === '1') {
+      
+      if(checkCus){
+        payUrl = 'http://localhost:8089/cart/pay?username=' + userIdC+'&status=2';
+      }else{
+        payUrl = 'http://localhost:8089/cart/pay?username=' + userIdC
+      }
+      const getCarts = async () => {
+        try {
+          const res = await axios.get(payUrl);
+          urldata = res.data
+
+          console.log(urldata);
+          window.open(urldata.data)
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+      getCarts();
+
+    }
+    else if (typePay === '2') {
+      payUrl = 'http://localhost:8089/cart/bill?username=' + userIdC;
+      const getCarts = async () => {
+        try {
+          const res = await axios.get(payUrl);
+          window.open('http://localhost:3000/payment-vnpay/results?vnp_ResponseCode=01')
+          console.log(res)
+        } catch (error) {
+          console.log(error.message);
+        }
+      }
+      getCarts();
+    }
+    return payUrl;
+  }
+
+  useEffect(() => {
+    const getCarts = async () => {
+      try {
+        const res = await axios.get('http://localhost:8089/cart/get?username='+userIdC);
+        setCarts(res.data.list);
+        setObject(res.data)
+        console.log(res.data.list);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    const getCusCarts = async () => {
+      try {
+        const res = await axios.get('http://localhost:8089/cart/get?username='+userIdC+'&status=2');
+        setCusCarts(res.data.list);
+        console.log(res.data.list);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    
+    var query = window.location.search.substring(1);
+    console.log(query)//"app=article&act=news_content&aid=160990"
+    var vars = query.split("&");
+    console.log(vars) //[ 'app=article', 'act=news_content', 'aid=160990' ]
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split("=");
+      console.log(pair)//[ 'app', 'article' ][ 'act', 'news_content' ][ 'aid', '160990' ] 
+      if (pair[0] == 'customize-cage') {
+        if (pair[1] == 'true') {
+          checkCus = true;
+        }
+
+      }
+    }
+    if (checkCus) {
+      getCusCarts();
+    } else {
+      getCarts();
+      getCusCarts();
+    }
+
+  }, []);
   return (
     <MainLayout>
       <div className="bg-white">
@@ -71,7 +171,7 @@ export default function CheckoutPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {cart.map((item, index) => (
+                  {carts.map((item, index) => (
                     <tr key={index}>
                       <th scope="row">{index + 1}</th>
                       <td>
@@ -86,35 +186,71 @@ export default function CheckoutPage() {
                       <td>
                         <div>
                           <span className="h6">Tên sản phẩm: </span>
-                          {item.name}
+                          {item.regularCages.cageName}
                         </div>
                         <div>
                           <span className="h6">Loại: </span>
-                          {item.type}
+                          {item.regularCages.cageCode}
                         </div>
                         <div>
                           <span className="h6">Số lượng: </span>
-                          {item.quantity}
+                          {1}
                         </div>
                         <div>
                           <span className="h6">Thành tiền: </span>
-                          {item.price.toLocaleString("vi-VN", {
-                            style: "currency",
-                            currency: "VND",
-                          })}
+                          {item.regularCages.cagePrice}
                         </div>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
+
+              <h2 className="h5">Tóm tắt giỏ hàng Customcage</h2>
+              <table className="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">SST</th>
+                    <th scope="col">shape</th>
+                    <th scope="col">material</th>
+                    <th scope="col">price</th>
+                    <th scope="col">description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {cuscarts.map((item, index) => (
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
+                      <td>
+                        {item.shape}
+                      </td>
+                      <td>
+                        <div>
+
+                          {item.material}
+                        </div>
+
+
+                      </td>
+                      <td> <div>
+
+                        {item.price}
+                      </div></td>
+                      <td> <div>
+
+                        {item.description}
+                      </div></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+
+
               <div className="text-end">
                 <span className="text-muted">Tổng cộng: </span>
                 <span className="text-primary h3">
-                  {totalPrice.toLocaleString("vi-VN", {
-                    style: "currency",
-                    currency: "VND",
-                  })}
+                  {objectcart.message}
                 </span>
               </div>
             </div>
@@ -128,15 +264,20 @@ export default function CheckoutPage() {
                   placeholder="Ghi chú trong trường hợp địa chỉ khó tìm"
                 ></textarea>
               </div>
+
+              <input type="hidden" value='17' name="usernn" id="usernn" />
               <div className="mb-3">
                 <h2 className="h5">Phương thức thanh toán</h2>
                 <div className="ps-3">
                   <div className="form-check">
                     <input
+
+                      value='1'
                       className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
                       id="paymentMethod1"
+                      checked
                     />
                     <label
                       className="form-check-label"
@@ -147,6 +288,7 @@ export default function CheckoutPage() {
                   </div>
                   <div className="form-check">
                     <input
+                      value='2'
                       className="form-check-input"
                       type="radio"
                       name="flexRadioDefault"
@@ -159,41 +301,16 @@ export default function CheckoutPage() {
                       Thanh toán tại cửa hàng
                     </label>
                   </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="paymentMethod3"
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="paymentMethod3"
-                    >
-                      Đặt cọc trước 50%
-                    </label>
-                  </div>
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="paymentMethod4"
-                    />
-                    <label
-                      className="form-check-label"
-                      htmlFor="paymentMethod4"
-                    >
-                      Thanh toán trực tiếp cho nhân viên giao hàng
-                    </label>
-                  </div>
+
+
                 </div>
               </div>
               <div className="d-flex">
-                <a href="/order-detail" className="mx-auto w-50">
-                  <button className="btn btn-primary ">Thanh toán</button>
-                </a>
+                {/* <a href="/payment" className="mx-auto w-50"> */}
+                <button onClick={handleClick} className="btn btn-primary ">Thanh toán</button>
+                {/* </a> */}
               </div>
+
             </div>
           </div>
         </div>

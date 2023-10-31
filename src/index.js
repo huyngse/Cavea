@@ -14,6 +14,7 @@ import ServicePage from "./pages/CustomOrderPage.jsx";
 import ComparePage from "./pages/ComparePage.jsx";
 import ProductDetailPage from "./pages/ProductDetailPage.jsx";
 import ViewCartPage from "./pages/ViewCartPage.jsx";
+import Payment from "./pages/Payment.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import AdminManageAccountPage from "./pages/AdminPages/ManageAccountPage.jsx";
 import AdminDashboardPage from "./pages/AdminPages/DashboardPage.jsx";
@@ -25,13 +26,9 @@ import EditProfile from "./pages/AccountPage/EditProfilePage.jsx";
 import UserOrder from "./pages/AccountPage/UserOrderPage.jsx";
 import OrderDetailPage from "./pages/OrderDetailPage.jsx";
 import SearchPage from "./pages/SearchPage.jsx";
-import BirdTypeConfigPage from "./pages/CageConfigPages/BirdTypeConfigPage.jsx";
-import ComponentConfigPage from "./pages/CageConfigPages/ComponentConfigPage.jsx";
-import ConfigSummaryPage from "./pages/CageConfigPages/ConfigSummaryPage.jsx";
-import MaterialConfigPage from "./pages/CageConfigPages/MaterialConfigPage.jsx";
-import ShapeConfigPage from "./pages/CageConfigPages/ShapeConfigPage.jsx";
-import SizeConfigPage from "./pages/CageConfigPages/SizeConfigPage.jsx";
+import CageConfigPage from "./pages/CageConfigPages/CageConfigPage.jsx";
 import VerifyEmailPage from "./pages/VerifyEmailPage.jsx";
+import { Outlet } from "react-router-dom";
 
 import "./index.scss";
 import "./index.css";
@@ -44,8 +41,17 @@ const ScrollToTop = (props) => {
 
   return <>{props.children}</>;
 };
-
+export function RequiresAuth({ children }) {
+  const accessToken = localStorage.getItem("token");
+  if (!accessToken) {
+    return <Navigate to="/login" />;
+  } else {
+    return children ? children : <Outlet />;
+  }
+}
 const App = () => {
+
+  const accessToken = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -102,6 +108,11 @@ const App = () => {
                 element={isLoading ? <Loader /> : <ViewCartPage />}
               />
               <Route
+                path="/payment-vnpay/results"
+                element={isLoading ? <Loader /> : <Payment />}
+              />
+
+              <Route
                 path="/admin"
                 element={<Navigate to="/admin/dashboard" />}
               />
@@ -154,31 +165,7 @@ const App = () => {
               />
               <Route
                 path="/configurator"
-                element={<Navigate to="/configurator/bird-type" />}
-              />
-              <Route
-                path="/configurator/bird-type"
-                element={isLoading ? <Loader /> : <BirdTypeConfigPage />}
-              />
-              <Route
-                path="/configurator/shape"
-                element={isLoading ? <Loader /> : <ShapeConfigPage />}
-              />
-              <Route
-                path="/configurator/size"
-                element={isLoading ? <Loader /> : <SizeConfigPage />}
-              />
-              <Route
-                path="/configurator/material"
-                element={isLoading ? <Loader /> : <MaterialConfigPage />}
-              />
-              <Route
-                path="/configurator/component"
-                element={isLoading ? <Loader /> : <ComponentConfigPage />}
-              />
-              <Route
-                path="/configurator/summary"
-                element={isLoading ? <Loader /> : <ConfigSummaryPage />}
+                element={isLoading ? <Loader /> : <CageConfigPage />}
               />
               <Route
                 path="*"

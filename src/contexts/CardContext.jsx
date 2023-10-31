@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Cookies from "js-cookie";
+
 
 export const CardContext = createContext();
+
 
 export function useCart() {
   return useContext(CardContext);
@@ -9,7 +13,7 @@ export function useCart() {
 
 export function CardProvider({ children }) {
   const navigate = useNavigate();
-
+  const userIdC=Cookies.get("loggedInUser")
   const [cart, setCart] = useState(() => {
     const storedCart = sessionStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
@@ -59,24 +63,19 @@ export function CardProvider({ children }) {
     }
   };
 
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const existingProduct = prevCart.find((item) => item.id === product.id);
-      if (existingProduct) {
-        existingProduct.quantity += 1;
-      } else {
-        product.quantity = 1;
-        return [...prevCart, product];
+  const addToCart = (product,userid) => {
+    const getProduct = async () => {
+      try {
+        
+        console.log(userIdC)
+        const res = await axios.get('http://localhost:8089/cart/add-to-cart?username='+userIdC+'&productId='+product);
+        console.log(product);
+      }catch (error){
+        console.log("error");
       }
-
-      const TotalPrice = prevCart.reduce(
-        (total, item) => total + item.price * item.quantity,
-        0
-      );
-      setTotalPrice(TotalPrice);
-
-      return [...prevCart];
-    });
+    }
+    getProduct();
+    console.log(product+"in"+userid);
   };
 
   const removeFromCart = (productId) => {

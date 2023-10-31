@@ -21,7 +21,7 @@ export default function LoginPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/login/checklogin",
+        "http://localhost:8089/login/checklogin",
         formData
       );
       if (response.status === 200) {
@@ -31,6 +31,7 @@ export default function LoginPage() {
         const firstName = userData.firstName;
         const lastName = userData.lastName;
         const phone = userData.phone;
+        
 
         formData.username &&
           role &&
@@ -45,6 +46,15 @@ export default function LoginPage() {
           lastName,
           phone,
         });
+        Cookies.set("email",email);
+        Cookies.set("phone",phone);
+        Cookies.set("firstName",firstName);
+        Cookies.set("lastname",lastName);
+        
+        // const { token } = response.data;
+        // console.log(token)
+        // localStorage.setItem("token", token);
+
         if (role === "admin") {
           navigate("/admin/dashboard");
         } else if (role === "customer") {

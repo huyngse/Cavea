@@ -25,11 +25,11 @@ const Index = () => {
     }
   }, [compareProducts, products]);
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/product/all").then((response) => {
-      setProducts(response.data);
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/product/all").then((response) => {
+  //     setProducts(response.data);
+  //   });
+  // }, []);
 
   return (
     <MainLayout>

@@ -2,7 +2,8 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../contexts/AuthContext.jsx";
 import { useCart } from "../contexts/CardContext.jsx";
 import SearchIcon from "@mui/icons-material/Search";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 function Navbar(props) {
   const navigate = useNavigate();
@@ -10,47 +11,27 @@ function Navbar(props) {
 
   const handleSearch = () => {
     navigate("/search");
-  }
+  };
 
   const handleLogout = () => {
     logout();
     navigate("/login");
   };
 
-  const ProductOptions = [
-    {
-      text: "Lồng Chim Cu Gáy",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-cu-gay",
-    },
-    {
-      text: "Lồng Chim Họa Mi",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-hoa-mi",
-    },
-    {
-      text: "Lồng Chim Chào Mào",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-chao-mao",
-    },
-    {
-      text: "Lồng Chim Khuyên",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuyen",
-    },
-    {
-      text: "Lồng Chim Chòe Than",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-choe-than",
-    },
-    {
-      text: "Lồng Chim Khướu",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuou",
-    },
-    {
-      text: "Lồng Chim Hút Mật",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-yen-hut-mat",
-    },
-    {
-      text: "Lồng Chim Chòe Lửa",
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-choe-lua",
-    },
-  ];
+  const [birdType, setBirdType] = useState([]);
+
+  useEffect(() => {
+    const getBirdType = async () => {
+      try {
+        const res = await axios.get("http://localhost:8089/bird-types/get");
+        setBirdType(res.data.list);
+        console.log(res.data.list);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getBirdType();
+  }, []);
 
   const { cart } = useCart();
   // const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
@@ -85,10 +66,13 @@ function Navbar(props) {
                     className="dropdown-menu"
                     aria-labelledby="dropdownMenuButton1"
                   >
-                    {ProductOptions.map((option, index) => (
+                    {birdType.map((option, index) => (
                       <li key={index}>
-                        <a className="dropdown-item" href={option.href}>
-                          {option.text}
+                        <a
+                          className="dropdown-item"
+                          href={`/Cavea?cagetype=${option.birdtypeId}`}
+                        >
+                          {option.birdName}
                         </a>
                       </li>
                     ))}
@@ -173,11 +157,11 @@ function Navbar(props) {
                           Tài khoản của tôi
                         </a>
                       </li>
-                      <li>
+                      {/* <li>
                         <a className="dropdown-item" href="/account/order">
                           Lịch sử đơn hàng
                         </a>
-                      </li>
+                      </li> */}
                       <li>
                         <hr className="dropdown-divider" />
                       </li>
@@ -229,7 +213,7 @@ function Navbar(props) {
                   className="btn btn-light"
                   type="button"
                   id="button-addon2"
-                  onClick={handleSearch}
+                  // onClick={handleSearch}
                 >
                   <SearchIcon />
                 </button>
@@ -308,10 +292,13 @@ function Navbar(props) {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton1"
                 >
-                  {ProductOptions.map((option, index) => (
+                  {birdType.map((option, index) => (
                     <li key={index}>
-                      <a className="dropdown-item" href={option.href}>
-                        {option.text}
+                      <a
+                        className="dropdown-item"
+                        href={`/Cavea?cagetype=${option.birdtypeId}`}
+                      >
+                        {option.birdName}
                       </a>
                     </li>
                   ))}
