@@ -3,16 +3,18 @@ import {Form} from "antd";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import {AuthProvider, useAuth} from "../../contexts/AuthContext";
+import Cookies from "js-cookie";
 
 function SizeConfigPage({ data,setData }) {
   const [disabled, setDisabled] = useState(true);
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const auth = useAuth()
+  const userIdC = Cookies.get("loggedInUser")
   const onFinish = async values => {
     try {
       const body = {
-        username: "1",
+        username: userIdC,
         shape: data.shape,
         material: data.material,
         basePrice: data.basePrice,
@@ -20,8 +22,8 @@ function SizeConfigPage({ data,setData }) {
         description: `birdName: ${data.birdName}, height: ${values.height}, width: ${values.width}, bar: ${values.bar}`,
       };
 
-      // const response = await axios.post("http://localhost:8089/cart/add-to-cart-v2", body);
-      if(auth.userInfo) {
+      const response = await axios.post("http://localhost:8089/cart/add-to-cart-v2", body);
+      if(userIdC) {
         navigate("/checkout?customize-cage=true",{
           state: {
             data: body
@@ -140,7 +142,7 @@ function SizeConfigPage({ data,setData }) {
         <Form.Item>
           <button
               className="btn btn-primary px-5"
-              htmlType="submit"
+              type="submit"
               disabled={disabled}
           >
             Tiến hành thanh toán

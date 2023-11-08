@@ -56,7 +56,7 @@ function AccountSidebar(props) {
             Hồ sơ
           </a>
         </li>
-        {/* <li>
+        <li>
           <a
             href="/account/order"
             className={`nav-link ${
@@ -85,8 +85,8 @@ function AccountSidebar(props) {
             <i class="bi bi-tools me-2"></i>
             Đơn mua gia công
           </a>
-        </li> */}
-        {/* <li>
+        </li>
+        <li>
           <a
             href="/account/change-password"
             className={`nav-link ${
@@ -103,8 +103,8 @@ function AccountSidebar(props) {
             <i className="bi bi-gear me-2"></i>
             Đổi mật khẩu
           </a>
-        </li> */}
-        {/* <li>
+        </li>
+        <li>
           <a
             href="/account/notification"
             className={`nav-link ${
@@ -119,7 +119,7 @@ function AccountSidebar(props) {
             <i className="bi bi-bell me-2"></i>
             Cài đặt thông báo
           </a>
-        </li> */}
+        </li>
         <hr />
 
         <li>

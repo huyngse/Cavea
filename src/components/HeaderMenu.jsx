@@ -20,42 +20,28 @@ export default function HeaderMenu() {
     {
       text: "Lồng Chim Cu Gáy",
       image: chimCuGay,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-cu-gay",
-    },
-    {
-      text: "Lồng Chim Họa Mi",
-      image: chimHoaMi,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-hoa-mi",
+      href: "http://localhost:3000/Cavea?cagetype=1",
     },
     {
       text: "Lồng Chim Chào Mào",
       image: chimChaoMao,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-chao-mao",
+      href: "http://localhost:3000/Cavea?cagetype=2",
     },
     {
       text: "Lồng Chim Khuyên",
       image: chimKhuyen,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuyen",
+      href: "http://localhost:3000/Cavea?cagetype=3",
     },
+    {
+      text: "Lồng Chim Họa Mi",
+      image: chimHoaMi,
+      href: "http://localhost:3000/Cavea?cagetype=4",
+    },
+
     {
       text: "Lồng Chim Chòe Than",
       image: chimChoeThan,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-choe-than",
-    },
-    {
-      text: "Lồng Chim Khướu",
-      image: chimKhuou,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuou",
-    },
-    {
-      text: "Lồng Chim Hút Mật",
-      image: chimChoeLua,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-yen-hut-mat",
-    },
-    {
-      text: "Lồng Chim Chòe Lửa",
-      image: chimHutMat,
-      href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-choe-lua",
+      href: "http://localhost:3000/Cavea?cagetype=5",
     },
   ];
   return (

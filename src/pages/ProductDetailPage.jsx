@@ -1,20 +1,21 @@
-import React, {useContext, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Rating from "@mui/material/Rating";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ImageGallery from "react-image-gallery";
-
-import {CardContext} from "../contexts/CardContext.jsx";
+import { CardContext } from "../contexts/CardContext.jsx";
 import QuantityInput from "../components/QuantityInput.jsx";
 import UserReview from "../components/UserReview";
 import MainLayout from "../layouts/MainLayout";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 export default function ProductDetailPage() {
   const { addToCart } = useContext(CardContext);
   const { productId } = useParams();
-  const [quantity,setQuantity] = useState(1);
-  const [productInfo, setProductInfo] = useState(null)
+  const [quantity, setQuantity] = useState(1);
+  const [productInfo, setProductInfo] = useState(null);
+  const navigate = useNavigate();
   const images = [
     {
       original:
@@ -36,33 +37,71 @@ export default function ProductDetailPage() {
     },
   ];
 
-  const comments = [{
-    description: "Cảm ơn Cavea đã luôn là người đồng hành với những sản phẩm chất lượng đã tạo nên uy tín cho cửa hàng cavea. Với shipper giao hàng tận tay và được kiểm tra hàng trước khi nhận làm cho khách hàng rất thích những sản phẩm đó và không lâu xa khách hàng(em) có thể đặt nhiều hơn nữa để ủng hộ shoppe.Cảm ơn shoppe rất nhiều hẹn gặp lại vào dịp khác rất hân hạnh được đặt hàng từ cavea. Thanks",
-    avatar: "https://i.stack.imgur.com/34AD2.jpg", username: "phthanh159", likeCount: 50, date: "2023-01-17 06:40"
-  }, {
-    avatar: "https://i.stack.imgur.com/34AD2.jpg",
-    username: "jennyhuncorgi",
-    rating: 5,
-    date: "2022-05-28 16:51",
-    likeCount: 53,
-    description: "Chân ck mình to, rất êm chân, mua trên mall là chất lượng tốt tk shop nhiều"
-  }, {
-    avatar: "https://i.stack.imgur.com/34AD2.jpg",
-    username: "04zpt4sr2p",
-    rating: 4,
-    date: "2023-05-06 09:49",
-    likeCount: 0,
-    description: "Hàng nên mua dép đẹp lắm ak chất tốt giao hàng còn nhanh nưa ak"
-  }, {
-    avatar: "https://i.stack.imgur.com/34AD2.jpg",
-    username: "04zpt4sr2p",
-    rating: 4,
-    date: "2023-05-06 09:49",
-    likeCount: 0,
-    description: "Shop giao hàng rất nhanh. Nhìn tổng thể dép cũng đẹp. Chưa đi lên chưa biết độ bền thế nào? Cháu síp hàng rất nhiệt tình ! Lễ phép"
-  }]
+  const comments = [
+    {
+      description:
+        "Cảm ơn Cavea đã luôn là người đồng hành với những sản phẩm chất lượng đã tạo nên uy tín cho cửa hàng cavea. Với shipper giao hàng tận tay và được kiểm tra hàng trước khi nhận làm cho khách hàng rất thích những sản phẩm đó và không lâu xa khách hàng(em) có thể đặt nhiều hơn nữa để ủng hộ shoppe.Cảm ơn shoppe rất nhiều hẹn gặp lại vào dịp khác rất hân hạnh được đặt hàng từ cavea. Thanks",
+      avatar: "https://i.stack.imgur.com/34AD2.jpg",
+      username: "phthanh159",
+      likeCount: 50,
+      date: "2023-01-17 06:40",
+    },
+    {
+      avatar: "https://i.stack.imgur.com/34AD2.jpg",
+      username: "jennyhuncorgi",
+      rating: 5,
+      date: "2022-05-28 16:51",
+      likeCount: 53,
+      description:
+        "Chân ck mình to, rất êm chân, mua trên mall là chất lượng tốt tk shop nhiều",
+    },
+    {
+      avatar: "https://i.stack.imgur.com/34AD2.jpg",
+      username: "04zpt4sr2p",
+      rating: 4,
+      date: "2023-05-06 09:49",
+      likeCount: 0,
+      description:
+        "Hàng nên mua dép đẹp lắm ak chất tốt giao hàng còn nhanh nưa ak",
+    },
+    {
+      avatar: "https://i.stack.imgur.com/34AD2.jpg",
+      username: "04zpt4sr2p",
+      rating: 4,
+      date: "2023-05-06 09:49",
+      likeCount: 0,
+      description:
+        "Shop giao hàng rất nhanh. Nhìn tổng thể dép cũng đẹp. Chưa đi lên chưa biết độ bền thế nào? Cháu síp hàng rất nhiệt tình ! Lễ phép",
+    },
+  ];
+
   const handleAddToCart = () => {
-    console.log("productInfo",productInfo)
+    console.log("productInfo", productInfo);
+    try {
+      const loginUser = Cookies.get("loggedInUser");
+      if (loginUser === undefined) {
+        navigate("/login");
+      } else {
+        const response = axios.get(
+          "http://localhost:8089/cart/add-to-cart?productId=" +
+            productInfo.cageId +
+            "&username=" +
+            loginUser +
+            "&shape=" +
+            productInfo.cageShape +
+            "&material" +
+            productInfo.cageMaterial +
+            "&description" +
+            productInfo.shortDecription +
+            "&birdtypeId" +
+            productInfo.birdtypeId +
+            "&basePrice" +
+            productInfo.cagePrice
+        );
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   const price = productInfo?.cagePrice.toLocaleString("vi-VN", {
@@ -76,18 +115,20 @@ export default function ProductDetailPage() {
 
   const loadData = async () => {
     try {
-      const response = await axios.get(`http://localhost:8089/regular-cage/get?cageId=${productId}`);
+      const response = await axios.get(
+        `http://localhost:8089/regular-cage/get?cageId=${productId}`
+      );
       const productInfo = response.data.list[0];
-      setProductInfo(productInfo)
-    } catch(error) {
-      console.log("error",error)
+      setProductInfo(productInfo);
+    } catch (error) {
+      console.log("error", error);
     }
-  }
+  };
   useEffect(() => {
     loadData();
-  },[])
-  return (
-    productInfo ? <MainLayout>
+  }, []);
+  return productInfo ? (
+    <MainLayout>
       <div className="p-3">
         <div className="p-3 pb-0 shadow">
           <div className="row mb-3">
@@ -120,16 +161,16 @@ export default function ProductDetailPage() {
                   style={{ marginLeft: "10px" }}
                   className="pe-3 border-end"
                 />
-                <div className="px-3 border-end">
+                <div className="px-3">
                   <span className="h5 mb-0 me-1 border-bottom">
                     {comments.length}
                   </span>
                   Đánh giá
                 </div>
-                <div className="px-3">
+                {/* <div className="px-3">
                   <span className="h5 mb-0 me-1 border-bottom">0</span>
                   Đã bán
-                </div>
+                </div> */}
               </div>
               <hr />
               {productInfo?.description}
@@ -149,7 +190,8 @@ export default function ProductDetailPage() {
                     {productInfo?.cageSpokes}
                   </div>
                   <div>
-                    <span className="fw-bold">Móc: </span> {productInfo?.cageHanger}
+                    <span className="fw-bold">Móc: </span>{" "}
+                    {productInfo?.cageHanger}
                   </div>
                   <div>
                     <span className="fw-bold"> Chân quỳ: </span>
@@ -195,7 +237,7 @@ export default function ProductDetailPage() {
         {/* ############################### DESCRIPTION ################################################ */}
         <div className="accordion shadow" id="accordionExample">
           <div className="accordion-item">
-            <h2 className="accordion-header" id="headingOne">
+            {/* <h2 className="accordion-header" id="headingOne">
               <button
                 className="accordion-button"
                 type="button"
@@ -206,8 +248,8 @@ export default function ProductDetailPage() {
               >
                 <h2 className="h4">Mô tả sản phẩm</h2>
               </button>
-            </h2>
-            <div
+            </h2> */}
+            {/* <div
               id="collapseOne"
               className="accordion-collapse collapse show"
               aria-labelledby="headingOne"
@@ -277,7 +319,7 @@ export default function ProductDetailPage() {
                   Facilisis magna etiam tempor orci eu lobortis elementum.
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
           {/* ############################### REVIEW ################################################ */}
           <div className="accordion-item">
@@ -301,8 +343,8 @@ export default function ProductDetailPage() {
               <div className="accordion-body">
                 <div className="rating-box text-center p-3 mb-3">
                   <p className="h5">
-                    <span className="h3 fw-bold">{productInfo?.cageRate}</span> trên
-                    5
+                    <span className="h3 fw-bold">{productInfo?.cageRate}</span>{" "}
+                    trên 5
                   </p>
                   <Rating
                     name="size-large"
@@ -313,23 +355,24 @@ export default function ProductDetailPage() {
                   />
                 </div>
 
-                {comments.map(comment => <UserReview
+                {/* {comments.map((comment) => (
+                  <UserReview
                     avatar={comment.avatar}
                     username={comment.username}
                     rating={comment?.rating}
                     date={comment.date}
                     likeCount={comment.likeCount}
-                >
-                  <p>
-                    {comment.description}
-                  </p>
-                </UserReview>)}
+                  >
+                    <p>{comment.description}</p>
+                  </UserReview>
+                ))} */}
               </div>
             </div>
           </div>
         </div>
       </div>
-    </MainLayout> :
+    </MainLayout>
+  ) : (
     <div className="text-center p-5 h1">Sản phẩm không tồn tại.</div>
   );
 }

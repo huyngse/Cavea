@@ -40,7 +40,7 @@ export default function VerifyTokenPage() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/login/registerVerify",
+        "http://localhost:8089/login/registerVerify",
         {
           token: token,
         }

@@ -8,11 +8,6 @@ const valueMapping = {
   4: "Đã giao",
 };
 
-const paymentMapping = {
-  1: "Thanh toán bằng VNPay",
-  2: "Thanh toán bằng tiền mặt",
-};
-
 const colorMapping = {
   0: "#FED000",
   1: "#4C9A2A",
@@ -22,7 +17,7 @@ const colorMapping = {
 };
 
 function getFormatDate(dateString) {
-  const createdDate = new Date(dateString);
+  const createdDate = new Date(dateString.substring(0, 10));
   const yyyy = createdDate.getFullYear();
   let mm = createdDate.getMonth() + 1; // Months start at 0!
   let dd = createdDate.getDate();
@@ -32,7 +27,7 @@ function getFormatDate(dateString) {
   return formattedDate;
 }
 
-export default function OrderDetail(props) {
+export default function CustomOrderDetail(props) {
   function formatCurrency(number) {
     return number.toLocaleString("vi-VN", {
       style: "currency",
@@ -40,7 +35,7 @@ export default function OrderDetail(props) {
     });
   }
 
-  console.log("Received data: ", props);
+  console.log("Custom order detail: ", props);
 
   return (
     <div className="p-4">
@@ -59,22 +54,11 @@ export default function OrderDetail(props) {
         </thead>
         <tbody>
           <tr>
-            <td>{props.fullData.cage_name}</td>
-            <td>{props.fullData.long_decription}</td>
-            <td>
-              {formatCurrency(
-                props.fullData.cage_price -
-                  props.fullData.cage_price * props.fullData.discount
-              )}
-            </td>
-            <td className="text-center">
-              {props.fullData.numberOfSelectedItems}
-            </td>
-            <td>
-              {formatCurrency(
-                props.fullData.totalPrice * props.fullData.numberOfSelectedItems
-              )}
-            </td>
+            <td>{props.fullData.material}</td>
+            <td>{props.fullData.description}</td>
+            <td>{formatCurrency(props.fullData.price)}</td>
+            <td className="text-center">1</td>
+            <td>{formatCurrency(props.fullData.price)}</td>
           </tr>
         </tbody>
       </table>
@@ -101,7 +85,7 @@ export default function OrderDetail(props) {
               <tr>
                 <th className="p-2 ">Ngày tạo đơn hàng</th>
                 <td className="p-2 ">
-                  {getFormatDate(props.fullData.datePay)}
+                  {getFormatDate(props.fullData.createdDate)}
                 </td>
               </tr>
               <tr>
@@ -135,20 +119,20 @@ export default function OrderDetail(props) {
               <tr>
                 <th className="p-2 ">Họ và tên</th>
                 <td className="p-2 ">
-                  {`${props.fullData.customer.firstName} ${props.fullData.customer.lastName}`}
+                  {`${props.userInfo.firstName} ${props.userInfo.lastName}`}
                 </td>
               </tr>
               <tr>
                 <th className="p-2 ">Email</th>
-                <td className="p-2 ">{props.fullData.customer.email}</td>
+                <td className="p-2 ">{props.userInfo.email}</td>
               </tr>
               <tr>
                 <th className="p-2 ">Số điện thoại</th>
-                <td className="p-2 ">{props.fullData.customer.phone}</td>
+                <td className="p-2 ">{props.userInfo.phone}</td>
               </tr>
               <tr>
                 <th className="p-2 ">Địa chỉ</th>
-                <td className="p-2 ">{props.fullData.customer.address}</td>
+                <td className="p-2 ">{props.userInfo.address}</td>
               </tr>
             </tbody>
           </table>
@@ -181,9 +165,7 @@ export default function OrderDetail(props) {
               <tr>
                 <th>Số tiền</th>
                 <td>
-                  {formatCurrency(
-                    Number.parseInt(`${props.fullData.totalPrice}`)
-                  )}
+                  {formatCurrency(Number.parseInt(`${props.fullData.price}`))}
                 </td>
               </tr>
             </tbody>

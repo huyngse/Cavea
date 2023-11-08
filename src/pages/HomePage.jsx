@@ -10,6 +10,7 @@ import { useCart } from "../contexts/CardContext.jsx";
 import HeaderMenu from "../components/HeaderMenu.jsx";
 import Carousel from "../components/Carousel.jsx";
 import MainLayout from "../layouts/MainLayout.jsx";
+import { Slide, Snackbar } from "@mui/material";
 
 const Index = () => {
   const { handleCompareClick, compareProducts } = useCart();

@@ -13,7 +13,7 @@ export default function CompareForm() {
   const [compareProductDetails, setSelectedProductDetails] = useState([]);
   console.log(products);
   useEffect(() => {
-    axios.get("http://localhost:8080/product/all").then((response) => {
+    axios.get("http://localhost:8089/product/all").then((response) => {
       setProducts(response.data);
     });
   }, []);

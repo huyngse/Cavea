@@ -23,6 +23,7 @@ npm install @mui/styled-engine-sc styled-components\
 npm i react-image-gallery\
 npm i bootstrap-icons\
 npm install @material-ui/core
+
 ### `install sass`
 
 npm install sass
