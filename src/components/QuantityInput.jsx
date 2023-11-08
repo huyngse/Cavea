@@ -31,7 +31,7 @@ const CustomNumberInput = React.forwardRef(function CustomNumberInput(
   );
 });
 
-export default function QuantityInput({quantity,setQuantity}) {
+export default function QuantityInput({ quantity, setQuantity }) {
   return (
     <CustomNumberInput
       aria-label="Quantity Input"

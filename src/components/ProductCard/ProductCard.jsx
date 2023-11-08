@@ -6,6 +6,9 @@ import { useCart } from "../../contexts/CardContext.jsx";
 import Rating from "@mui/material/Rating";
 import { CartButton } from "./style_component.jsx";
 import "./ProductCard.css";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router-dom";
+
 export default function ProductCard(props) {
   const { compareProducts } = useCart();
   const {
@@ -37,13 +40,21 @@ export default function ProductCard(props) {
 
   const isChecked = compareProducts.includes(cageid);
 
+  const navigate = useNavigate();
+
   const handleCompareProducts = async (productId) => {
     setIsComparing(!isComparing);
     await onCompare(productId);
   };
 
-  const handleAddToCart = async (productId,userid) => {
-    await onAddToCart(productId,userid);
+  const handleAddToCart = async (productId, userid) => {
+    const loginUser = Cookies.get("loggedInUser");
+    console.log("User: ", loginUser);
+    if (loginUser === undefined) {
+      navigate("/login");
+    } else {
+      await onAddToCart(productId, userid);
+    }
   };
 
   const price = productPrice.toLocaleString("vi-VN", {
@@ -56,7 +67,7 @@ export default function ProductCard(props) {
   });
 
   return (
-    <div className="bg-white text-center shadow">
+    <div className="bg-white text-center shadow mb-4">
       <form className="compare-div">
         So sánh
         <label>
@@ -85,7 +96,7 @@ export default function ProductCard(props) {
       <CartButton
         variant="contained"
         startIcon={<AddShoppingCartIcon />}
-        onClick={() => handleAddToCart(cageid,userid)}
+        onClick={() => handleAddToCart(cageid, userid)}
       >
         Thêm vào giỏ
       </CartButton>

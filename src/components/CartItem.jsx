@@ -1,13 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../contexts/CardContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { Slide } from "@mui/material";
 
 function CartItem(props) {
-  function handleChangeQuantity() {
-
-  }
   const { increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
+  const navigate = useNavigate();
+
+  const handleAddQuantity = () => {
+    try {
+      const response = axios.get('http://localhost:8089/cart/add-to-cart?productId=' +
+        props.cageId + '&username=' + props.username +
+        '&shape=' + props.cageShape + '&material' + props.cageMaterial +
+        '&description' + props.shortDecription + '&birdtypeId' + props.birdtypeId + '&basePrice' + props.cagePrice
+      );
+      window.location.reload(false);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
+  const handleReduceQuantity = () => {
+    try {
+      const response = axios.get("http://localhost:8089/cart/remove-atom?productId=" + props.productId
+        + "&username=" + props.username);
+      window.location.reload(false);
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
+  const handleDeleteClick = () => {
+    try {
+      for (var i = 0; i < props.quantity; i++) {
+        const response = axios.get("http://localhost:8089/cart/remove-one?productId=" + props.productId
+          + "&username=" + props.username);
+        window.location.reload(false);
+      }
+    } catch (error) {
+      console.log("error: ", error);
+    }
+  }
+
   return (
     <div className="row mb-3  p-3 shadow">
+       
       <div className="col-3">
         <img src={props.image} className="img-fluid" alt=""></img>
       </div>
@@ -42,7 +80,9 @@ function CartItem(props) {
                   </button>
                 </p>
                 <p>
-                  <button className="bg-transparent border-0 text-primary  text-start text-decoration-underline">
+                  <button
+                    className="bg-transparent border-0 text-primary text-start text-decoration-underline"
+                  >
                     <small>Xóa?</small>
                   </button>
                 </p>
@@ -52,7 +92,7 @@ function CartItem(props) {
                     type="number"
                     className="form-control no-arrow"
                     value={1}
-                    onChange={handleChangeQuantity}
+                  // onChange={handleChangeQuantity}
                   />
                   <button className="btn">+</button>
                 </div>
@@ -62,13 +102,16 @@ function CartItem(props) {
             <>
               <div className="col-3 d-flex flex-column">
                 <p>
-                  <button className="bg-transparent border-0 text-primary text-start text-decoration-underline">
+                  {/* <button className="bg-transparent border-0 text-primary text-start text-decoration-underline">
                     <small>Để dành lần sau</small>
-                  </button>
+                  </button> */}
                 </p>
                 <p>
-                  <button className="bg-transparent border-0 text-primary text-start text-decoration-underline">
-                    <small onClick={() => removeFromCart(props.cageId)}>
+                  <button
+                    className="bg-transparent border-0 text-primary text-start text-decoration-underline"
+                    onClick={() => handleDeleteClick()}
+                  >
+                    <small >
                       Xóa?
                     </small>
                   </button>
@@ -76,20 +119,23 @@ function CartItem(props) {
 
                 <div className="text-center mt-auto d-flex align-items-center">
                   <button
-                    className="btn "
-                    onClick={() => decreaseQuantity(props.cageId)}
+                    className="btn"
+                    disabled={props.quantity <= 0}
+                    onClick={() => handleReduceQuantity()}
                   >
                     -
                   </button>
                   <input
+                    id="productQuantity"
                     type="number"
                     className="form-control no-arrow"
                     value={props.quantity}
-                    onChange={handleChangeQuantity}
+                    disabled={true}
                   />
                   <button
                     className="btn"
-                    onClick={() => increaseQuantity(props.cageId)}
+                    onClick={() => handleAddQuantity()}
+                    disabled={props.quantity >= props.maxQuantity}
                   >
                     +
                   </button>

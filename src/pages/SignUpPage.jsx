@@ -60,7 +60,7 @@ export default function SignUpPage() {
     }
     try {
       const registrationResponse = await axios.post(
-        "http://localhost:8080/login/register",
+        "http://localhost:8089/login/register",
         formData
       );
 

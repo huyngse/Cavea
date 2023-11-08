@@ -38,7 +38,7 @@ export default function OrderItem(props) {
                 })}
               </span>
             </small>
-            <span className="text-primary">
+            <span className="text-primary" style={{ fontSize: "20px" }}>
               {props.discount.toLocaleString("vi-VN", {
                 style: "currency",
                 currency: "VND",

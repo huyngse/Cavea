@@ -4,6 +4,7 @@ import { useCart } from "../contexts/CardContext.jsx";
 import SearchIcon from "@mui/icons-material/Search";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 function Navbar(props) {
   const navigate = useNavigate();
@@ -17,6 +18,41 @@ function Navbar(props) {
     logout();
     navigate("/login");
   };
+
+  // const ProductOptions = [
+  //   {
+  //     text: "Lồng Chim Cu Gáy",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-cu-gay",
+  //   },
+  //   {
+  //     text: "Lồng Chim Họa Mi",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-hoa-mi",
+  //   },
+  //   {
+  //     text: "Lồng Chim Chào Mào",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-chao-mao",
+  //   },
+  //   {
+  //     text: "Lồng Chim Khuyên",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuyen",
+  //   },
+  //   {
+  //     text: "Lồng Chim Chòe Than",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-choe-than",
+  //   },
+  //   {
+  //     text: "Lồng Chim Khướu",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-khuou",
+  //   },
+  //   {
+  //     text: "Lồng Chim Hút Mật",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-chim-yen-hut-mat",
+  //   },
+  //   {
+  //     text: "Lồng Chim Chòe Lửa",
+  //     href: "https://www.sieuthilongchim.net/danh-sach-san-pham/long-choe-lua",
+  //   },
+  // ];
 
   const [birdType, setBirdType] = useState([]);
 
@@ -35,6 +71,15 @@ function Navbar(props) {
 
   const { cart } = useCart();
   // const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0); // Used to count the number of products added
+
+  const handleNavigateClick = () => {
+    const loginUser = Cookies.get("loggedInUser");
+    if (loginUser === undefined) {
+      navigate("/login");
+    } else {
+      navigate("/configurator");
+    }
+  };
 
   return (
     <>
@@ -93,7 +138,10 @@ function Navbar(props) {
                     aria-labelledby="dropdownMenuButton1"
                   >
                     <li>
-                      <a className="dropdown-item" href="/configurator">
+                      <a
+                        className="dropdown-item"
+                        onClick={handleNavigateClick}
+                      >
                         Đặt lồng chim theo yêu cầu
                       </a>
                     </li>
@@ -157,11 +205,11 @@ function Navbar(props) {
                           Tài khoản của tôi
                         </a>
                       </li>
-                      {/* <li>
+                      <li>
                         <a className="dropdown-item" href="/account/order">
                           Lịch sử đơn hàng
                         </a>
-                      </li> */}
+                      </li>
                       <li>
                         <hr className="dropdown-divider" />
                       </li>
@@ -213,17 +261,17 @@ function Navbar(props) {
                   className="btn btn-light"
                   type="button"
                   id="button-addon2"
-                  // onClick={handleSearch}
+                  onClick={handleSearch}
                 >
                   <SearchIcon />
                 </button>
               </form>
               <a href="/view-cart">
                 <button className="nav-link text-white text-center position-relative">
-                  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     {cart.length}
                     <span className="visually-hidden"></span>
-                  </span>
+                  </span> */}
                   <svg
                     fill="white"
                     baseProfile="tiny"

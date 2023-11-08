@@ -1,36 +1,51 @@
-import React, {useEffect,useState} from 'react'
-import AdminLayout from '../../layouts/AdminLayout'
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import OrderTableRow from '../../components/AdminPages/OrderTableRow';
-import dayjs from 'dayjs';
+import React, { useEffect, useState } from "react";
+import AdminLayout from "../../layouts/AdminLayout";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import OrderTableRow from "../../components/AdminPages/OrderTableRow";
+import dayjs from "dayjs";
 import axios from "axios";
-import { Table, Select } from "antd";
+import { Table, Select, Space } from "antd";
 
 const statusOptions = [
   {
     label: "Chờ xác nhận",
-    value: 0
+    value: 0,
   },
   {
     label: "Thành công",
-    value: 1
+    value: 1,
   },
-]
+  {
+    label: "Đã hủy",
+    value: 2,
+  },
+  {
+    label: "Đang giao",
+    value: 3,
+  },
+  {
+    label: "Đã giao",
+    value: 4,
+  },
+];
 function AdminManageOrderPage() {
-
   const [value, setValue] = React.useState("all");
-  const [dataSource,setDataSource] = useState([]);
-  const [dataSourceDefault,setDataSourceDefault] = useState([]);
+  const [dataSource, setDataSource] = useState([]);
+  const [dataSourceDefault, setDataSourceDefault] = useState([]);
+  const [displayDetail, setDisplayDetail] = useState(false);
+  const [filterData, setFilterData] = useState([{}]);
+  const [orderIds, setOrderIds] = useState([{}]);
+
   const handleChange = (event, value) => {
-    if(value === "all") {
+    if (value === "all") {
       setDataSource(dataSourceDefault);
     } else {
-      const filter = dataSourceDefault.filter(item => item.status === value);
+      const filter = dataSourceDefault.filter((item) => item.status === value);
       setDataSource(filter);
     }
     setValue(value);
@@ -49,54 +64,65 @@ function AdminManageOrderPage() {
   //   getCarts();
   // }, []);
 
-
-  const columns = [
-    {
-      title: 'Mã đơn',
-      dataIndex: 'billId',
-      key: 'billId',
-    },
-    {
-      title: 'Khách hàng',
-      dataIndex: 'username',
-      key: 'username',
-    },
-    {
-      title: 'Ngày đặt',
-      dataIndex: 'createdDate',
-      key: 'createdDate',
-    },
-    {
-      title: 'Ngày giao dự kiến',
-      dataIndex: 'expectedDate',
-      key: 'expectedDate',
-    },
-    {
-      title: 'Tổng tiền',
-      dataIndex: 'totalPrice',
-      key: 'totalPrice',
-    },
-    {
-      title: 'Trạng thái',
-      dataIndex: 'changeStatus',
-      key: 'changeStatus',
-    },
-  ]
-
-  const onChangeStatus = async (event,item)=> {
+  const onChangeStatus = async (event, item) => {
     try {
-      const path = `http://localhost:8089/cart/bill?username=${item.username}&billId=${item.billId}&status=${event}`;
+      const path = `http://localhost:8089/cart/change-status?username=${item.username}&cartID=${item.id}&status=${event}`;
       const response = await axios.get(path);
-      console.log("response",response)
+      window.location.reload(false);
+      console.log("response", response);
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
     }
   };
 
-  const onChangeInput = event => {
+  const handleViewClick = (billId) => {
+    console.log("DataSource", dataSourceDefault);
+    setFilterData(dataSourceDefault.filter((item) => item.billId === billId));
+    console.log("filterdata: ", filterData);
+    setDisplayDetail(true);
+  };
+
+  // const columns = [
+  //   {
+  //     title: 'Mã đơn',
+  //     dataIndex: 'billId',
+  //     key: 'billId',
+  //   },
+  //   {
+  //     title: 'Tên khách hàng',
+  //     dataIndex: 'full_name',
+  //     key: 'quantity',
+  //   },
+  //   {
+  //     title: 'Ngày đặt',
+  //     dataIndex: 'createdDate',
+  //     key: 'quantity',
+  //   },
+  //   {
+  //     title: 'Đơn giá',
+  //     dataIndex: 'totalPrice',
+  //     key: 'quantity',
+  //   },
+  //   {
+  //     title: '',
+  //     key: 'toggle',
+  //     render: (_, record) => (
+  //       <Space size="middle">
+  //         <Button onClick={() => handleViewClick(record.billId)}>
+  //           <img src={require("../../assets/view.png")} style={{ width: "3.5vh" }} />
+  //         </Button>
+  //       </Space>
+  //     ),
+  //   },
+
+  // ];
+
+  const onChangeInput = (event) => {
     const value = event.target.value;
-    const filter = dataSourceDefault.filter(item => item.username.includes(value));
-    setDataSource(filter)
+    const filter = dataSourceDefault.filter((item) =>
+      item.username.includes(value)
+    );
+    setDataSource(filter);
   };
 
   const loadData = async () => {
@@ -104,32 +130,52 @@ function AdminManageOrderPage() {
       const response = await axios.get("http://localhost:8089/cart/bill-all");
       const list = response.data.list;
       setDataSourceDefault(list);
-      const data = list.map(item => ({
+      const data = list.map((item) => ({
         ...item,
-        totalPrice: `${item.regularCages?.cagePrice.toLocaleString("vi-VN")} VND`,
-        changeStatus: <Select key={item.id} options={statusOptions} defaultValue={item.status} onChange={(event) => onChangeStatus(event,item)} />
+        totalPrice: `${item.totalPrice?.toLocaleString("vi-VN")} VND`,
+        changeStatus: (
+          <Select
+            key={item.id}
+            options={statusOptions}
+            defaultValue={item.status}
+            onChange={(event) => onChangeStatus(event, item)}
+          />
+        ),
       }));
-      console.log("list",list)
-      setDataSourceDefault(data)
+      console.log("data: ", data);
+
+      const firstOccurrences = {};
+      const resultArray = [];
+      for (const item of data) {
+        const billId = item.billId;
+        if (!(billId in firstOccurrences)) {
+          firstOccurrences[billId] = item;
+          resultArray.push(item);
+        }
+      }
+      console.log("result: ", resultArray);
+
+      setOrderIds(resultArray);
+      setDataSourceDefault(data);
     } catch (error) {
-      console.log("error",error)
+      console.log("error", error);
     }
-  }
+  };
 
   useEffect(() => {
-    setDataSource(dataSourceDefault)
-  },[dataSourceDefault]);
+    setDataSource(dataSourceDefault);
+  }, [dataSourceDefault]);
 
   useEffect(() => {
     loadData();
   }, []);
 
-  const [date, setDate] = React.useState(dayjs('2022-04-17'));
+  const [date, setDate] = React.useState(dayjs("2022-04-17"));
   return (
     <AdminLayout>
-      <div className='bg-gray w-100 p-2'>
-        <div className='bg-white mb-3'>
-          <h1 className='h2 text-center p-3'>Danh sách đơn đặt hàng</h1>
+      <div className="bg-gray w-100 p-2">
+        <div className="bg-white mb-3">
+          <h1 className="h2 text-center p-3">Danh sách đơn đặt hàng</h1>
           <Tabs value={value} onChange={handleChange} centered>
             <Tab label="Tất cả" value="all" />
             <Tab label="Chờ xác nhận" value={0} />
@@ -154,8 +200,8 @@ function AdminManageOrderPage() {
                 <i className="bi bi-search"></i>
               </button>
             </form>
-            <div className='d-flex justify-content-center'>
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div className="d-flex justify-content-center">
+              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DatePicker', 'DatePicker']}>
                   <DatePicker label="Từ ngày" defaultValue={dayjs('2022-04-17')} />
                   <DatePicker
@@ -164,22 +210,14 @@ function AdminManageOrderPage() {
                     onChange={(newValue) => setDate(newValue)}
                   />
                 </DemoContainer>
-              </LocalizationProvider>
+              </LocalizationProvider> */}
             </div>
           </div>
         </div>
-        <Table
-            columns={columns}
-            dataSource={dataSource}
-            pagination={{
-              position: ["bottomCenter"],
-              pageSize: 10,
-              total: dataSource.length
-            }}
-        />
+        <OrderTableRow isCustomCage={false} dataSource={dataSourceDefault} />
       </div>
     </AdminLayout>
-  )
+  );
 }
 
-export default AdminManageOrderPage
+export default AdminManageOrderPage;

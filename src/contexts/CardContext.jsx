@@ -3,9 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-
 export const CardContext = createContext();
-
 
 export function useCart() {
   return useContext(CardContext);
@@ -13,7 +11,7 @@ export function useCart() {
 
 export function CardProvider({ children }) {
   const navigate = useNavigate();
-  const userIdC=Cookies.get("loggedInUser")
+  const userIdC = Cookies.get("loggedInUser");
   const [cart, setCart] = useState(() => {
     const storedCart = sessionStorage.getItem("cart");
     return storedCart ? JSON.parse(storedCart) : [];
@@ -63,19 +61,23 @@ export function CardProvider({ children }) {
     }
   };
 
-  const addToCart = (product,userid) => {
+  const addToCart = (product, userid) => {
     const getProduct = async () => {
       try {
-        
-        console.log(userIdC)
-        const res = await axios.get('http://localhost:8089/cart/add-to-cart?username='+userIdC+'&productId='+product);
+        console.log(userIdC);
+        const res = await axios.get(
+          "http://localhost:8089/cart/add-to-cart?username=" +
+            userIdC +
+            "&productId=" +
+            product
+        );
         console.log(product);
-      }catch (error){
+      } catch (error) {
         console.log("error");
       }
-    }
+    };
     getProduct();
-    console.log(product+"in"+userid);
+    console.log(product + "in" + userid);
   };
 
   const removeFromCart = (productId) => {

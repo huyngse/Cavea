@@ -32,6 +32,7 @@ import { Outlet } from "react-router-dom";
 
 import "./index.scss";
 import "./index.css";
+import UserCustomOrderPage from "./pages/AccountPage/CustomerOrderPage.jsx";
 
 const ScrollToTop = (props) => {
   const location = useLocation();
@@ -50,7 +51,6 @@ export function RequiresAuth({ children }) {
   }
 }
 const App = () => {
-
   const accessToken = localStorage.getItem("token");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -73,6 +73,10 @@ const App = () => {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route
                 path="/home"
+                element={isLoading ? <Loader /> : <HomePage />}
+              />
+              <Route
+                path="/home:isSuccessfullyCheckout"
                 element={isLoading ? <Loader /> : <HomePage />}
               />
               <Route
@@ -144,7 +148,10 @@ const App = () => {
               />
               <Route path="/account/profile" element={<EditProfile />} />
               <Route path="/account/order" element={<UserOrder />} />
-              <Route path="/account/custom-order" element={<h1>TODO: </h1>} />
+              <Route
+                path="/account/custom-order"
+                element={<UserCustomOrderPage />}
+              />
               <Route
                 path="/account/change-password"
                 element={<h1>TODO: </h1>}
